@@ -23,6 +23,12 @@ import static gregtech.api.GTValues.VA;
 
 public class MetaTileEntityVisGenerator extends TieredMetaTileEntity {
     static final float euPerVis=250.0f;
+    long euRest;
+    long euDesired;
+    float desiredVis;
+    float drainedVis;
+    long euGeneration;
+
     public MetaTileEntityVisGenerator(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
     }
@@ -42,15 +48,15 @@ public class MetaTileEntityVisGenerator extends TieredMetaTileEntity {
         super.update();
         if(!getWorld().isRemote)
         {
-            long euRest=energyContainer.getEnergyCapacity()-energyContainer.getEnergyStored();
-            long euDesired=Math.min(euRest,energyContainer.getOutputVoltage()*energyContainer.getOutputAmperage());
-            float desiredVis=(float) euDesired/euPerVis;
-            float drainedVis= AuraHandler.drainVis(getWorld(),getPos(),desiredVis,false);
-            long euGeneration=(long)Math.floor(drainedVis*euPerVis);
+             euRest=energyContainer.getEnergyCapacity()-energyContainer.getEnergyStored();
+             euDesired=Math.min(euRest,energyContainer.getOutputVoltage()*energyContainer.getOutputAmperage());
+             desiredVis=(float) euDesired/euPerVis;
+             drainedVis= AuraHandler.drainVis(getWorld(),getPos(),desiredVis,false);
+             euGeneration=(long)Math.floor(drainedVis*euPerVis);
             energyContainer.changeEnergy(euGeneration);
             if(euGeneration >0)
             {
-                AuraHelper.polluteAura(getWorld(),getPos(),Math.min(drainedVis,1.0f),false);
+                AuraHelper.polluteAura(getWorld(),getPos(),Math.min(drainedVis*0.1f,1.0f),false);
             }
         }
     }
@@ -58,9 +64,9 @@ public class MetaTileEntityVisGenerator extends TieredMetaTileEntity {
         String key = this.metaTileEntityId.getPath().split("\\.")[0];
         String mainKey = String.format("gregtech.machine.%s.tooltip", key);
         if (I18n.hasKey(mainKey)) {
-            tooltip.add(1, I18n.format(mainKey, new Object[0]));
+            tooltip.add(1, I18n.format(mainKey));
         }
-        tooltip.add(I18n.format("gregtech.universal.tooltip.consume",VA[this.getTier()]*euPerVis));
+        tooltip.add(I18n.format("gregtech.universal.tooltip.consume",VA[getTier()]/euPerVis,euPerVis));
         tooltip.add(I18n.format("gregtech.universal.tooltip.voltage_out", this.energyContainer.getOutputVoltage(), GTValues.VNF[this.getTier()]));
         tooltip.add(I18n.format("gregtech.universal.tooltip.energy_storage_capacity", this.energyContainer.getEnergyCapacity()));
     }

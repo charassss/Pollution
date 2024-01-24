@@ -1,9 +1,12 @@
-pollution.machine.vis.lv.name=基础灵气发电机
-pollution.machine.vis.mv.name=进阶灵气发电机
-pollution.machine.vis.hv.name=涡轮灵气发电机
+pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
+pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
+pollution.machine.vis.hv.name=涡轮灵气发电机（§6HV§r）
+pollution.machine.vis.ev.name=爆燃灵气发电机（§5EV§r）
+pollution.machine.vis.iv.name=爆喷灵气发电机（§1IV§r）
+gregtech.universal.tooltip.consume=灵气转换污染(1:0.1)量:%s Vis 单位灵气产值:%s EU
+
 pollution.muffler.pollution_tooltip1=每运行十次配方会根据污染率产生一次污染（基础倍率为0.1）
 pollution.muffler.pollution_tooltip2=污染率: %s
-gregtech.universal.tooltip.consume=单位灵气消耗量: %s
 pollution.machine.pollution_muffler_hatch.lv.name=简易消声仓（§7LV§r）
 pollution.machine.pollution_muffler_hatch.mv.name=简易消声仓（§bMV§r）
 pollution.machine.pollution_muffler_hatch.hv.name=简易消声仓（§6HV§r）
@@ -12,3 +15,13 @@ pollution.machine.pollution_muffler_hatch.iv.name=简易消声仓（§1IV§r）
 pollution.machine.pollution_muffler_hatch.luv.name=简易消声仓（§dLuV§r）
 pollution.machine.pollution_muffler_hatch.zpm.name=简易消声仓（§cZPM§r）
 pollution.machine.pollution_muffler_hatch.uv.name=简易消声仓（§3UV§r）
+
+pollution.machine.vis_provider.lv.name=灵气再生机（§7LV§r）
+pollution.machine.vis_provider.mv.name=灵气再生机（§bMV§r）
+pollution.machine.vis_provider.hv.name=灵气再生机（§6HV§r）
+pollution.machine.vis_provider.ev.name=灵气再生机（§5EV§r）
+pollution.machine.vis_provider.iv.name=灵气再生机（§1IV§r）
+pollution.machine.vis_provider.luv.name=灵气再生机（§dLuV§r）
+pollution.machine.vis_provider.zpm.name=灵气再生机（§cZPM§r）
+pollution.machine.vis_provider.uv.name=灵气再生机（§3UV§r）
+pollution.vis.provider=灵气补充量(每百次):%s Vis

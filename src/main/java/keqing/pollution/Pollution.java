@@ -1,6 +1,8 @@
 package keqing.pollution;
 
+import keqing.pollution.common.CommonProxy;
 import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
+import keqing.pollution.common.recipes;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -32,7 +34,11 @@ public class Pollution  {
     public static final String NAME = "Pollution";
     public static final String VERSION = "1.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
-
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        CommonProxy.init();
+    }
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {

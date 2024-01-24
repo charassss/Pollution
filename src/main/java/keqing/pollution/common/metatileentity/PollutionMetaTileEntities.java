@@ -13,17 +13,24 @@ public class PollutionMetaTileEntities {
         return new ResourceLocation(Pollution.MODID, id);
     }
     public static final MetaTileEntityMultiblockPart[] FLUX_MUFFLERS = new MetaTileEntityMultiblockPart[9];
-    public static final TieredMetaTileEntity[] AURA_GENERATORS = new TieredMetaTileEntity[3];
+    public static final TieredMetaTileEntity[] AURA_GENERATORS = new TieredMetaTileEntity[6];
+
+    public static final MetaTileEntityVisProvider[] VIS_PROVIDERS = new MetaTileEntityVisProvider[9];
     public static void initialization() {
 
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i <= 4; i++) {
             String tierName = GTValues.VN[i+1].toLowerCase();
             AURA_GENERATORS[i] = registerMetaTileEntity(15900+i-1 ,new MetaTileEntityVisGenerator(gtqtcoreId("vis." + tierName), i+1));
         }
 
+        for (int i = 0; i <= 7; i++) {
+            String tierName = GTValues.VN[i+1].toLowerCase();
+            VIS_PROVIDERS[i] = registerMetaTileEntity(15920+i-1 ,new MetaTileEntityVisProvider(gtqtcoreId("vis_provider." + tierName), i+1));
+        }
+
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
-            FLUX_MUFFLERS[i] = registerMetaTileEntity(15910 + i-1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
+            FLUX_MUFFLERS[i] = registerMetaTileEntity(15930 + i-1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
         }
     }
 }
