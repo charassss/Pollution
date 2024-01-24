@@ -1,16 +1,16 @@
 [
-{
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["CleanroomMC"],
-  "credits": "Authors of this project",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "pollution",
+    "name": "Pollution",
+    "description": "pollution for muffler hatch",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["XB_Asuna"],
+    "credits": "A mod for mod packet GregTech:QuantumTransition",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]

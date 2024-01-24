@@ -1,0 +1,14 @@
+pollution.machine.vis.lv.name=基础灵气发电机
+pollution.machine.vis.mv.name=进阶灵气发电机
+pollution.machine.vis.hv.name=涡轮灵气发电机
+pollution.muffler.pollution_tooltip1=每运行十次配方会根据污染率产生一次污染（基础倍率为0.1）
+pollution.muffler.pollution_tooltip2=污染率: %s
+gregtech.universal.tooltip.consume=单位灵气消耗量: %s
+pollution.machine.pollution_muffler_hatch.lv.name=简易消声仓（§7LV§r）
+pollution.machine.pollution_muffler_hatch.mv.name=简易消声仓（§bMV§r）
+pollution.machine.pollution_muffler_hatch.hv.name=简易消声仓（§6HV§r）
+pollution.machine.pollution_muffler_hatch.ev.name=简易消声仓（§5EV§r）
+pollution.machine.pollution_muffler_hatch.iv.name=简易消声仓（§1IV§r）
+pollution.machine.pollution_muffler_hatch.luv.name=简易消声仓（§dLuV§r）
+pollution.machine.pollution_muffler_hatch.zpm.name=简易消声仓（§cZPM§r）
+pollution.machine.pollution_muffler_hatch.uv.name=简易消声仓（§3UV§r）
