@@ -36,3 +36,11 @@ pollution.flux_clear.flux=污染剩余:%s Vis
 pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
+
+pollution.command.slowness=§7你感到行动不便
+pollution.command.weakness=§b你感到一阵虚弱
+pollution.command.nausea=§6你感到一阵恶心
+pollution.command.mining=§5你感到浑身疲累
+pollution.command.blindness=§1你感到头晕目眩
+
+
