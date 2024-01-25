@@ -56,7 +56,7 @@ public class MetaTileEntityVisGenerator extends TieredMetaTileEntity {
             energyContainer.changeEnergy(euGeneration);
             if(euGeneration >0)
             {
-                AuraHelper.polluteAura(getWorld(),getPos(),Math.min(drainedVis*0.1f,1.0f),false);
+                AuraHelper.polluteAura(getWorld(),getPos(),Math.min(drainedVis*0.1f,1.0f),true);
             }
         }
     }

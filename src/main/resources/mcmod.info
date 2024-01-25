@@ -7,8 +7,8 @@
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
-    "authorList": ["XB_Asuna"],
-    "credits": "A mod for mod packet GregTech:QuantumTransition",
+    "authorList": ["XB_Asuna","tong-ge"],
+    "credits": "A mod for mod gregtech",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
