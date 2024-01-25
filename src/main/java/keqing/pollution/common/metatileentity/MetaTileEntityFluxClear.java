@@ -78,14 +78,14 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "AAA", "AAA")
-                .aisle("XXX", "XXX", "AXA", "AAA")
-                .aisle("XXX", "XSX", "AAA", "AAA")
+                .aisle("XXX", "XXX","XXX", "AAA", "AAA")
+                .aisle("XXX", "XXX","XXX", "AXA", "AAA")
+                .aisle("XXX", "XSX","XXX", "AAA", "AAA")
                 .where('S', selfPredicate())
                 .where('A', states(getIntakeState()).addTooltips("gregtech.multiblock.pattern.clear_amount_1"))
-                .where('X', states(getCasingAState()).setMinGlobalLimited(27)
-                         .or(abilities(MultiblockAbility.MAINTENANCE_HATCH).setMaxGlobalLimited(1))
-                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setMaxGlobalLimited(1)))
+                .where('X', states(getCasingAState()).setMinGlobalLimited(15)
+                         .or(abilities(MultiblockAbility.MAINTENANCE_HATCH).setExactLimit(1))
+                         .or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1)))
                 .where(' ', any())
                 .build();
     }
@@ -110,7 +110,7 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
                 MetaBlocks.MULTIBLOCK_CASING.getState(BlockMultiblockCasing.MultiblockCasingType.ENGINE_INTAKE_CASING);
     }
     private IBlockState getCasingAState() {
-        if (tier == GTValues.IV)
+        if (tier == GTValues.EV)
             return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TITANIUM_STABLE);
 
         return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.TUNGSTENSTEEL_ROBUST);
@@ -118,7 +118,7 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        if(tier==4) return Textures.STABLE_TITANIUM_CASING;
+        if (tier == GTValues.EV) return Textures.STABLE_TITANIUM_CASING;
         return Textures.ROBUST_TUNGSTENSTEEL_CASING;
     }
 
