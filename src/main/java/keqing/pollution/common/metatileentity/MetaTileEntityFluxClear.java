@@ -56,11 +56,13 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
     }
         @Override
     protected void updateFormedValid() {
-        if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
-            energyContainer.removeEnergy(energyAmountPer);
-            isWorkingEnabled=true;
-            AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks,false);
-        }
+            if (AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, true) > 0) {
+                if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
+                    energyContainer.removeEnergy(energyAmountPer);
+                    isWorkingEnabled = true;
+                    AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, false);
+                }
+            }
     }
     @Override
     public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
