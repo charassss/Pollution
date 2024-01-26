@@ -44,37 +44,36 @@ public class EventLoader {
         if (event.getEntity() instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.getEntity();
             Random rand = new Random();
-            int randomNum = rand.nextInt(10000);
+            int randomNum = rand.nextInt(50000);
 
 
 
 
-            if(AuraHelper.getFlux(player.world, player.getPosition())>10&&randomNum>=100&&randomNum<=110) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>1&&randomNum>=100&&randomNum<=110) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.slowness"));
-                player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 0));
-                player.world.playSound(player,player.getPosition(), GTSoundEvents.FIRE, SoundCategory.PLAYERS, 1F, 1F);
+                player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>20&&randomNum>=140&&randomNum<=150) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>5&&randomNum>=140&&randomNum<=150) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.weakness"));
-                player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 0));
+                player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>30&&randomNum>=80&&randomNum<=90) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>10&&randomNum>=80&&randomNum<=90) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.nausea"));
-                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0));
+                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>40&&randomNum>=60&&randomNum<=70) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>20&&randomNum>=60&&randomNum<=70) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.mining"));
-                player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 0));
+                player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>50&&randomNum>=10&&randomNum<=15) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>30&&randomNum>=10&&randomNum<=15) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.blindness"));
-                player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
+                player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 1));
             }
 
-            if(AuraHelper.getFlux(player.world, player.getPosition())>60&&randomNum<=5) {
-                for (int h = -2; h <1; h++)
-                    for (int i=-8;i<=8;i++)
-                        for (int j=-8;j<=8;j++)
+            if(AuraHelper.getFlux(player.world, player.getPosition())>100) {
+                for (int h = -3; h <3; h++)
+                    for (int i=-16;i<=16;i++)
+                        for (int j=-16;j<=16;j++)
                 {
                     BlockPos sand = player.getPosition().add(i , h, j );
                     if(player.world.getBlockState(sand)==Blocks.GRASS.getDefaultState())
