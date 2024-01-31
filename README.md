@@ -1,20 +1,28 @@
-## TemplateDevEnv
+## 模组简介
+格雷科技社区版非官方版（GTCEu）的附属模组，同时为整合包 GregTech:QuantumTransition（格雷：量子跃迁）提供神秘时代部分的魔法兼容，由于其内容简单，现将其独立使用。
+## 机器设备
+为格雷添加了一套基于神秘时代灵气的功能系统，以及配套的机器设备，机器包括：
 
-Template workspace for modding Minecraft 1.12.2. Licensed under MIT, it is made for public use.
+灵气发电机（LV-IV），消耗灵气转化为电力，并且以一定的比例污染灵气。
 
-This template currently utilizies **Gradle 8.1.1** + **[RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle) 1.3.27** + **Forge 14.23.5.2847**.
+灵气再生机（LV-UV），消耗电力补充当前区块的灵气。
 
-With **coremod and mixin support** that is easy to configure.
+空气过滤机（LV-HV），大型多方块空气过滤机（EV-IV），吸收当前区块的污染。
 
-### Instructions:
+## 机制修改
 
-1. Click `use this template` at the top.
-2. Clone the repository you have created with this template.
-3. In the local repository, run the command `gradlew setupDecompWorkspace`
-4. Open the project folder in IDEA.
-5. Right-click in IDEA `build.gradle` of your project, and select `Link Gradle Project`, after completion, hit `Refresh All` in the gradle tab on the right.
-6. Run `gradlew runClient` and `gradlew runServer`, or use the auto-imported run configurations in IntelliJ like `1. Run Client`.
+本模组还对GT原版的机制进行了如下修改：
 
-### Mixins:
+土高炉，焦炉工作时会产生少量污染。
 
-- When writing Mixins on IntelliJ, it is advisable to use latest [MinecraftDev Fork for RetroFuturaGradle](https://github.com/eigenraven/MinecraftDev/releases).
+机器爆炸（无论是天气还是电压因素）会产生大量污染。
+
+多方块机器每运行一轮都会按照其消声仓等级排放一次污染，并且随着消声仓升级提高，污染排放量随之减少。
+
+## 污染效果
+
+本模组添加的污染效果如下：
+
+按照污染梯度随机给予玩家一个短暂的虚弱，挖掘疲劳，反胃，失明等药水效果。
+
+污染过高时，随机转换污染区块内的草方块替换为沙子，水替换为岩浆等等。
