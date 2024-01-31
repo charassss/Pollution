@@ -43,4 +43,6 @@ pollution.command.nausea=§6你感到一阵恶心
 pollution.command.mining=§5你感到浑身疲累
 pollution.command.blindness=§1你感到头晕目眩
 
+gtqt.tooltip.tiered_hatch_enabled=§2此机器配方逻辑已被修改，详情见描述。
+gtqtcore.gcymmultiblock.description=并行机制修改如下：在原有并行数量不变的基础上叠加一个等同于并行数量的耗时倍率减免，总产量不变。举例 有一个10秒出1个产物的配方，并行修改前：4并行 40秒出4个；并行修改后：4并行10秒出1个。
 
