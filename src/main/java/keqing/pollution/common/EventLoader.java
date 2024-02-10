@@ -53,19 +53,19 @@ public class EventLoader {
                 player.sendMessage(new TextComponentTranslation("pollution.command.slowness"));
                 player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>30&&randomNum>=140&&randomNum<=150) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>40&&randomNum>=140&&randomNum<=150) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.weakness"));
                 player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>40&&randomNum>=80&&randomNum<=90) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>60&&randomNum>=80&&randomNum<=90) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.nausea"));
                 player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>50&&randomNum>=60&&randomNum<=70) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>80&&randomNum>=60&&randomNum<=70) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.mining"));
                 player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 1));
             }
-            if(AuraHelper.getFlux(player.world, player.getPosition())>70&&randomNum>=10&&randomNum<=15) {
+            if(AuraHelper.getFlux(player.world, player.getPosition())>100&&randomNum>=10&&randomNum<=15) {
                 player.sendMessage(new TextComponentTranslation("pollution.command.blindness"));
                 player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 1));
             }
