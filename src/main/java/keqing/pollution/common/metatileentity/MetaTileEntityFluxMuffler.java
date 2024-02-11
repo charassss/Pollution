@@ -68,8 +68,8 @@ public class MetaTileEntityFluxMuffler extends MetaTileEntityMultiblockPart impl
         for (ItemStack stack : recoveryItems) {
             stacksize += stack.getCount();
         }
-        float pollution = ((float) stacksize * pollutionMultiplier);
-        AuraHelper.polluteAura(getWorld(), getPos(), (float) (pollution*0.1), true);
+        float pollution = (float) ((float) stacksize * pollutionMultiplier*0.02);
+        AuraHelper.polluteAura(getWorld(), getPos(), (pollution), true);
     }
 
 

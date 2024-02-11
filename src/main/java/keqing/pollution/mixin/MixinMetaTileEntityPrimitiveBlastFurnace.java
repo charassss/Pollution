@@ -34,7 +34,7 @@ public abstract class MixinMetaTileEntityPrimitiveBlastFurnace  extends RecipeMa
         super.update();
 
         if (this.isActive()) {
-            AuraHelper.polluteAura(getWorld(), getPos(), 0.0002f, true);
+            AuraHelper.polluteAura(getWorld(), getPos(), 0.00008f, true);
             if (getWorld().isRemote) {
                 VanillaParticleEffects.PBF_SMOKE.runEffect(this);
             } else {
@@ -59,7 +59,7 @@ public abstract class MixinMetaTileEntityPrimitiveBlastFurnace  extends RecipeMa
     @Override
     public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("pollution.vis.product",0.004));
+        tooltip.add(I18n.format("pollution.vis.product",0.0016));
 
     }
 

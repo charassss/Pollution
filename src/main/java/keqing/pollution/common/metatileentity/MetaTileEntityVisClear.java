@@ -28,7 +28,7 @@ public class MetaTileEntityVisClear extends TieredMetaTileEntity {
     public MetaTileEntityVisClear(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         this.tier=tier;
-        this.VisTicks =  tier*0.001 ;
+        this.VisTicks =  tier*0.004 ;
         this.energyAmountPer = GTValues.V[tier];
         initializeInventory();
     }

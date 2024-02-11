@@ -33,14 +33,14 @@ public abstract class MixinMetaTileEntityCokeOven extends RecipeMapPrimitiveMult
         super.update();
 
         if (this.isActive()) {
-            AuraHelper.polluteAura(getWorld(), getPos(), 0.0001f, true);
+            AuraHelper.polluteAura(getWorld(), getPos(), 0.00004f, true);
         }
     }
 
     @Override
     public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
-        tooltip.add(I18n.format("pollution.vis.product",0.002));
+        tooltip.add(I18n.format("pollution.vis.product",0.0008));
 
     }
 
