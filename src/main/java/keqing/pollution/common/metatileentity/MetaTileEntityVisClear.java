@@ -12,6 +12,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thaumcraft.api.aura.AuraHelper;
 
@@ -21,6 +22,8 @@ public class MetaTileEntityVisClear extends TieredMetaTileEntity {
     private final double VisTicks;
     int tier;
     private final long energyAmountPer;
+    private boolean isActive;
+
     @Override
     public MetaTileEntityVisClear createMetaTileEntity(IGregTechTileEntity tileEntity) {
         return new MetaTileEntityVisClear(metaTileEntityId, getTier());
@@ -42,10 +45,16 @@ public class MetaTileEntityVisClear extends TieredMetaTileEntity {
         if (AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, true) > 0){
             if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
                 energyContainer.removeEnergy(energyAmountPer);
+                isActive=true;
                 AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, false);
             }
+            else isActive=false;
         }
     }
+    public boolean isActive() {
+        return super.isActive() && this.isActive;
+    }
+
     @Override
     public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
         super.renderMetaTileEntity(renderState, translation, pipeline);

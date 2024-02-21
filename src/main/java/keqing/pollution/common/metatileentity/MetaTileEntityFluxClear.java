@@ -25,6 +25,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
@@ -45,7 +46,7 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
     public MetaTileEntityFluxClear(ResourceLocation metaTileEntityId,int tier) {
         super(metaTileEntityId);
         this.tier=tier;
-        this.VisTicks =  (tier-3)*0.05;
+        this.VisTicks = (tier-3)*4*0.05;
         this.energyAmountPer = GTValues.V[tier];
     }
 
@@ -54,16 +55,25 @@ public class MetaTileEntityFluxClear extends MultiblockWithDisplayBase {
         super.formStructure(context);
         this.energyContainer = new EnergyContainerList(getAbilities(MultiblockAbility.INPUT_ENERGY));
     }
-        @Override
+    @Override
     protected void updateFormedValid() {
-            if (AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, true) > 0) {
-                if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
+            int aX = this.getPos().getX();
+            int aY = this.getPos().getY();
+            int aZ = this.getPos().getZ();
+            for(int x=-tier;x<=tier;x++)
+                for(int y=-tier;y<=tier;y++)
+                if (AuraHelper.drainFlux(getWorld(), new BlockPos(aX+x*16, aY, aZ+y*16), (float) VisTicks, true) > 0.01)
+                {
+                    if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
                     energyContainer.removeEnergy(energyAmountPer);
                     isWorkingEnabled = true;
-                    AuraHelper.drainFlux(getWorld(), getPos(), (float) VisTicks, false);
+                    AuraHelper.drainFlux(getWorld(), new BlockPos(aX+x*16, aY, aZ+y*16), (float) VisTicks, false);
                 }
+                else isWorkingEnabled=false;
             }
+
     }
+
     @Override
     public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
