@@ -4,6 +4,11 @@ import gregtech.api.GTValues;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import keqing.pollution.Pollution;
+import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityFluxClear;
+import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityFluxMuffler;
+import keqing.pollution.common.metatileentity.single.MetaTileEntityVisClear;
+import keqing.pollution.common.metatileentity.single.MetaTileEntityVisGenerator;
+import keqing.pollution.common.metatileentity.single.MetaTileEntityVisProvider;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;

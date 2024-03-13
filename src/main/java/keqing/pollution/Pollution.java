@@ -1,26 +1,13 @@
 package keqing.pollution;
 
+import keqing.pollution.api.utils.PollutionLog;
 import keqing.pollution.common.CommonProxy;
 import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
-import keqing.pollution.common.recipes;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Mod(
         modid = "pollution",
@@ -42,7 +29,7 @@ public class Pollution  {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-
+        PollutionLog.init(event.getModLog());
         PollutionMetaTileEntities.initialization();
 
 

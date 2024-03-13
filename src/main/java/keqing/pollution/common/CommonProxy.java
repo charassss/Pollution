@@ -3,6 +3,8 @@ package keqing.pollution.common;
 
 import gregtech.common.items.MetaItems;
 
+import keqing.pollution.api.utils.PollutionLog;
+import keqing.pollution.loaders.RecipeManger;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -13,6 +15,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -35,7 +38,7 @@ public class CommonProxy {
     }
     public static void init() {
 
-        recipes.init();
+
     }
 
     public CommonProxy() {
@@ -48,14 +51,27 @@ public class CommonProxy {
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
-
-
+        PollutionLog.logger.info("Registering blocks...");
+        IForgeRegistry<Block> registry = event.getRegistry();
+        /*
+        在此处注册方块
+        例子：
+        registry.register(方块实例);
+        在注册MetaBlock时用到
+        */
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
-
+        PollutionLog.logger.info("Registering Items...");
+        IForgeRegistry<Item> registry = event.getRegistry();
+        /*
+        在此处注册方块的物品
+        例子：
+        registry.register(createItemBlock(方块实例, VariantItemBlock::new));
+        在注册MetaBlock时用到
+        */
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
@@ -66,6 +82,8 @@ public class CommonProxy {
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        PollutionLog.logger.info("Registering recipes...");
 
+        RecipeManger.init();
     }
 }
