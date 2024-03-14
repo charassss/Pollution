@@ -1,5 +1,10 @@
 package keqing.pollution.api.unification.materials;
 
+import gregtech.api.unification.material.Material;
+import keqing.pollution.api.unification.PollutionMaterials;
+
+import static gregtech.api.util.GTUtility.gregtechId;
+
 public class FirstDegreeMaterials {
     public FirstDegreeMaterials() {
     }
@@ -13,16 +18,30 @@ public class FirstDegreeMaterials {
     }
 
     public static void register() {
-        /* 例子
-        GTQTMaterials.RedstoneAlloy = new Material.Builder(getMaterialsId(), gregtechId("redstone_alloy"))
-                .ingot().fluid()
-                .color(0x943423).iconSet(SHINY)
-                .flags(GENERATE_PLATE, GENERATE_DOUBLE_PLATE,GENERATE_DENSE,GENERATE_LONG_ROD,GENERATE_ROD,GENERATE_FRAME,GENERATE_BOLT_SCREW,GENERATE_FOIL,GENERATE_GEAR,GENERATE_SMALL_GEAR,GENERATE_ROUND,GENERATE_SPRING)
-                .components(Redstone ,1,Hydrogen, 1,Oxygen ,1)
-                .blast(2700,LOW)
-                .cableProperties(32,1,2)
+        PollutionMaterials.infused_air= new Material.Builder(getMaterialsId(), gregtechId("infused_air"))
+                .color(0xFEFE7D)
+                .ore().gem().fluid()
                 .build();
-         */
+        PollutionMaterials.infused_fire= new Material.Builder(getMaterialsId(), gregtechId("infused_fire"))
+                .color(0xFE3C01)
+                .ore().gem().fluid()
+                .build();
+        PollutionMaterials.infused_water= new Material.Builder(getMaterialsId(), gregtechId("infused_water"))
+                .color(0x0090FF)
+                .ore().gem().fluid()
+                .build();
+        PollutionMaterials.infused_earth= new Material.Builder(getMaterialsId(), gregtechId("infused_earth"))
+                .color(0x00A000)
+                .ore().gem().fluid()
+                .build();
+        PollutionMaterials.infused_entropy= new Material.Builder(getMaterialsId(), gregtechId("infused_entropy"))
+                .color(0x43435E)
+                .ore().gem().fluid()
+                .build();
+        PollutionMaterials.infused_order= new Material.Builder(getMaterialsId(), gregtechId("infused_order"))
+                .color(0xEECCFF)
+                .ore().gem().fluid()
+                .build();
 
 
     }

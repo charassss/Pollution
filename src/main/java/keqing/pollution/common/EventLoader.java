@@ -1,6 +1,8 @@
 package keqing.pollution.common;
 
+import gregtech.api.unification.material.event.MaterialEvent;
 import gregtech.core.sound.GTSoundEvents;
+import keqing.pollution.api.unification.PollutionMaterials;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,6 +23,7 @@ import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -38,7 +41,15 @@ import static net.minecraftforge.fml.common.event.FMLInterModComms.sendMessage;
 )
 public class EventLoader {
 
+    @SubscribeEvent(
+            priority = EventPriority.HIGH
+    )
+    public static void registerMaterials(MaterialEvent event)
+    {
+        PollutionMaterials.register();
 
+        //在此处注册材料
+    }
     @SubscribeEvent
     static void onEntityUpdate(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntity() instanceof EntityPlayer) {
