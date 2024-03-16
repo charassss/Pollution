@@ -14,7 +14,7 @@ import static keqing.pollution.api.unification.PollutionMaterials.*;
 public class FirstDegreeMaterials {
     public FirstDegreeMaterials() {
     }
-    private static int startId = 18100;
+    private static int startId = 16100;
     private static final int END_ID = startId + 300;
     private static int getMaterialsId() {
         if (startId < END_ID) {
