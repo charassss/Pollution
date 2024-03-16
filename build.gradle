@@ -111,6 +111,7 @@ dependencies {
     implementation rfg.deobf(files("libs/GregicalityMultiblocks-1.2.7.jar"))
     implementation rfg.deobf(files("libs/Baubles-1.12-1.5.2.jar"))
     implementation rfg.deobf(files("libs/!mixinbooter-8.9.jar"))
+    implementation rfg.deobf(files("libs/ae2-uel-extended-v0.55.30-0.4.0.2-rv6-stable-7.jar"))
     implementation rfg.deobf(files("libs/Thaumcraft-1.12.2-6.1.BETA26.jar"))
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:
