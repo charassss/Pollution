@@ -1,11 +1,12 @@
 package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
-import keqing.pollution.api.unification.Elements;
+import gregtech.api.unification.material.properties.ToolProperty;
 import keqing.pollution.api.unification.PollutionMaterials;
 
+import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
-import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
+import static gregtech.api.unification.material.info.MaterialIconSet.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 
@@ -29,6 +30,18 @@ public class FirstDegreeMaterials {
                 .components(infused_air,1,infused_fire,1)
                 .flags(GENERATE_PLATE, GENERATE_DENSE,GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
                 .build();
+
+        PollutionMaterials.thaumium = new Material.Builder(getMaterialsId(), gregtechId("thaumium"))
+                .color(0x483D8B)
+                .ingot().fluid()
+                .components(Iron, 1, infused_earth, 5, infused_air, 5, infused_fire, 5, infused_order, 5)
+                .fluidPipeProperties(500, 120, true)
+                .toolStats(new ToolProperty(10, 4, 1024, 3))
+                .iconSet(BRIGHT)
+                .flags(GENERATE_PLATE, GENERATE_ROTOR, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR, GENERATE_ROUND, GENERATE_FRAME)
+                .build()
+                .setFormula("FeTer5(AeIgOrd)5", true);
+
 
         //注释
         //在 Elements 类下注册元素
