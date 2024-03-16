@@ -13,6 +13,8 @@ public class PollutionMaterials {
     public static Material infused_order;
     public static Material MxeteoricIron;
 
+    public static Material thaumium;
+
     public PollutionMaterials() {}
 
     public static void register() {

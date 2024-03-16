@@ -19,27 +19,27 @@ public class PollutionElementMaterials {
         PollutionMaterials.infused_air= new Material.Builder(getMaterialsId(), gregtechId("infused_air"))
                 .color(0xFEFE7D)
                 .ore().gem().fluid()
-                .element(Elements.Ai)
+                .element(Elements.Ae)
                 .build();
         PollutionMaterials.infused_fire= new Material.Builder(getMaterialsId(), gregtechId("infused_fire"))
                 .color(0xFE3C01)
                 .ore().gem().fluid()
-                .element(Elements.Fi)
+                .element(Elements.Ig)
                 .build();
         PollutionMaterials.infused_water= new Material.Builder(getMaterialsId(), gregtechId("infused_water"))
                 .color(0x0090FF)
                 .ore().gem().fluid()
-                .element(Elements.Wa)
+                .element(Elements.Aq)
                 .build();
         PollutionMaterials.infused_earth= new Material.Builder(getMaterialsId(), gregtechId("infused_earth"))
                 .color(0x00A000)
                 .ore().gem().fluid()
-                .element(Elements.Ea)
+                .element(Elements.Ter)
                 .build();
         PollutionMaterials.infused_entropy= new Material.Builder(getMaterialsId(), gregtechId("infused_entropy"))
                 .color(0x43435E)
                 .ore().gem().fluid()
-                .element(Elements.En)
+                .element(Elements.Pe)
                 .build();
         PollutionMaterials.infused_order= new Material.Builder(getMaterialsId(), gregtechId("infused_order"))
                 .color(0xEECCFF)

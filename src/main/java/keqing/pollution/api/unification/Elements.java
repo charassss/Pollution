@@ -13,10 +13,10 @@ public class Elements {
 
     private Elements() {
     }
-    public static final Element Ai = add(5, 5, -1, null, "Air", "Ai", false);
-    public static final Element Fi = add(6, 6, -1, null, "Fire", "Fi", false);
-    public static final Element Wa = add(7, 7, -1, null, "Water", "Wa", false);
-    public static final Element Ea = add(8, 8, -1, null, "Earth", "Ea", false);
-    public static final Element En = add(9, 9, -1, null, "Entropy", "En", false);
-    public static final Element Ord = add(9, 9, -1, null, "Order", "Ord", false);
+    public static final Element Ae = add(1, 1, -1, null, "Air", "Ae", false);
+    public static final Element Ig = add(1, 2, -1, null, "Fire", "Ig", false);
+    public static final Element Aq = add(1, 3, -1, null, "Water", "Aq", false);
+    public static final Element Ter = add(1, 4, -1, null, "Earth", "Ter", false);
+    public static final Element Pe = add(1, 5, -1, null, "Entropy", "Pe", false);
+    public static final Element Ord = add(1, 6, -1, null, "Order", "Ord", false);
 }

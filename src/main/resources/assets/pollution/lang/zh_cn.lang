@@ -5,6 +5,7 @@ gregtech.material.infused_earth=土
 gregtech.material.infused_water=流
 gregtech.material.infused_fire=焱
 gregtech.material.infused_air=气
+gregtech.material.thaumium=神秘
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
