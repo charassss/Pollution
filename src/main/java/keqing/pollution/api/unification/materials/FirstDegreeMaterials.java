@@ -24,13 +24,6 @@ public class FirstDegreeMaterials {
     }
 
     public static void register() {
-        PollutionMaterials.MxeteoricIron = new Material.Builder(getMaterialsId(), gregtechId("mxeteoric_iron"))
-                .ingot().dust().ore()
-                .color(0x8B6914).iconSet(METALLIC)
-                .components(infused_air,1,infused_fire,1)
-                .flags(GENERATE_PLATE, GENERATE_DENSE,GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
-                .build();
-
         PollutionMaterials.thaumium = new Material.Builder(getMaterialsId(), gregtechId("thaumium"))
                 .color(0x483D8B)
                 .ingot().fluid()
