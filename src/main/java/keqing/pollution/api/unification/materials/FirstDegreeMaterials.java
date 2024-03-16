@@ -1,9 +1,14 @@
 package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
+import keqing.pollution.api.unification.Elements;
 import keqing.pollution.api.unification.PollutionMaterials;
 
+import static gregtech.api.unification.material.info.MaterialFlags.*;
+import static gregtech.api.unification.material.info.MaterialIconSet.METALLIC;
 import static gregtech.api.util.GTUtility.gregtechId;
+import static keqing.pollution.api.unification.PollutionMaterials.*;
+
 
 public class FirstDegreeMaterials {
     public FirstDegreeMaterials() {
@@ -18,31 +23,16 @@ public class FirstDegreeMaterials {
     }
 
     public static void register() {
-        PollutionMaterials.infused_air= new Material.Builder(getMaterialsId(), gregtechId("infused_air"))
-                .color(0xFEFE7D)
-                .ore().gem().fluid()
-                .build();
-        PollutionMaterials.infused_fire= new Material.Builder(getMaterialsId(), gregtechId("infused_fire"))
-                .color(0xFE3C01)
-                .ore().gem().fluid()
-                .build();
-        PollutionMaterials.infused_water= new Material.Builder(getMaterialsId(), gregtechId("infused_water"))
-                .color(0x0090FF)
-                .ore().gem().fluid()
-                .build();
-        PollutionMaterials.infused_earth= new Material.Builder(getMaterialsId(), gregtechId("infused_earth"))
-                .color(0x00A000)
-                .ore().gem().fluid()
-                .build();
-        PollutionMaterials.infused_entropy= new Material.Builder(getMaterialsId(), gregtechId("infused_entropy"))
-                .color(0x43435E)
-                .ore().gem().fluid()
-                .build();
-        PollutionMaterials.infused_order= new Material.Builder(getMaterialsId(), gregtechId("infused_order"))
-                .color(0xEECCFF)
-                .ore().gem().fluid()
+        PollutionMaterials.MxeteoricIron = new Material.Builder(getMaterialsId(), gregtechId("mxeteoric_iron"))
+                .ingot().dust().ore()
+                .color(0x8B6914).iconSet(METALLIC)
+                .components(infused_air,1,infused_fire,1)
+                .flags(GENERATE_PLATE, GENERATE_DENSE,GENERATE_DOUBLE_PLATE, GENERATE_ROD, GENERATE_LONG_ROD, GENERATE_RING, GENERATE_ROUND, GENERATE_BOLT_SCREW, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
                 .build();
 
-
+        //注释
+        //在 Elements 类下注册元素
+        //在 PollutionElementMaterials 类下注册此元素的单质
+        //在 FirstDegreeMaterials 类下注册元素的化合物（components使用单质而不是元素）
     }
 }
