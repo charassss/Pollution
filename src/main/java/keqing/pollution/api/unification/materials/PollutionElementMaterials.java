@@ -7,7 +7,7 @@ import keqing.pollution.api.unification.PollutionMaterials;
 import static gregtech.api.util.GTUtility.gregtechId;
 
 public class PollutionElementMaterials {
-    private static int startId = 18000;
+    private static int startId = 16000;
     private static final int END_ID = startId + 100;
     private static int getMaterialsId() {
         if (startId < END_ID) {
