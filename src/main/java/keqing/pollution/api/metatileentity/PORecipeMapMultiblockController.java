@@ -58,6 +58,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier*0.1), true) > 0)
         {
             AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.1), false);
+            AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*0.01), false);
             if(visStorage<visStorageMax)visStorage+=tier*tier;
         }
         if(isActive())if(visStorage>10)visStorage-=tier;
@@ -113,15 +114,15 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     public class POMultiblockRecipeLogic  extends MultiblockRecipeLogic {
         public int getn()
         {
-            if(visStorage<=50)return 1;
-            return visStorage/50;
+            if(visStorage<=100)return 1;
+            return visStorage/100;
         }
         @Override
         protected void modifyOverclockPost(int[] resultOverclock,  IRecipePropertyStorage storage) {
             super.modifyOverclockPost(resultOverclock, storage);
 
 
-            resultOverclock[0] *= 1.0f - getn() * 0.002; // each coil above cupronickel (coilTier = 0) uses 10% less
+            resultOverclock[0] *= 1.0f - getn() * 0.001; // each coil above cupronickel (coilTier = 0) uses 10% less
             // energy
             resultOverclock[0] = Math.max(1, resultOverclock[0]);
         }
@@ -130,7 +131,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
             return getn();
         }
         public void setMaxProgress(int maxProgress) {
-            this.maxProgressTime = maxProgress/getParallelLimit();
+            this.maxProgressTime = maxProgress*tier/20;
         }
         public POMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);

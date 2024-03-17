@@ -19,4 +19,5 @@ public class Elements {
     public static final Element Ter = add(1, 4, -1, null, "Earth", "Ter", false);
     public static final Element Pe = add(1, 5, -1, null, "Entropy", "Pe", false);
     public static final Element Ord = add(1, 6, -1, null, "Order", "Ord", false);
+    //这里真的还需要注册其他要素吗
 }
