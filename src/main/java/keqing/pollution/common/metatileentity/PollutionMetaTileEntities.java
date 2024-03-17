@@ -6,7 +6,9 @@ import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMulti
 import keqing.pollution.Pollution;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityFluxClear;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityLargeBenderTest;
+import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityTankTest;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityFluxMuffler;
+import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityTankHatch;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityVisHatch;
 import keqing.pollution.common.metatileentity.single.MetaTileEntityVisClear;
 import keqing.pollution.common.metatileentity.single.MetaTileEntityVisGenerator;
@@ -25,7 +27,9 @@ public class PollutionMetaTileEntities {
     public static final MetaTileEntityVisClear[] VIS_CLEAR = new MetaTileEntityVisClear[4];
     public static final MetaTileEntityFluxClear[] FLUX_CLEARS = new MetaTileEntityFluxClear[3];
     public static MetaTileEntityLargeBenderTest TEST;
+    public static MetaTileEntityTankTest TANK;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
+    public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
     public static void initialization() {
 
         for (int i = 0; i <= 4; i++) {
@@ -46,6 +50,7 @@ public class PollutionMetaTileEntities {
         FLUX_CLEARS[1] = registerMetaTileEntity(15933, new MetaTileEntityFluxClear(gtqtcoreId("flux_clear.ev"), GTValues.EV));
         FLUX_CLEARS[2] = registerMetaTileEntity(15934, new MetaTileEntityFluxClear(gtqtcoreId("flux_clear.iv"), GTValues.IV));
         TEST = registerMetaTileEntity(15935, new MetaTileEntityLargeBenderTest(gtqtcoreId("TEST")));
+        TANK = registerMetaTileEntity(15936, new MetaTileEntityTankTest(gtqtcoreId("TANK")));
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
             FLUX_MUFFLERS[i] = registerMetaTileEntity(15940 + i-1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
@@ -55,6 +60,12 @@ public class PollutionMetaTileEntities {
             int tier = GTValues.LV + i;
             VIS_HATCH[i] = registerMetaTileEntity(15950 + i, new MetaTileEntityVisHatch(
                     gtqtcoreId(String.format("vis_hatch.%s", GTValues.VN[tier])), tier));
+        }
+
+        for (int i = 0; i < TANK_HATCH.length; i++) {
+            int tier = GTValues.LV + i;
+            TANK_HATCH[i] = registerMetaTileEntity(15970 + i, new MetaTileEntityTankHatch(
+                    gtqtcoreId(String.format("tank_hatch.%s", GTValues.VN[tier])), tier));
         }
     }
 }

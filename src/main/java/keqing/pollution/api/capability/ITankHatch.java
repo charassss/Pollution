@@ -1,12 +1,14 @@
 package keqing.pollution.api.capability;
 
-public interface IVisMultiblock {
+public interface ITankHatch {
 
     /**
      *
      * @return the current maximum amount of parallelization provided
      */
-    default boolean isVis() {
-        return false;
-    }
+
+    int getX();
+    int getY();
+    int getZ();
+
 }

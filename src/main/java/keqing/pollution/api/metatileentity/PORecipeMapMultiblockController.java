@@ -46,6 +46,11 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         if (isVis())
             tooltip.add(I18n.format("gcym.tooltip.parallel_enabled"));
     }
+    public int getn()
+    {
+        if(visStorage<=100)return 1;
+        return visStorage/100;
+    }
     int aX = 0;
     int aY = 0;
     int aZ = 0;
@@ -58,17 +63,17 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier*0.1), true) > 0)
         {
             AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.1), false);
-            AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*0.01), false);
+            AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.01), true);
             if(visStorage<visStorageMax)visStorage+=tier*tier;
         }
-        if(isActive())if(visStorage>10)visStorage-=tier;
+        if(isActive())if(visStorage>10)visStorage-=tier*tier*getn()*0.1;
     }
     @Override
     public boolean isActive() {
         return enough()&&this.isStructureFormed() && this.recipeMapWorkable.isActive() && this.recipeMapWorkable.isWorkingEnabled();
     }
     public boolean enough(){
-        return visStorage>5;
+        return visStorage>10;
     }
     @Override
     protected void formStructure(PatternMatchContext context) {
@@ -112,11 +117,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     }
 
     public class POMultiblockRecipeLogic  extends MultiblockRecipeLogic {
-        public int getn()
-        {
-            if(visStorage<=100)return 1;
-            return visStorage/100;
-        }
+
         @Override
         protected void modifyOverclockPost(int[] resultOverclock,  IRecipePropertyStorage storage) {
             super.modifyOverclockPost(resultOverclock, storage);
