@@ -1,6 +1,10 @@
 package keqing.pollution.common.items;
 
+import gregtech.api.items.metaitem.MetaItem;
+
 public class PollutionMetaItems {
+    public static MetaItem<?>.MetaValueItem TEST;
+
     public static void initialization()
     {
         PollutionMetaItem1 item1 = new PollutionMetaItem1();

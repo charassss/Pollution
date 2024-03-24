@@ -129,12 +129,9 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         aZ = this.getPos().getZ();
         if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier*0.1), true) > 0)
         {
-<<<<<<< Updated upstream
-            AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.1), false);
-=======
             AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.01), false);
             AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.001), true);
->>>>>>> Stashed changes
+
             if(visStorage<visStorageMax)visStorage+=tier*tier;
         }
         if(isActive())if(visStorage>10)visStorage-=tier;
@@ -208,11 +205,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
             return getn();
         }
         public void setMaxProgress(int maxProgress) {
-<<<<<<< Updated upstream
             this.maxProgressTime = maxProgress/getParallelLimit();
-=======
-            this.maxProgressTime = maxProgress*(100-getn())/100;
->>>>>>> Stashed changes
         }
         public POMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
