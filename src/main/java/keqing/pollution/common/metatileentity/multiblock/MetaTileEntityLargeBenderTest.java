@@ -32,17 +32,40 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
 
     //这里是多方块的配方  RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
     //                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES 都是配方喵
+    //你可以只写一种配方 也可以写很多喵
     public MetaTileEntityLargeBenderTest(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
                 RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES });
     }
 
+
+    //不要动
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
         return new MetaTileEntityLargeBenderTest(this.metaTileEntityId);
     }
 
     //这里是多方块的结构喵
+    //细节
+    //                .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
+    //                .aisle("XXXXXXX", "XXXGGGX", "XXXXXXX")
+    //                .aisle("IFXXXXX", "XSXCCCX", "XXXXXXX")
+    //这个是结构喵
+    // .where('S', selfPredicate()) 必写 控制器位置
+    // .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+    //绑定如下方法 指定多方块此位置的方块  .setMinGlobalLimited(40)表示最小数量  .or(autoAbilities()))自动IO
+    // private static IBlockState getCasingState() {
+    //        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+    //                .getState(BlockLargeMultiblockCasing.CasingType.STRESS_PROOF_CASING);
+    //    }
+
+
+    //                .where('I', abilities(MultiblockAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
+    //                .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
+    //手动指定仓口  例如源质仓 VIS_HATCH
+
+    //注意！ 源质仓必须在控制器正上方！！
+
     @Override
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
@@ -81,11 +104,15 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
+
+    //覆盖层材质 就是给IO渲染的材质
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return GCYMTextures.STRESS_PROOF_CASING;
     }
 
+
+    //控制器的图形 比如传统的外观 或者聚变电脑的外观等等
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
         return GCYMTextures.LARGE_BENDER_OVERLAY;
