@@ -11,9 +11,13 @@ public class PollutionMaterials {
     public static Material infused_earth;
     public static Material infused_entropy;
     public static Material infused_order;
-    public static Material MxeteoricIron;
 
     public static Material thaumium;
+    public static Material syrmorite;
+    public static Material octine;
+    public static Material scabyst;
+    public static Material valonite;
+    public static Material thaummix;
 
     public PollutionMaterials() {}
 
