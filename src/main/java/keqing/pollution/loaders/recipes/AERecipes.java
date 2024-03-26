@@ -1,6 +1,5 @@
 package keqing.pollution.loaders.recipes;
 
-import appeng.api.AEApi;
 import gregtech.common.items.MetaItems;
 import keqing.pollution.Pollution;
 import keqing.pollution.common.CommonProxy;
@@ -107,19 +106,6 @@ public class AERecipes {
     }
 
     private static void common() {
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Pollution.MODID, "test"), new ShapedArcaneRecipe(
-                new ResourceLocation(""),
-                // "MACHINE_UPGRADE",
-                "",
-                250,
-                new AspectList().add(Aspect.AIR, 2).add(Aspect.ORDER, 2).add(Aspect.FIRE, 2),
-                new ItemStack(MetaItems.ELECTRIC_MOTOR_LV.getMetaItem()),
-                "SBS",
-                "BMB",
-                "SBS",
-                'S', "screwStainlessSteel",
-                'B', AEApi.instance().definitions().blocks().iface().maybeStack(1).orElse(ItemStack.EMPTY),
-                'M', new ItemStack(ItemsTC.mirroredGlass)));
 
     }
 }
