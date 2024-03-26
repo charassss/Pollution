@@ -1,9 +1,12 @@
 package keqing.pollution.common;
 
 
+import gregtech.api.block.VariantItemBlock;
 import gregtech.common.items.MetaItems;
 
 import keqing.pollution.api.utils.PollutionLog;
+import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.loaders.RecipeManger;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -59,6 +62,7 @@ public class CommonProxy {
         registry.register(方块实例);
         在注册MetaBlock时用到
         */
+        registry.register(PollutionMetaBlocks.MAGIC_BLOCK);
     }
 
     @SubscribeEvent
@@ -72,6 +76,7 @@ public class CommonProxy {
         registry.register(createItemBlock(方块实例, VariantItemBlock::new));
         在注册MetaBlock时用到
         */
+        registry.register(createItemBlock(PollutionMetaBlocks.MAGIC_BLOCK, VariantItemBlock::new));
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
