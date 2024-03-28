@@ -21,6 +21,7 @@ public class PollutionMaterials {
     public static Material thaummix;
 
     public static Material roughdraft;
+    public static Material substrate;
 
     public PollutionMaterials() {}
 

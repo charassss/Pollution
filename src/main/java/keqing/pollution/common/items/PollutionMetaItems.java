@@ -4,6 +4,12 @@ import gregtech.api.items.metaitem.MetaItem;
 
 public class PollutionMetaItems {
     public static MetaItem<?>.MetaValueItem TEST;
+    public static MetaItem<?>.MetaValueItem BLANKCORE;
+    public static MetaItem<?>.MetaValueItem HOTCORE;
+    public static MetaItem<?>.MetaValueItem COLDCORE;
+    public static MetaItem<?>.MetaValueItem INTEGRATECORE;
+    public static MetaItem<?>.MetaValueItem SEGREGATECORE;
+
 
     public static void initialization()
     {

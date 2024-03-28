@@ -29,17 +29,17 @@ public class CatalystMaterials {
                 .color(0xCDA5F7)
                 .iconSet(DULL)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
-                .components(Amethyst, 1, Opal, 1, CertusQuartz, 1, scabyst, 1)
+                .components(Amethyst, 1, Opal, 1, CertusQuartz, 1, Sulfur, 1, Mercury, 1, Salt, 1)
                 .build();
 
         //魔力催化场基底，作为和神秘相关设备合成的催化剂基底物质
-        PollutionMaterials.roughdraft = new Material.Builder(getMaterialsId(), gregtechId("roughdraft"))
-                .dust()
+        PollutionMaterials.substrate = new Material.Builder(getMaterialsId(), gregtechId("substrate"))
+                .ingot()
                 .color(0xCDA5F7)
                 .iconSet(SHINY)
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
+                .blast(2700)
                 .components(roughdraft, 6 , infused_fire, 1, infused_air, 1, infused_entropy, 1)
                 .build();
-
     }
 }
