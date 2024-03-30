@@ -11,6 +11,10 @@ gregtech.material.octine=炽炎铁
 gregtech.material.scabyst=痂壳晶
 gregtech.material.valonite=法罗钠
 gregtech.material.thaummix=交错铜铁混合物
+gregtech.material.roughdraft=活性催化粗胚
+gregtech.material.substrate=魔力催化剂基底
+#物品
+
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
