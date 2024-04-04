@@ -107,9 +107,9 @@ dependencies {
     // Example of deobfuscating a dependency
     // implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
     implementation rfg.deobf("curse.maven:code-chicken-lib-1-8-242818:2779848")
-    implementation rfg.deobf(files("libs/gregtech-1.12.2-2.8.7-beta.jar"))
     implementation rfg.deobf(files("libs/GregicalityMultiblocks-1.2.7.jar"))
     implementation rfg.deobf(files("libs/Baubles-1.12-1.5.2.jar"))
+    implementation rfg.deobf(files("libs/gregtech-1.12.2-2.8.7-beta.jar"))
     implementation rfg.deobf(files("libs/!mixinbooter-8.9.jar"))
     implementation rfg.deobf(files("libs/Thaumcraft-1.12.2-6.1.BETA26.jar"))
     if (project.use_mixins.toBoolean()) {
