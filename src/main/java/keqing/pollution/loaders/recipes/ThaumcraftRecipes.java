@@ -106,7 +106,7 @@ public class ThaumcraftRecipes {
         //凝聚催化核心，注魔
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "integration_catalyst_core"), new InfusionRecipe(
                 "",
-                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 4),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
                 5,
                 new AspectList().add(Aspect.ORDER, 128).add(Aspect.AURA, 64),
                 new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2),
@@ -122,7 +122,7 @@ public class ThaumcraftRecipes {
         //分离催化核心，注魔
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "segregation_catalyst_core"), new InfusionRecipe(
                 "",
-                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 5),
+                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
                 5,
                 new AspectList().add(Aspect.ENTROPY, 128).add(Aspect.AURA, 64),
                 new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2),
