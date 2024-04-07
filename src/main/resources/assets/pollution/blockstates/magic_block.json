@@ -44,6 +44,12 @@
           "all": "gregtech:blocks/magicblock/spell_prism_earth"
         }
       },
+      "spell_prism_air": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_air"
+        }
+      },
       "void_prism": {
         "model": "minecraft:cube_all",
         "textures": {

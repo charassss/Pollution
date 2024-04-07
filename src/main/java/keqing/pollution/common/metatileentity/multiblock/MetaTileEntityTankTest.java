@@ -107,12 +107,6 @@ public class MetaTileEntityTankTest extends POTankMultiblockController implement
 
     }
 
-
-
-
-
-
-
     protected static final int NO_COLOR = 0;
     private int fusionRingColor = NO_COLOR;
     private boolean registeredBloomRenderTicket;
