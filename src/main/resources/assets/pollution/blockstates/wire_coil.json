@@ -1,0 +1,69 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "machine_coil_cupronickel": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_cupronickel",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_cupronickel_bloom"
+        }
+      },
+      "machine_coil_kanthal": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_kanthal",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_kanthal_bloom"
+        }
+      },
+      "machine_coil_nichrome": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_nichrome",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_nichrome_bloom"
+        }
+      },
+      "machine_coil_rtm_alloy": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_rtm_alloy",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_rtm_alloy_bloom"
+        }
+      },
+      "machine_coil_hssg": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_hssg",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_hssg_bloom"
+        }
+      },
+      "machine_coil_naquadah": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_naquadah",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_naquadah_bloom"
+        }
+      },
+      "machine_coil_trinium": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_trinium",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_trinium_bloom"
+        }
+      },
+      "machine_coil_tritanium": {
+        "model": "gregtech:cube_2_layer_all",
+        "textures": {
+          "bot_all": "gregtech:blocks/wirecoil/machine_coil_tritanium",
+          "top_all": "gregtech:blocks/wirecoil/machine_coil_tritanium_bloom"
+        }
+      }
+    }
+  }
+}

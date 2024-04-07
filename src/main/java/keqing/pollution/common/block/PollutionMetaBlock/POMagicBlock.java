@@ -34,6 +34,11 @@ public class POMagicBlock extends VariantBlock<POMagicBlock.MagicBlockType> {
     public enum MagicBlockType implements IStringSerializable {
 
         VOID_PRISM("void_prism"),
+        SPELL_PRISM_COLD("spell_prism_cold"),
+        SPELL_PRISM_HOT("spell_prism_hot"),
+        SPELL_PRISM_WATER("spell_prism_water"),
+        SPELL_PRISM_ORDER("spell_prism_order"),
+        SPELL_PRISM_EARTH("spell_prism_earth"),
         SPELL_PRISM("spell_prism");
 
         private final String name;

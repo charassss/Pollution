@@ -62,9 +62,8 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
 
     //                .where('I', abilities(MultiblockAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
     //                .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
-    //手动指定仓口  例如源质仓 VIS_HATCH
+    //手动指定仓口  例如灵气仓 VIS_HATCH
 
-    //注意！ 源质仓必须在控制器正上方！！
 
     @Override
     protected  BlockPattern createStructurePattern() {

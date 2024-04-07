@@ -58,50 +58,79 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     FluidStack ORDER_STACK = infused_order.getFluid(1);
     FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
 
-    public boolean isCheckVis(Material material) {
+    //消耗
+    public void DrainVis(Material material) {
         IMultipleTankHandler inputTank = getInputFluidInventory();
-        PollutionLog.logger.info("Check");
-        if(material==null)return true;
         if (material == infused_air){
-            PollutionLog.logger.info("Require Air");
             if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, false))) {
                 inputTank.drain(AIR_STACK, true);
-                PollutionLog.logger.info("Consume Air");
-                return true;
             }}
 
         if(material == infused_fire){
             if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, false))) {
                 inputTank.drain(FIRE_STACK, true);
-                return true;
             }}
 
         if (material == infused_water){
             if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, false))) {
                 inputTank.drain(WATER_STACK, true);
-                return true;
             }}
 
         if (material == infused_earth){
             if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, false))) {
                 inputTank.drain(ERATH_STACK, true);
-                return true;
             }}
 
         if (material == infused_order){
             if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, false))) {
                 inputTank.drain(ORDER_STACK, true);
-                return true;
             }}
 
         if (material == infused_entropy){
             if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
                 inputTank.drain(ENTROPY_STACK, true);
+            }}
+    }
+
+    //检查有没有
+    public boolean isCheckVis(Material material) {
+        IMultipleTankHandler inputTank = getInputFluidInventory();
+        if(material==null)return true;
+        if (material == infused_air){
+            if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, false))) {
+                return true;
+            }}
+
+        if(material == infused_fire){
+            if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_water){
+            if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_earth){
+            if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_order){
+            if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_entropy){
+            if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
                 return true;
             }}
 
         return false;
     }
+
+
+
     public PORecipeMapMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?> recipeMap) {
         this(metaTileEntityId, new RecipeMap<?>[] { recipeMap });
     }
@@ -129,16 +158,25 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         aZ = this.getPos().getZ();
         if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier*0.1), true) > 0)
         {
-            AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.01), false);
-            AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.001), true);
-
-            if(visStorage<visStorageMax)visStorage+=tier*tier;
+            if(visStorage<visStorageMax)
+            {
+                AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.01), false);
+                AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*0.0001), true);
+                visStorage += tier * tier;
+            }
         }
         if(isActive())if(visStorage>10)visStorage-=tier;
     }
     @Override
     public boolean isActive() {
         return enough()&&this.isStructureFormed() && this.recipeMapWorkable.isActive() && this.recipeMapWorkable.isWorkingEnabled();
+    }
+    @Override
+    protected void addErrorText(List<ITextComponent> textList) {
+        super.addErrorText(textList);
+        if (!isCheckVis(material)) {
+            textList.add(new TextComponentTranslation("LACK INFUSED!!!"));
+        }
     }
     public boolean enough(){
         return visStorage>5;
@@ -188,15 +226,15 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     public class POMultiblockRecipeLogic  extends MultiblockRecipeLogic {
         public int getn()
         {
-            if(visStorage<=50)return 1;
-            return visStorage/50;
+            if(visStorage<=100)return 1;
+            return visStorage/100;
         }
+
         @Override
         protected void modifyOverclockPost(int[] resultOverclock,  IRecipePropertyStorage storage) {
             super.modifyOverclockPost(resultOverclock, storage);
 
-
-            resultOverclock[0] *= 1.0f - getn() * 0.002; // each coil above cupronickel (coilTier = 0) uses 10% less
+            resultOverclock[0] *= 1.0f - getn() * 0.001; // each coil above cupronickel (coilTier = 0) uses 10% less
             // energy
             resultOverclock[0] = Math.max(1, resultOverclock[0]);
         }
@@ -204,22 +242,21 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         public int getParallelLimit() {
             return getn();
         }
-        public void setMaxProgress(int maxProgress) {
-            this.maxProgressTime = maxProgress/getParallelLimit();
-        }
         public POMultiblockRecipeLogic(RecipeMapMultiblockController tileEntity) {
             super(tileEntity);
         }
-
         protected void updateRecipeProgress() {
             if (this.canRecipeProgress && this.drawEnergy(this.recipeEUt, true)) {
                 this.drawEnergy(this.recipeEUt, false);
                 if(!enough())this.maxProgressTime++;
 
-                if(enough()&&isCheckVis(material))
-                    if (++this.progressTime > this.maxProgressTime) {
+                if(enough()&&isCheckVis(material)) {
+                    DrainVis(material);
+                    if (++this.progressTime > this.maxProgressTime)
+                    {
                         this.completeRecipe();
-                        }
+                    }
+                }
                 if (this.hasNotEnoughEnergy && this.getEnergyInputPerSecond() > 19L * (long)this.recipeEUt) {
                     this.hasNotEnoughEnergy = false;
                 }

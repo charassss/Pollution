@@ -11,13 +11,43 @@
       "spell_prism": {
         "model": "minecraft:cube_all",
         "textures": {
-          "all": "pollution:blocks/magicblock/spell_prism"
+          "all": "gregtech:blocks/magicblock/spell_prism"
+        }
+      },
+      "spell_prism_cold": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_cold"
+        }
+      },
+      "spell_prism_hot": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_hot"
+        }
+      },
+      "spell_prism_water": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_water"
+        }
+      },
+      "spell_prism_order": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_order"
+        }
+      },
+      "spell_prism_earth": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_earth"
         }
       },
       "void_prism": {
         "model": "minecraft:cube_all",
         "textures": {
-          "all": "pollution:blocks/magicblock/void_prism"
+          "all": "gregtech:blocks/magicblock/void_prism"
         }
       }
     }
