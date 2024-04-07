@@ -17,6 +17,12 @@ metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
 metaitem.hot_catalyst_core.name=§c炽焱催化剂核心§r
 metaitem.integration_catalyst_core.name=§6聚合催化剂核心§r
 metaitem.segregation_catalyst_core.name=§a扩散催化剂核心§r
+
+metaitem.blank_catalyst_core.tooltip=§8无限可能§r
+metaitem.cold_catalyst_core.tooltip=§b极度冰寒§r
+metaitem.hot_catalyst_core.tooltip=§c熊熊烈焰§r
+metaitem.integration_catalyst_core.tooltip=§6百川东流§r
+metaitem.segregation_catalyst_core.tooltip=§a大风起兮§r
 #  电路板
 metaitem.magic_circuit.ulv.name=蕴魔电路板 (§8ULV§r)
 metaitem.magic_circuit.lv.name=蕴魔电路板 (§7LV§r)
