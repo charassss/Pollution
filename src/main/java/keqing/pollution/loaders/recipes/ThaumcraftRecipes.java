@@ -1,6 +1,7 @@
 package keqing.pollution.loaders.recipes;
 
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.unification.PollutionMaterials;
@@ -9,13 +10,17 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import gregtech.api.unification.ore.OrePrefix;
+
+import java.nio.charset.StandardCharsets;
 
 import static gregtech.api.unification.material.Materials.*;
 
@@ -23,6 +28,7 @@ import static gregtech.api.unification.material.Materials.*;
 public class ThaumcraftRecipes {
     public static void init(){
         catalyst();
+        misc();
 
     }
     private static void catalyst() {
@@ -100,7 +106,7 @@ public class ThaumcraftRecipes {
         //凝聚催化核心，注魔
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "integration_catalyst_core"), new InfusionRecipe(
                 "",
-                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 4),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
                 5,
                 new AspectList().add(Aspect.ORDER, 128).add(Aspect.AURA, 64),
                 new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2),
@@ -116,7 +122,7 @@ public class ThaumcraftRecipes {
         //分离催化核心，注魔
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "segregation_catalyst_core"), new InfusionRecipe(
                 "",
-                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 5),
+                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
                 5,
                 new AspectList().add(Aspect.ENTROPY, 128).add(Aspect.AURA, 64),
                 new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2),
@@ -128,5 +134,92 @@ public class ThaumcraftRecipes {
                 new ItemStack(ItemsTC.voidSeed),
                 "dustGunpowder",
                 "dustGunpowder"));
+    }
+    private static void misc() {
+        //杂项，包括奇珍的基本利用方法等
+        //法罗钠相关的两个resonator的高效配方
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "vis_resonator_efficient"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                20,
+                new AspectList().add(Aspect.ORDER, 1),
+                new ItemStack(ItemsTC.visResonator, 8),
+        " B ",
+                "BMB",
+                " B ",
+                'B', "plateSteel",
+                'M', "gemValonite"));
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "morphic_resonator_efficient"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                20,
+                new AspectList().add(Aspect.ORDER, 1),
+                new ItemStack(ItemsTC.morphicResonator, 4),
+                "ABA",
+                "CMD",
+                "AEA",
+                'A', "paneGlass",
+                'B', "plateBrass",
+                'C', "toolHammer",
+                'D', "toolWrench",
+                'E', "plateGold",
+                'M', "gemValonite"));
+
+        //注魔 人工制作法罗钠
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "artificial_valonite"), new InfusionRecipe(
+                "INFUSION@2",
+                OreDictUnifier.get(OrePrefix.gem, PollutionMaterials.valonite),
+                4,
+                new AspectList().add(Aspect.FLUX, 16).add(Aspect.AURA, 16).add(Aspect.MAN, 16),
+                "gemExquisiteDiamond",
+                new ItemStack(BlocksTC.logSilverwood),
+                new ItemStack(Items.DIAMOND),
+                new ItemStack(BlocksTC.crystalTaint)));
+
+        //1赛摩铜粉+1炽炎铁粉=2交错铜铁混合物
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, PollutionMaterials.syrmorite)
+                .input(OrePrefix.dust, PollutionMaterials.octine)
+                .output(OrePrefix.dust, PollutionMaterials.thaummix, 2)
+                .duration(100)
+                .EUt(120)
+                .buildAndRegister();
+
+        //2交错铜铁混合物=1神秘粉+1红石粉+1铜粉
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, PollutionMaterials.thaummix, 2)
+                .circuitMeta(1)
+                .output(OrePrefix.dust, PollutionMaterials.thaumium, 1)
+                .output(OrePrefix.dust, Redstone, 1)
+                .output(OrePrefix.dust, Copper, 1)
+                .duration(400)
+                .blastFurnaceTemp(1800)
+                .EUt(120)
+                .buildAndRegister();
+
+        //人工制造痂壳晶
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "artificial_scabyst"), new InfusionRecipe(
+                "INFUSION@2",
+                OreDictUnifier.get(OrePrefix.gem, PollutionMaterials.scabyst),
+                2,
+                new AspectList().add(Aspect.TOOL, 25),
+                "gemExquisiteAmethyst",
+                new ItemStack(BlocksTC.logGreatwood),
+                "gemAmethyst",
+                new ItemStack(BlocksTC.crystalEarth)));
+
+        //痂壳晶高效制作vis电池
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "vis_battery_efficient"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "VISBATTERY@2",
+                50,
+                new AspectList().add(Aspect.ORDER, 1).add(Aspect.FIRE, 1),
+                new ItemStack(BlocksTC.visBattery, 4),
+                "AAA",
+                "AMA",
+                "AAA",
+                'A', "plateScabyst",
+                'M', new ItemStack(ItemsTC.visResonator)));
     }
 }

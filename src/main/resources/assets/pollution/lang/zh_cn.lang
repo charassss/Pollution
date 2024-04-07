@@ -11,6 +11,8 @@ gregtech.material.octine=炽炎铁
 gregtech.material.scabyst=痂壳晶
 gregtech.material.valonite=法罗钠
 gregtech.material.thaummix=交错铜铁混合物
+gregtech.material.roughdraft=活性催化粗胚
+gregtech.material.substrate=魔力催化剂基底
 #  物品
 metaitem.blank_catalyst_core.name=§8空白催化剂核心§r
 metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
