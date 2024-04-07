@@ -13,15 +13,15 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-public class POMagicBlock extends VariantBlock<POMagicBlock.MagicBlockType> {
-    public POMagicBlock() {
+public class POCoilBlock extends VariantBlock<POCoilBlock.WireCoilType> {
+    public POCoilBlock() {
         super(Material.IRON);
-        this.setTranslationKey("magic_block");
+        this.setTranslationKey("wire_coil");
         this.setHardness(5.0F);
         this.setResistance(10.0F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("wrench", 4);
-        this.setDefaultState(this.getState(MagicBlockType.VOID_PRISM));
+        this.setDefaultState(this.getState(WireCoilType.COIL_LEVEL_1));
     }
 
     public boolean canCreatureSpawn(@Nonnull IBlockState state,
@@ -31,19 +31,20 @@ public class POMagicBlock extends VariantBlock<POMagicBlock.MagicBlockType> {
         return false;
     }
 
-    public enum MagicBlockType implements IStringSerializable {
+    public enum WireCoilType implements IStringSerializable {
 
-        VOID_PRISM("void_prism"),
-        SPELL_PRISM_COLD("spell_prism_cold"),
-        SPELL_PRISM_HOT("spell_prism_hot"),
-        SPELL_PRISM_WATER("spell_prism_water"),
-        SPELL_PRISM_ORDER("spell_prism_order"),
-        SPELL_PRISM_EARTH("spell_prism_earth"),
-        SPELL_PRISM("spell_prism");
+        COIL_LEVEL_1("machine_coil_cupronickel"),
+        COIL_LEVEL_2("machine_coil_kanthal"),
+        COIL_LEVEL_3("machine_coil_nichrome"),
+        COIL_LEVEL_4("machine_coil_rtm_alloy"),
+        COIL_LEVEL_5("machine_coil_hssg"),
+        COIL_LEVEL_6("machine_coil_naquadah"),
+        COIL_LEVEL_7("machine_coil_trinium"),
+        COIL_LEVEL_8("machine_coil_tritanium");
 
         private final String name;
 
-        MagicBlockType(String name) {
+        WireCoilType(String name) {
             this.name = name;
         }
 

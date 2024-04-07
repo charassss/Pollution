@@ -1,5 +1,6 @@
 package keqing.pollution.client;
 
+import keqing.pollution.client.textures.POTextures;
 import keqing.pollution.common.CommonProxy;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -18,6 +19,11 @@ public class ClientProxy extends CommonProxy {
     {
         PollutionMetaBlocks.registerItemModels();
     }
-
+    public void preLoad()
+    {
+        super.preLoad();
+        POTextures.init();
+        POTextures.preInit();
+    }
 
 }
