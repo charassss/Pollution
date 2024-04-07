@@ -19,6 +19,15 @@ public class PollutionMaterials {
     public static Material scabyst;
     public static Material valonite;
     public static Material thaummix;
+    public static Material aertitanium;
+    public static Material ignissteel;
+    public static Material aquasilver;
+    public static Material terracopper;
+    public static Material ordolead;
+    public static Material perditioaluminium;
+
+    //man what can I say
+    public static Material kobemetal;
 
     public static Material roughdraft;
     public static Material substrate;

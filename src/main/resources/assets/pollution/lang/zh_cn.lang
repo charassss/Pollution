@@ -13,6 +13,14 @@ gregtech.material.valonite=法罗钠
 gregtech.material.thaummix=交错铜铁混合物
 gregtech.material.roughdraft=活性催化粗胚
 gregtech.material.substrate=魔力催化剂基底
+gregtech.material.aertitanium=律动钛
+gregtech.material.ignissteel=残日钢
+gregtech.material.aquasilver=捩花银
+gregtech.material.terracopper=定坤铜
+gregtech.material.ordolead=司辰铅
+gregtech.material.perditioaluminium=涟漪铝
+gregtech.material.kobemetal=牢大金
+
 #  物品
 metaitem.blank_catalyst_core.name=§8空白催化剂核心§r
 metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
