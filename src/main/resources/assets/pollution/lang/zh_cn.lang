@@ -11,7 +11,12 @@ gregtech.material.octine=炽炎铁
 gregtech.material.scabyst=痂壳晶
 gregtech.material.valonite=法罗钠
 gregtech.material.thaummix=交错铜铁混合物
-
+#  物品
+metaitem.blank_catalyst_core.name=§8空白催化剂核心§r
+metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
+metaitem.hot_catalyst_core.name=§c炽焱催化剂核心§r
+metaitem.integration_catalyst_core.name=§6聚合催化剂核心§r
+metaitem.segregation_catalyst_core.name=§a扩散催化剂核心§r
 #  电路板
 metaitem.magic_circuit.ulv.name=蕴魔电路板 (§8ULV§r)
 metaitem.magic_circuit.lv.name=蕴魔电路板 (§7LV§r)
