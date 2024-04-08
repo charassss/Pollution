@@ -144,7 +144,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
         super.addInformation(stack, player, tooltip, advanced);
         if (isVis())
-            tooltip.add(I18n.format("gcym.tooltip.parallel_enabled"));
+            tooltip.add(I18n.format("需要使用§c灵气仓§r获取当前区块灵气"));
     }
     int aX = 0;
     int aY = 0;

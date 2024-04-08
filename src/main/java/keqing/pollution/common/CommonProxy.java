@@ -57,7 +57,10 @@ public class CommonProxy {
         在注册MetaBlock时用到
         */
         registry.register(PollutionMetaBlocks.MAGIC_BLOCK);
+        registry.register(PollutionMetaBlocks.TURBINE);
+        registry.register(PollutionMetaBlocks.BEAM_CORE);
         registry.register(PollutionMetaBlocks.WIRE_COIL);
+        registry.register(PollutionMetaBlocks.GLASS);
     }
 
     @SubscribeEvent
@@ -72,7 +75,10 @@ public class CommonProxy {
         在注册MetaBlock时用到
         */
         registry.register(createItemBlock(PollutionMetaBlocks.MAGIC_BLOCK, VariantItemBlock::new));
+        registry.register(createItemBlock(PollutionMetaBlocks.TURBINE, VariantItemBlock::new));
+        registry.register(createItemBlock(PollutionMetaBlocks.BEAM_CORE, VariantItemBlock::new));
         registry.register(createItemBlock(PollutionMetaBlocks.WIRE_COIL, VariantItemBlock::new));
+        registry.register(createItemBlock(PollutionMetaBlocks.GLASS, VariantItemBlock::new));
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

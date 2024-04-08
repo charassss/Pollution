@@ -1,0 +1,44 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "beam_core_0": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/beam_core_0"
+        }
+      },
+      "beam_core_1": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/beam_core_1"
+        }
+      },
+      "beam_core_2": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/beam_core_2"
+        }
+      },
+      "beam_core_3": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/beam_core_3"
+        }
+      },
+      "beam_core_4": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/beam_core_4"
+        }
+      }
+    }
+  }
+}
+

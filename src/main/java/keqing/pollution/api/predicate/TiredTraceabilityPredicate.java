@@ -21,6 +21,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock.WireCoilType.*;
+import static keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore.MagicBlockType.*;
 import static keqing.pollution.common.block.PollutionMetaBlocks.WIRE_COIL;
 
 public class TiredTraceabilityPredicate extends TraceabilityPredicate {
@@ -29,7 +30,7 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
     static {
 
         MAP_COIL_CASING = new Object2ObjectOpenHashMap<>();
-
+        MAP_CP_BEAM = new Object2ObjectOpenHashMap<>();
 
         TiredTraceabilityPredicate.MAP_COIL_CASING.put(WIRE_COIL.getState(COIL_LEVEL_1),
                 new WrappedIntTired(COIL_LEVEL_1, 1));
@@ -49,17 +50,29 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
                 new WrappedIntTired(COIL_LEVEL_8, 8));
 
 
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_0),
+                new WrappedIntTired(BEAM_CORE_0,1));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_1),
+                new WrappedIntTired(BEAM_CORE_1,2));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_2),
+                new WrappedIntTired(BEAM_CORE_2,3));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_3),
+                new WrappedIntTired(BEAM_CORE_3,4));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_4),
+                new WrappedIntTired(BEAM_CORE_4,5));
+
 
     }
 
     public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_COIL_CASING;
-
+    public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_CP_BEAM;
 
     public static TraceabilityPredicate CP_COIL_CASING = new TiredTraceabilityPredicate(MAP_COIL_CASING,
             Comparator.comparing((s) -> ((WrappedIntTired)MAP_COIL_CASING.get(s)).getIntTier()),"COIL",null);
 
 
-
+    public static TraceabilityPredicate CP_BEAM_CORE = new TiredTraceabilityPredicate(MAP_CP_BEAM,
+            Comparator.comparing((s) -> ((WrappedIntTired)MAP_CP_BEAM.get(s)).getIntTier()),"BEAM",null);
 
 
     private final Object2ObjectOpenHashMap<IBlockState, ITired> map;
