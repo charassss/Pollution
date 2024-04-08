@@ -1,0 +1,79 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "active=false,variant=laminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/laminated_glass"
+      }
+    },
+    "active=true,variant=laminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/laminated_glass"
+      }
+    },
+
+    "active=false,variant=aaminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/aaminated_glass"
+      }
+    },
+    "active=true,variant=aaminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/aaminated_glass"
+      }
+    },
+
+    "active=false,variant=baminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/baminated_glass"
+      }
+    },
+    "active=true,variant=baminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/baminated_glass"
+      }
+    },
+
+    "active=false,variant=caminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/caminated_glass"
+      }
+    },
+    "active=true,variant=caminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/caminated_glass"
+      }
+    },
+
+    "active=false,variant=daminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/daminated_glass"
+      }
+    },
+    "active=true,variant=daminated_glass": {
+      "model": "minecraft:cube_all",
+      "ambientocclusion": false,
+      "textures": {
+        "all": "gregtech:blocks/glass/daminated_glass"
+      }
+    }
+  }
+}
