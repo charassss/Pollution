@@ -2,6 +2,7 @@ package keqing.pollution.loaders;
 
 import keqing.pollution.loaders.recipes.AERecipes;
 import keqing.pollution.loaders.recipes.MachineRecipes;
+import keqing.pollution.loaders.recipes.MagicGCYMRecipes;
 import keqing.pollution.loaders.recipes.ThaumcraftRecipes;
 
 public class RecipeManger {
@@ -9,6 +10,7 @@ public class RecipeManger {
         MachineRecipes.init();
         AERecipes.init();
         ThaumcraftRecipes.init();
+        MagicGCYMRecipes.init();
     }
 
 

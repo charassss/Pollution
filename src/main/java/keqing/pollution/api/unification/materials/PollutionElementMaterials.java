@@ -46,7 +46,11 @@ public class PollutionElementMaterials {
                 .ore().gem().fluid()
                 .element(Elements.Ord)
                 .build();
-
+        PollutionMaterials.mana= new Material.Builder(getMaterialsId(), gregtechId("mana"))
+                .color(0x87CEEB)
+                .fluid()
+                .element(Elements.Ma)
+                .build();
 
     }
 }

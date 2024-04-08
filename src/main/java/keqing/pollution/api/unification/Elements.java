@@ -19,4 +19,5 @@ public class Elements {
     public static final Element Ter = add(1, 4, -1, null, "Earth", "Ter", false);
     public static final Element Pe = add(1, 5, -1, null, "Entropy", "Pe", false);
     public static final Element Ord = add(1, 6, -1, null, "Order", "Ord", false);
+    public static final Element Ma = add(1, 7, -1, null, "Mana", "Ma", false);
 }
