@@ -33,6 +33,25 @@ metaitem.cold_catalyst_core.tooltip=§b极度冰寒§r
 metaitem.hot_catalyst_core.tooltip=§c熊熊烈焰§r
 metaitem.integration_catalyst_core.tooltip=§6百川东流§r
 metaitem.segregation_catalyst_core.tooltip=§a大风起兮§r
+#方块
+tile.magic_block.void_prism.name=蕴魔虚空棱镜折射外壳
+tile.magic_block.spell_prism.name=蕴魔棱镜折射外壳
+tile.magic_block.spell_prism_cold.name=蕴魔凛冰棱镜折射外壳
+tile.magic_block.spell_prism_hot.name=蕴魔炙焱棱镜折射外壳
+tile.magic_block.spell_prism_water.name=蕴魔流棱镜折射外壳
+tile.magic_block.spell_prism_order.name=蕴魔序棱镜折射外壳
+tile.magic_block.spell_prism_air.name=蕴魔气棱镜折射外壳
+tile.magic_block.spell_prism_earth.name=蕴魔地棱镜折射外壳
+
+#线圈
+tile.wire_coil.machine_coil_cupronickel.name=一级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_kanthal.name=二级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_nichrome.name=三级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_rtm_alloy.name=四级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_hssg.name=五级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_naquadah.name=六级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_trinium.name=七级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_tritanium.name=八级炽焱凝聚富集符文
 #  电路板
 metaitem.magic_circuit.ulv.name=蕴魔电路板 (§8ULV§r)
 metaitem.magic_circuit.lv.name=蕴魔电路板 (§7LV§r)
@@ -139,6 +158,12 @@ pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
 
+#设备多方块
+pollution.machine.tank_test.name=源质离散器
+
+pollution.machine.magic_bender.name=魔力锟压机
+pollution.machine.magic_centrifuge.name=魔力离心机
+pollution.machine.magic_electric_blast_furnace.name=魔力电力高炉
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

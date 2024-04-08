@@ -15,25 +15,25 @@ import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
+import keqing.pollution.client.textures.POTextures;
+import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import static keqing.pollution.api.unification.PollutionMaterials.infused_air;
+import static keqing.pollution.api.unification.PollutionMaterials.infused_order;
 
-public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockController {
+public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
 
     //我是神秘GCYM多方块 看我看我
 
     //这里是多方块的配方  RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
     //                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES 都是配方喵
     //你可以只写一种配方 也可以写很多喵
-    public MetaTileEntityLargeBenderTest(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityMagicBender(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
                 RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES });
     }
@@ -42,7 +42,7 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
     //不要动
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
-        return new MetaTileEntityLargeBenderTest(this.metaTileEntityId);
+        return new MetaTileEntityMagicBender(this.metaTileEntityId);
     }
 
     //这里是多方块的结构喵
@@ -84,15 +84,14 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
     @Override
     public Material getMaterial()
     {
-        return infused_air;
+        return infused_order;
     }
 
 
 
     //下边都是设置多方块外形材质的喵
     private static IBlockState getCasingState() {
-        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
-                .getState(BlockLargeMultiblockCasing.CasingType.STRESS_PROOF_CASING);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_ORDER);
     }
 
     private static IBlockState getCasingState2() {
@@ -103,13 +102,11 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
         return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
-
     //覆盖层材质 就是给IO渲染的材质
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return GCYMTextures.STRESS_PROOF_CASING;
+        return POTextures.SPELL_PRISM_ORDER;
     }
-
 
     //控制器的图形 比如传统的外观 或者聚变电脑的外观等等
     @Override
