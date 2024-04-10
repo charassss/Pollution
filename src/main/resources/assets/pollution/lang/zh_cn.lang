@@ -58,6 +58,7 @@ tile.magic_block.spell_prism_water.name=蕴魔流棱镜折射外壳
 tile.magic_block.spell_prism_order.name=蕴魔序棱镜折射外壳
 tile.magic_block.spell_prism_air.name=蕴魔气棱镜折射外壳
 tile.magic_block.spell_prism_earth.name=蕴魔地棱镜折射外壳
+tile.magic_block.spell_prism_void.name=蕴魔虚空棱镜折射外壳
 
 tile.beam_core.beam_core_0.name=魔导强磁阵法核心
 tile.beam_core.beam_core_1.name=魔导内爆阵法核心

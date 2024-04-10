@@ -60,7 +60,7 @@ public class MetaTileEntityMagicMixer extends PORecipeMapMultiblockController{
     public Material getMaterial() {return infused_entropy;}
 
     private static IBlockState getCasingState() {
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.VOID_PRISM);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_VOID);
     }
     private static IBlockState getCasingState2(){
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_3);
@@ -76,7 +76,7 @@ public class MetaTileEntityMagicMixer extends PORecipeMapMultiblockController{
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return POTextures.VOID_PRISM;
+        return POTextures.SPELL_PRISM_VOID;
     }
 
     @Override
