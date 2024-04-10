@@ -40,7 +40,8 @@ public class POMagicBlock extends VariantBlock<POMagicBlock.MagicBlockType> {
         SPELL_PRISM_WATER("spell_prism_water"),
         SPELL_PRISM_ORDER("spell_prism_order"),
         SPELL_PRISM_AIR("spell_prism_air"),
-        SPELL_PRISM_EARTH("spell_prism_earth");
+        SPELL_PRISM_EARTH("spell_prism_earth"),
+        SPELL_PRISM_VOID("spell_prism_void");
 
 
         private final String name;

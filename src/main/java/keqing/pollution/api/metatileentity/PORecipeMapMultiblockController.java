@@ -51,6 +51,9 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
 
     //下边就不要动了喵
     //定义储罐
+
+
+    //在此处添加你需要的要素 格式FluidStack xxx_STACK = infused_axx.getFluid(1);
     FluidStack AIR_STACK = infused_air.getFluid(1);
     FluidStack FIRE_STACK = infused_fire.getFluid(1);
     FluidStack WATER_STACK = infused_water.getFluid(1);
@@ -60,75 +63,42 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     //复合的
     FluidStack CRYSTAL_STACK = infused_crystal.getFluid(1);
 
-    //消耗
-    public void DrainVis(Material material) {
-        IMultipleTankHandler inputTank = getInputFluidInventory();
-        if (material == infused_air){
-            if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, false))) {
-                inputTank.drain(AIR_STACK, true);
-            }}
+    //检查有没有+消耗  由consume控制
 
-        if(material == infused_fire){
-            if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, false))) {
-                inputTank.drain(FIRE_STACK, true);
-            }}
-
-        if (material == infused_water){
-            if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, false))) {
-                inputTank.drain(WATER_STACK, true);
-            }}
-
-        if (material == infused_earth){
-            if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, false))) {
-                inputTank.drain(ERATH_STACK, true);
-            }}
-
-        if (material == infused_order){
-            if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, false))) {
-                inputTank.drain(ORDER_STACK, true);
-            }}
-
-        if (material == infused_entropy){
-            if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
-                inputTank.drain(ENTROPY_STACK, true);
-            }}
-        if (material == infused_crystal){
-            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, false))) {
-                inputTank.drain(CRYSTAL_STACK, true);
-            }}
-    }
-
-    //检查有没有
-    public boolean isCheckVis(Material material) {
+    //if (material == infused_xxx){
+    //            if (xxx_STACK.isFluidStackIdentical(inputTank.drain(xxx_STACK, consume))) {
+    //                return true;
+    //            }}
+    public boolean isCheckVis(Material material,Boolean consume) {
         IMultipleTankHandler inputTank = getInputFluidInventory();
         if(material==null)return true;
         if (material == infused_air){
-            if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, false))) {
+            if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, consume))) {
                 return true;
             }}
 
         if(material == infused_fire){
-            if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, false))) {
+            if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, consume))) {
                 return true;
             }}
 
         if (material == infused_water){
-            if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, false))) {
+            if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, consume))) {
                 return true;
             }}
 
         if (material == infused_earth){
-            if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, false))) {
+            if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, consume))) {
                 return true;
             }}
 
         if (material == infused_order){
-            if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, false))) {
+            if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, consume))) {
                 return true;
             }}
 
         if (material == infused_entropy){
-            if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
+            if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, consume))) {
                 return true;
             }}
 
@@ -185,7 +155,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     @Override
     protected void addErrorText(List<ITextComponent> textList) {
         super.addErrorText(textList);
-        if (!isCheckVis(material)) {
+        if (!isCheckVis(material,false)) {
             textList.add(new TextComponentTranslation("LACK INFUSED!!!"));
         }
     }
@@ -203,7 +173,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         super.addDisplayText(textList);
         if (isStructureFormed())
         textList.add(new TextComponentTranslation("Vis: %s / %s Tier:  %s",visStorage,visStorageMax,tier));
-        textList.add(new TextComponentTranslation("Infused need : %s Statue: %s",material,isCheckVis(material)));
+        textList.add(new TextComponentTranslation("Infused need : %s Statue: %s",material,isCheckVis(material,false)));
     }
 
     @Override
@@ -261,8 +231,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
                 this.drawEnergy(this.recipeEUt, false);
                 if(!enough())this.maxProgressTime++;
 
-                if(enough()&&isCheckVis(material)) {
-                    DrainVis(material);
+                if(enough()&&isCheckVis(material,true)) {
                     if (++this.progressTime > this.maxProgressTime)
                     {
                         this.completeRecipe();

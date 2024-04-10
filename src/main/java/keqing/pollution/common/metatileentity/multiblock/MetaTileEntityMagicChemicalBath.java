@@ -1,5 +1,10 @@
 package keqing.pollution.common.metatileentity.multiblock;
 
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.texture.TextureUtils;
+import codechicken.lib.vec.Cuboid6;
+import codechicken.lib.vec.Matrix4;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -8,9 +13,13 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
+import gregtech.client.renderer.CubeRendererState;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.cclop.ColourOperation;
+import gregtech.client.renderer.cclop.LightMapOperation;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.client.utils.BloomEffectUtil;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
@@ -23,7 +32,9 @@ import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import org.apache.commons.lang3.ArrayUtils;
 
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 
@@ -76,5 +87,27 @@ public class MetaTileEntityMagicChemicalBath extends PORecipeMapMultiblockContro
     @Override
     public boolean canBeDistinct() {
         return true;
+    }
+
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        super.renderMetaTileEntity(renderState, translation, pipeline);
+        getFrontOverlay().renderOrientedState(renderState, translation, pipeline, getFrontFacing(),
+                recipeMapWorkable.isActive(), recipeMapWorkable.isWorkingEnabled());
+        if (recipeMapWorkable.isActive() && isStructureFormed()) {
+            EnumFacing back = getFrontFacing().getOpposite();
+            for(float i=-2;i<=2;i++) {
+                for (float j = -2; j <=2; j++) {
+                    Matrix4 offset = translation.copy().translate(back.getXOffset() * 3+i, 0.6, back.getZOffset() * 3+j);
+                    CubeRendererState op = Textures.RENDER_STATE.get();
+                    Textures.RENDER_STATE.set(new CubeRendererState(op.layer, CubeRendererState.PASS_MASK, op.world));
+                    Textures.renderFace(renderState, offset,
+                            ArrayUtils.addAll(pipeline, new LightMapOperation(240, 240), new ColourOperation(0xFF00FFFF)),
+                            EnumFacing.UP, Cuboid6.full, TextureUtils.getBlockTexture("water_still"),
+                            BloomEffectUtil.getEffectiveBloomLayer());
+                    Textures.RENDER_STATE.set(op);
+                }
+            }
+        }
     }
 }
