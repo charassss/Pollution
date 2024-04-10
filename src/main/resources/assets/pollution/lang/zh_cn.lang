@@ -18,9 +18,25 @@ gregtech.material.ignissteel=残日钢
 gregtech.material.aquasilver=捩花银
 gregtech.material.terracopper=定坤铜
 gregtech.material.ordolead=司辰铅
-gregtech.material.perditioaluminium=涟漪铝
-gregtech.material.kobemetal=牢大金
+gregtech.material.perditioaluminium=无极铝
+gregtech.material.mana=魔力
+gregtech.material.impuremana=不纯魔力
+gregtech.material.manasteel=魔力钢
+gregtech.material.salismundus=世界盐
+gregtech.material.mansussteel=漫宿钢
 
+gregtech.material.kobemetal=牢大金
+metaitem.ingotKobemetal.tooltip=牢大，想你了
+
+metaitem.ingotAertitanium.tooltip=律动清风
+metaitem.ingotIgnissteel.tooltip=残日流火
+metaitem.ingotAquasilver.tooltip=捩花流水
+metaitem.ingotTerracopper.tooltip=定坤大地
+metaitem.ingotOrdolead.tooltip=司辰秩序
+metaitem.ingotPerditioaluminium.tooltip=无极混沌
+metaitem.ingotMansussteel.tooltip=§7林地生长于漫宿墙外，但每一个研习诸史的人都知道，漫宿无墙§r
+metaitem.plateMansussteel.tooltip=§7撷漫宿诸梦，倾轧板材§r
+item.material.oreprefix.frameGtMansussteel.tooltip=§7采漫宿散魂，铸构骨架（这条还不能生效，不知道怎么改捏）§r
 #  物品
 metaitem.blank_catalyst_core.name=§8空白催化剂核心§r
 metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
@@ -92,7 +108,7 @@ metaitem.magic_circuit.uxv.name=蕴魔电路板 (§eUXV§r)
 metaitem.magic_circuit.opv.name=蕴魔电路板 (§9OpV§r)
 metaitem.magic_circuit.max.name=蕴魔电路板 (§c§lMAX§r)
 
-metaitem.magic_circuit.ulv.tooltip=§魔力四射！§r
+metaitem.magic_circuit.ulv.tooltip=魔力四射！
 metaitem.magic_circuit.lv.tooltip=§7魔力四射！§r
 metaitem.magic_circuit.mv.tooltip=§b魔力四射！§r
 metaitem.magic_circuit.hv.tooltip=§6魔力四射！§r
@@ -184,9 +200,14 @@ pollution.vis.product=§6每秒污染产生%s Vis
 #设备多方块
 pollution.machine.tank_test.name=源质离散器
 
-pollution.machine.magic_bender.name=魔力锟压机
-pollution.machine.magic_centrifuge.name=魔力离心机
-pollution.machine.magic_electric_blast_furnace.name=魔力电力高炉
+pollution.machine.magic_bender.name=魔导批量辊压机
+pollution.machine.magic_centrifuge.name=魔导旋风离心装置
+pollution.machine.magic_electric_blast_furnace.name=魔导烈火高炉
+pollution.machine.magic_mixer.name=魔导虚空搅拌矩阵
+pollution.machine.magic_electrolyzer.name=魔导解构分离者
+pollution.machine.magic_chemical_bath.name=魔导流水浸洗厂
+pollution.machine.magic_macerator.name=魔导泰坦级粉碎机
+
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

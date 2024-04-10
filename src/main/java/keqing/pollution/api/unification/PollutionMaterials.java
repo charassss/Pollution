@@ -12,6 +12,7 @@ public class PollutionMaterials {
     public static Material infused_earth;
     public static Material infused_entropy;
     public static Material infused_order;
+    public static Material mana;
 
     public static Material thaumium;
     public static Material syrmorite;
@@ -25,6 +26,10 @@ public class PollutionMaterials {
     public static Material terracopper;
     public static Material ordolead;
     public static Material perditioaluminium;
+    public static Material impuremana;
+    public static Material manasteel;
+    public static Material salismundus;
+    public static Material mansussteel;
 
     //man what can I say
     public static Material kobemetal;
