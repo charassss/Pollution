@@ -207,6 +207,7 @@ pollution.machine.magic_mixer.name=魔导虚空搅拌矩阵
 pollution.machine.magic_electrolyzer.name=魔导解构分离者
 pollution.machine.magic_chemical_bath.name=魔导流水浸洗厂
 pollution.machine.magic_macerator.name=魔导泰坦级粉碎机
+pollution.machine.magic_sifter.name=魔导锱铢选矿厂
 
 #事件
 pollution.command.slowness=§7你感到行动不便

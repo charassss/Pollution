@@ -57,6 +57,8 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     FluidStack ERATH_STACK = infused_earth.getFluid(1);
     FluidStack ORDER_STACK = infused_order.getFluid(1);
     FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
+    //复合的
+    FluidStack CRYSTAL_STACK = infused_crystal.getFluid(1);
 
     //消耗
     public void DrainVis(Material material) {
@@ -89,6 +91,10 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         if (material == infused_entropy){
             if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
                 inputTank.drain(ENTROPY_STACK, true);
+            }}
+        if (material == infused_crystal){
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, false))) {
+                inputTank.drain(CRYSTAL_STACK, true);
             }}
     }
 
@@ -123,6 +129,11 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
 
         if (material == infused_entropy){
             if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_crystal){
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, false))) {
                 return true;
             }}
 

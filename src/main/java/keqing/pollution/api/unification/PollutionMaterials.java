@@ -1,19 +1,24 @@
 package keqing.pollution.api.unification;
 
 import gregtech.api.unification.material.Material;
+import keqing.pollution.api.unification.materials.CompoundAspectMaterials;
 import keqing.pollution.api.unification.materials.FirstDegreeMaterials;
 import keqing.pollution.api.unification.materials.PollutionElementMaterials;
 import keqing.pollution.api.unification.materials.CatalystMaterials;
 
 public class PollutionMaterials {
+    //基础六要素
     public static Material infused_air;
     public static Material infused_fire;
     public static Material infused_water;
     public static Material infused_earth;
     public static Material infused_entropy;
     public static Material infused_order;
+    //复合要素
+    public static Material infused_crystal;
+    //mana酱
     public static Material mana;
-
+    //材料
     public static Material thaumium;
     public static Material syrmorite;
     public static Material octine;
@@ -30,10 +35,9 @@ public class PollutionMaterials {
     public static Material manasteel;
     public static Material salismundus;
     public static Material mansussteel;
-
     //man what can I say
     public static Material kobemetal;
-
+    //催化剂
     public static Material roughdraft;
     public static Material substrate;
 
@@ -43,6 +47,7 @@ public class PollutionMaterials {
         PollutionElementMaterials.register();
         FirstDegreeMaterials.register();
         CatalystMaterials.register();
+        CompoundAspectMaterials.register();
 
     }
 }
