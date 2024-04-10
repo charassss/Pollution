@@ -16,6 +16,14 @@ public class PollutionMaterials {
     public static Material infused_order;
     //复合要素
     public static Material infused_crystal;
+    public static Material infused_life;
+    public static Material infused_death;
+    public static Material infused_soul;
+    public static Material infused_weapon;
+    public static Material infused_metal;
+    public static Material infused_energy;
+    public static Material infused_instrument;
+    public static Material infused_exchange;
     //mana酱
     public static Material mana;
     //材料

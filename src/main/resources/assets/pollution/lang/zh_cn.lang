@@ -209,6 +209,21 @@ pollution.machine.magic_electrolyzer.name=魔导解构分离者
 pollution.machine.magic_chemical_bath.name=魔导流水浸洗厂
 pollution.machine.magic_macerator.name=魔导泰坦级粉碎机
 pollution.machine.magic_sifter.name=魔导锱铢选矿厂
+pollution.machine.magic_cutter.name=魔导快刀剪切线
+pollution.machine.magic_wiremill.name=魔导千丝机关
+pollution.machine.magic_solidifier.name=魔导双相转换灌装仪
+
+pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
+pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
+pollution.machine.magic_electric_blast_furnace.tooltip=铁炉堡专利
+pollution.machine.magic_mixer.tooltip=又在搅什么了（恼）
+pollution.machine.magic_electrolyzer.tooltip=彩虹GT:电解是魔法
+pollution.machine.magic_chemical_bath.tooltip=你什么时候产生了我没有使用镜花水月的错觉
+pollution.machine.magic_macerator.tooltip=巨人城挑战模式真好玩，妈妈我想充10块钱点卡
+pollution.machine.magic_sifter.tooltip=奈何取之尽锱铢，用之如泥沙？
+pollution.machine.magic_cutter.tooltip=小小格温，擅长长期素食
+pollution.machine.magic_wiremill.tooltip=妹妹看它看到眼里都拉丝了
+pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
 
 #事件
 pollution.command.slowness=§7你感到行动不便

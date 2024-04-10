@@ -57,11 +57,14 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     FluidStack AIR_STACK = infused_air.getFluid(1);
     FluidStack FIRE_STACK = infused_fire.getFluid(1);
     FluidStack WATER_STACK = infused_water.getFluid(1);
-    FluidStack ERATH_STACK = infused_earth.getFluid(1);
+    FluidStack EARTH_STACK = infused_earth.getFluid(1);
     FluidStack ORDER_STACK = infused_order.getFluid(1);
     FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
     //复合的
     FluidStack CRYSTAL_STACK = infused_crystal.getFluid(1);
+    FluidStack WEAPON_STACK = infused_weapon.getFluid(1);
+    FluidStack INSTRUMENT_STACK = infused_instrument.getFluid(1);
+    FluidStack EXCHANGE_STACK = infused_exchange.getFluid(1);
 
     //检查有没有+消耗  由consume控制
 
@@ -88,7 +91,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
             }}
 
         if (material == infused_earth){
-            if (ERATH_STACK.isFluidStackIdentical(inputTank.drain(ERATH_STACK, consume))) {
+            if (EARTH_STACK.isFluidStackIdentical(inputTank.drain(EARTH_STACK, consume))) {
                 return true;
             }}
 
@@ -107,6 +110,20 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
                 return true;
             }}
 
+        if (material == infused_weapon){
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(WEAPON_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_instrument){
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(INSTRUMENT_STACK, false))) {
+                return true;
+            }}
+
+        if (material == infused_exchange){
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(EXCHANGE_STACK, false))) {
+                return true;
+            }}
         return false;
     }
 
