@@ -212,6 +212,7 @@ pollution.machine.magic_sifter.name=魔导锱铢选矿厂
 pollution.machine.magic_cutter.name=魔导快刀剪切线
 pollution.machine.magic_wiremill.name=魔导千丝机关
 pollution.machine.magic_solidifier.name=魔导双相转换灌装仪
+pollution.machine.magic_battery.name=魔导电池
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
@@ -224,7 +225,18 @@ pollution.machine.magic_sifter.tooltip=奈何取之尽锱铢，用之如泥沙�
 pollution.machine.magic_cutter.tooltip=小小格温，擅长长期素食
 pollution.machine.magic_wiremill.tooltip=妹妹看它看到眼里都拉丝了
 pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
-
+#魔法电池
+pollution.eke.count=魔导核心：%s 线圈等级：%s
+pollution.eke.eu1=输入/输出能量：%s / %s EU/t
+pollution.eke.eu2=存储能量：%s / %s EU %s
+pollution.eke.output1=充能功率：%s / %s EU/t
+pollution.eke.output2=放电功率：%s / %s EU/t
+pollution.eke.output3=最大功率：%s EU/t 能量平衡
+pollution.eke.outputA=还需%s天%s时%s分%s秒充满
+pollution.eke.outputB=还需%s天%s时%s分%s秒耗尽
+pollution.eke.outputC=可最大功率输出%s天%s时%s分%s秒
+pollution.eke.output4=最大功率：%s EU/t 暂停工作
+gregtech.multiblock.battery.EU=存储能量：%s / %s EU
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

@@ -43,6 +43,7 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicCutter MAGIC_CUTTER;
     public static MetaTileEntityMagicWireMill MAGIC_WIREMILL;
     public static MetaTileEntityMagicSolidifier MAGIC_SOLIDIFIER;
+    public static MetaTileEntityMagicBattery MAGIC_BATTERY;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
     public static void initialization() {
@@ -79,6 +80,8 @@ public class PollutionMetaTileEntities {
         MAGIC_CUTTER = registerMetaTileEntity(15944, new MetaTileEntityMagicCutter(gtqtcoreId("magic_cutter")));
         MAGIC_WIREMILL = registerMetaTileEntity(15945, new MetaTileEntityMagicWireMill(gtqtcoreId("magic_wiremill")));
         MAGIC_SOLIDIFIER = registerMetaTileEntity(15946, new MetaTileEntityMagicSolidifier(gtqtcoreId("magic_solidifier")));
+
+        MAGIC_BATTERY = registerMetaTileEntity(15950, new MetaTileEntityMagicBattery(gtqtcoreId("magic_battery")));
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
             FLUX_MUFFLERS[i] = registerMetaTileEntity(16000 + i-1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
