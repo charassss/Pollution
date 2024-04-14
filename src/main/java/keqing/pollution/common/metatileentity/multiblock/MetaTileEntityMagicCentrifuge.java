@@ -49,7 +49,7 @@ public class MetaTileEntityMagicCentrifuge extends PORecipeMapMultiblockControll
                 .where('A', air())
                 .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
-                .where('H', states(getCasingState2()))
+                .where('H', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .build();
     }
