@@ -81,7 +81,7 @@ public class MetaTileEntityMagicMixer extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.MIXER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

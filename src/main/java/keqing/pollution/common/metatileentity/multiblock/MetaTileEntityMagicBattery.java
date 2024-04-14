@@ -271,13 +271,13 @@ public class MetaTileEntityMagicBattery extends MultiblockWithDisplayBase implem
         return pattern.build();
     }
     private static IBlockState getCasingState() {
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.VOID_PRISM);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.MAGIC_BATTERY);
     }
 
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return POTextures.VOID_PRISM;
+        return POTextures.MAGIC_BATTERY;
     }
     @Override
     protected OrientedOverlayRenderer getFrontOverlay() {

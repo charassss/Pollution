@@ -7,68 +7,72 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
 import gregtech.common.blocks.MetaBlocks;
 
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
-import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import static keqing.pollution.api.unification.PollutionMaterials.infused_air;
-import static keqing.pollution.api.unification.PollutionMaterials.infused_order;
+public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockController {
 
-public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockController{
-    public MetaTileEntityMagicElectrolyzer(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] {RecipeMaps.ELECTROLYZER_RECIPES});
+    public MetaTileEntityLargeBenderTest(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
+                RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES });
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
-        return new MetaTileEntityMagicElectrolyzer(this.metaTileEntityId);
+        return new MetaTileEntityLargeBenderTest(this.metaTileEntityId);
     }
 
     @Override
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
-                .aisle("XXXXX", "XXSXX", "XXFXX")
+                .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
+                .aisle("XXXXXXX", "XXXGGGX", "XXXXXXX")
+                .aisle("XFXXXXX", "XSXCCCX", "XXXXXXX")
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
-                .where('C', states(getCasingState2()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
+                .where('G', states(getCasingState2()))
+                .where('C', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .build();
     }
 
-    @Override
-    public Material getMaterial() {return infused_order;}
-
     private static IBlockState getCasingState() {
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_ORDER);
+        return GCYMMetaBlocks.LARGE_MULTIBLOCK_CASING
+                .getState(BlockLargeMultiblockCasing.CasingType.STRESS_PROOF_CASING);
     }
 
     private static IBlockState getCasingState2() {
-        return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
+        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
+    }
+
+    private static IBlockState getCasingState3() {
+        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return POTextures.SPELL_PRISM_ORDER;
+        return GCYMTextures.STRESS_PROOF_CASING;
     }
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.ELECTROLYZER_OVERLAY;
+<<<<<<< Updated upstream:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityLargeBenderTest.java
+        return GCYMTextures.LARGE_BENDER_OVERLAY;
+=======
+        return Textures.HPCA_OVERLAY;
+>>>>>>> Stashed changes:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityMagicElectrolyzer.java
     }
 
     @Override

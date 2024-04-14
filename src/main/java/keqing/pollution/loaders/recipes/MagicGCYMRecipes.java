@@ -33,6 +33,8 @@ import java.nio.charset.StandardCharsets;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES;
+import static keqing.pollution.api.unification.PollutionMaterials.perditioaluminium;
 
 public class MagicGCYMRecipes {
     public static void init() {
@@ -48,7 +50,18 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Manganese, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_air, 5)
                 .output(OrePrefix.dust, PollutionMaterials.aertitanium, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Bauxite,  2)
+                .input(OrePrefix.dust, Aluminium, 1)
+                .input(OrePrefix.dust, Manganese, 1)
+                .input(OrePrefix.dust, PollutionMaterials.infused_air, 5)
+                .fluidOutputs(PollutionMaterials.aertitanium.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //火要素-残日钢
@@ -58,7 +71,18 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Lithium, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_fire, 5)
                 .output(OrePrefix.dust, PollutionMaterials.ignissteel, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Steel,  2)
+                .input(OrePrefix.dust, Magnesium, 1)
+                .input(OrePrefix.dust, Lithium, 1)
+                .input(OrePrefix.dust, PollutionMaterials.infused_fire, 5)
+                .fluidOutputs(PollutionMaterials.ignissteel.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //水要素-捩花银
@@ -68,7 +92,18 @@ public class MagicGCYMRecipes {
                 .fluidInputs(Mercury.getFluid(1000))
                 .input(OrePrefix.dust, PollutionMaterials.infused_water, 5)
                 .output(OrePrefix.dust, PollutionMaterials.aquasilver, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Silver,  2)
+                .input(OrePrefix.dust, Tin, 1)
+                .fluidInputs(Mercury.getFluid(1000))
+                .input(OrePrefix.dust, PollutionMaterials.infused_water, 5)
+                .fluidOutputs(PollutionMaterials.aquasilver.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //地要素-定坤铜
@@ -78,7 +113,18 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Carbon, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_earth, 5)
                 .output(OrePrefix.dust, PollutionMaterials.terracopper, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Copper,  2)
+                .input(OrePrefix.dust, Boron, 1)
+                .input(OrePrefix.dust, Carbon, 1)
+                .input(OrePrefix.dust, PollutionMaterials.infused_earth, 5)
+                .fluidOutputs(PollutionMaterials.terracopper.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //秩序要素-司辰铅
@@ -88,7 +134,18 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Gold, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_order, 5)
                 .output(OrePrefix.dust, PollutionMaterials.ordolead, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Lead,  2)
+                .input(OrePrefix.dust, Silicon, 1)
+                .input(OrePrefix.dust, Gold, 1)
+                .input(OrePrefix.dust, PollutionMaterials.infused_order, 5)
+                .fluidOutputs(PollutionMaterials.ordolead.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //混沌要素-无极铝
@@ -97,11 +154,23 @@ public class MagicGCYMRecipes {
                 .fluidInputs(Fluorine.getFluid(1000))
                 .input(OrePrefix.dust, Thorium, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_entropy, 5)
-                .output(OrePrefix.dust, PollutionMaterials.perditioaluminium, 9)
+                .output(OrePrefix.dust, perditioaluminium, 9)
+                .duration(3000)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Aluminium,  2)
+                .fluidInputs(Fluorine.getFluid(1000))
+                .input(OrePrefix.dust, Thorium, 1)
+                .input(OrePrefix.dust, PollutionMaterials.infused_entropy, 5)
+                .fluidOutputs(PollutionMaterials.perditioaluminium.getFluid(9*144))
                 .duration(300)
+                .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
         //高炉2700°烧六种合金捏
+
         //这里是六个外壳的制作配方
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, PollutionMaterials.aertitanium, 6)
@@ -144,8 +213,8 @@ public class MagicGCYMRecipes {
                 .EUt(480)
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(OrePrefix.plate, PollutionMaterials.perditioaluminium, 6)
-                .input(OrePrefix.frameGt, PollutionMaterials.perditioaluminium, 1)
+                .input(OrePrefix.plate, perditioaluminium, 6)
+                .input(OrePrefix.frameGt, perditioaluminium, 1)
                 .outputs(PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.VOID_PRISM))
                 .circuitMeta(6)
                 .duration(300)

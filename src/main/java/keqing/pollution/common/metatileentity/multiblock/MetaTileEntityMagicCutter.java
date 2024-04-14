@@ -75,7 +75,7 @@ public class MetaTileEntityMagicCutter extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CUTTER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

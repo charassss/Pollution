@@ -75,7 +75,7 @@ public class MetaTileEntityMagicMacerator extends PORecipeMapMultiblockControlle
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.MACERATOR_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

@@ -74,7 +74,7 @@ public class MetaTileEntityMagicWireMill extends PORecipeMapMultiblockController
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.WIREMILL_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

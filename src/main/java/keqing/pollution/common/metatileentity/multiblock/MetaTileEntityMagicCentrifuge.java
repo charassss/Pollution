@@ -78,7 +78,7 @@ public class MetaTileEntityMagicCentrifuge extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CENTRIFUGE_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

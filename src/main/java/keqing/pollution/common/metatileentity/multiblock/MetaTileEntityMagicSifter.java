@@ -62,7 +62,7 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
         return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_EARTH);
     }
     private static IBlockState getCasingState2(){
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_AIR);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_EARTH);
     }
 
     private static IBlockState getCasingState3(){
@@ -76,7 +76,7 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.SIFTER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

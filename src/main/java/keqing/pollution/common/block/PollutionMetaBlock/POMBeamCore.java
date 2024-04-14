@@ -37,7 +37,13 @@ public class POMBeamCore extends VariantBlock<POMBeamCore.MagicBlockType> {
         BEAM_CORE_1("beam_core_1"),
         BEAM_CORE_2("beam_core_2"),
         BEAM_CORE_3("beam_core_3"),
-        BEAM_CORE_4("beam_core_4");
+        BEAM_CORE_4("beam_core_4"),
+
+        FILTER_1("filter_1"),
+        FILTER_2("filter_2"),
+        FILTER_3("filter_3"),
+        FILTER_4("filter_4"),
+        FILTER_5("filter_5");
 
 
         private final String name;

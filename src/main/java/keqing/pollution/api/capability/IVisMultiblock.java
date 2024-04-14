@@ -9,10 +9,4 @@ public interface IVisMultiblock {
     default boolean isVis() {
         return false;
     }
-    default int getVisStorage() {
-        return 0;
-    }
-    default int getVisKind() {
-        return 0;
-    }
 }

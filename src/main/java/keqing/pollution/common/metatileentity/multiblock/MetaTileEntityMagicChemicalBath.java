@@ -83,7 +83,7 @@ public class MetaTileEntityMagicChemicalBath extends PORecipeMapMultiblockContro
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CHEMICAL_BATH_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

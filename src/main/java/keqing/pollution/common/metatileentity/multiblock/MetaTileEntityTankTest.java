@@ -43,8 +43,6 @@ import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 public class MetaTileEntityTankTest extends POTankMultiblockController implements IBloomEffect , IFastRenderMetaTileEntity {
 
-
-    //我是源质-液态元素转换器 不要看我
     int RadomTime=0;
     public MetaTileEntityTankTest(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, new RecipeMap[] { RecipeMaps.EXTRACTOR_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
@@ -106,6 +104,12 @@ public class MetaTileEntityTankTest extends POTankMultiblockController implement
         setFusionRingColor(0xFF000000+RadomTime*100);
 
     }
+
+
+
+
+
+
 
     protected static final int NO_COLOR = 0;
     private int fusionRingColor = NO_COLOR;

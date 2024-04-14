@@ -87,7 +87,7 @@ public class MetaTileEntityMagicSolidifier extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.FLUID_SOLIDIFIER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override
