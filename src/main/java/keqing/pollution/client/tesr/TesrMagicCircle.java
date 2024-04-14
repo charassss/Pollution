@@ -14,18 +14,31 @@ public class TesrMagicCircle extends TileEntitySpecialRenderer<TileEntityMagicCi
     public static final IModelCustom Magic_Model= AdvancedModelLoader.loadModel(new ResourceLocation("pollution", "models/magic_circle.obj"));
     @Override
     public void render(TileEntityMagicCircle te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
-        GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);
-        GL11.glPushMatrix();
-        GL11.glDisable(GL11.GL_LIGHTING);
-        FMLClientHandler.instance().getClient().getTextureManager().bindTexture(MAGIC_CIRCLE);
+        GlStateManager.pushAttrib();
+        GlStateManager.pushMatrix();
+        GlStateManager.disableLighting();
+        GlStateManager.disableCull();
+        if(te.getRl()==null)
+            FMLClientHandler.instance().getClient().getTextureManager().bindTexture(MAGIC_CIRCLE);
+        else
+            FMLClientHandler.instance().getClient().getTextureManager().bindTexture(te.getRl());
         GlStateManager.translate(x,y,z);
         GlStateManager.translate(0.5,0.5,0.5);
-        GL11.glRotatef((System.currentTimeMillis() / 64) % 360, 0F, 1F, 0F);
-        final float scale = 2.5f;
-        GL11.glScalef(scale, scale, scale);
-        GL11.glColor4f(1, 1, 1, 1);
+        if(te.isCanRotation())
+         GlStateManager.rotate((System.currentTimeMillis() / (64/te.getSpeed())) % 360, 0F, 1F, 0F);
+
+        final float scale =te.getScala();
+        GlStateManager.scale(scale, scale, scale);
+        GlStateManager.color(1, 1, 1, 1);
         Magic_Model.renderAll();
-        GL11.glPopMatrix();
-        GL11.glPopAttrib();
+        GlStateManager.popMatrix();
+        GlStateManager.enableLighting();
+        GlStateManager.popAttrib();
+        GlStateManager.enableCull();
+    }
+
+    @Override
+    public boolean isGlobalRenderer(TileEntityMagicCircle te) {
+        return super.isGlobalRenderer(te);
     }
 }
