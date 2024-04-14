@@ -52,15 +52,16 @@ public class MetaTileEntityMagicChemicalBath extends PORecipeMapMultiblockContro
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
-                .aisle("XXXXXXX", "XAACAAX", "XAAAAAX")
-                .aisle("XXXXXXX", "XAACAAX", "XAAAAAX")
+                .aisle("XXXXXXX", "XDDCDDX", "XAAAAAX")
+                .aisle("XXXXXXX", "XDDCDDX", "XAAAAAX")
                 .aisle("XXXXXXX", "XCCCCCX", "XAAAAAX")
-                .aisle("XXXXXXX", "XAACAAX", "XAAAAAX")
-                .aisle("XXXXXXX", "XAACAAX", "XAAAAAX")
+                .aisle("XXXXXXX", "XDDCDDX", "XAAAAAX")
+                .aisle("XXXXXXX", "XDDCDDX", "XAAAAAX")
                 .aisle("XXXXXXX", "XXXSXXX", "XXXFXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(65).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
+                .where('D', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('A', air())
                 .build();
@@ -73,9 +74,12 @@ public class MetaTileEntityMagicChemicalBath extends PORecipeMapMultiblockContro
         return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER);
     }
     private static IBlockState getCasingState2(){
-        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX);
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.TUNGSTENSTEEL_GEARBOX);
     }
 
+    private static IBlockState getCasingState3() {
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.CAMINATED_GLASS);
+    }
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return POTextures.SPELL_PRISM_WATER;
