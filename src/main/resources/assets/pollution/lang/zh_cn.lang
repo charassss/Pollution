@@ -6,6 +6,136 @@ gregtech.material.infused_water=流
 gregtech.material.infused_fire=焱
 gregtech.material.infused_air=气
 gregtech.material.thaumium=神秘
+<<<<<<< Updated upstream
+=======
+gregtech.material.syrmorite=赛摩铜
+gregtech.material.octine=炽炎铁
+gregtech.material.scabyst=痂壳晶
+gregtech.material.valonite=法罗钠
+gregtech.material.thaummix=交错铜铁混合物
+gregtech.material.roughdraft=活性催化粗胚
+gregtech.material.substrate=魔力催化剂基底
+gregtech.material.aertitanium=律动钛
+gregtech.material.ignissteel=残日钢
+gregtech.material.aquasilver=捩花银
+gregtech.material.terracopper=定坤铜
+gregtech.material.ordolead=司辰铅
+gregtech.material.perditioaluminium=无极铝
+gregtech.material.mana=魔力
+gregtech.material.impuremana=不纯魔力
+gregtech.material.manasteel=魔力钢
+gregtech.material.salismundus=世界盐
+gregtech.material.mansussteel=漫宿钢
+
+gregtech.material.kobemetal=牢大金
+metaitem.ingotKobemetal.tooltip=牢大，想你了
+
+metaitem.ingotAertitanium.tooltip=律动清风
+metaitem.ingotIgnissteel.tooltip=残日流火
+metaitem.ingotAquasilver.tooltip=捩花流水
+metaitem.ingotTerracopper.tooltip=定坤大地
+metaitem.ingotOrdolead.tooltip=司辰秩序
+metaitem.ingotPerditioaluminium.tooltip=无极混沌
+metaitem.ingotMansussteel.tooltip=§7林地生长于漫宿墙外，但每一个研习诸史的人都知道，漫宿无墙§r
+metaitem.plateMansussteel.tooltip=§7撷漫宿诸梦，倾轧板材§r
+item.material.oreprefix.frameGtMansussteel.tooltip=§7采漫宿散魂，铸构骨架（这条还不能生效，不知道怎么改捏）§r
+#  物品
+metaitem.blank_catalyst_core.name=§8空白催化剂核心§r
+metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
+metaitem.hot_catalyst_core.name=§c炽焱催化剂核心§r
+metaitem.integration_catalyst_core.name=§6聚合催化剂核心§r
+metaitem.segregation_catalyst_core.name=§a扩散催化剂核心§r
+
+metaitem.blank_catalyst_core.tooltip=§8无限可能§r
+metaitem.cold_catalyst_core.tooltip=§b极度冰寒§r
+metaitem.hot_catalyst_core.tooltip=§c熊熊烈焰§r
+metaitem.integration_catalyst_core.tooltip=§6百川东流§r
+metaitem.segregation_catalyst_core.tooltip=§a大风起兮§r
+#方块
+tile.magic_block.void_prism.name=蕴魔虚空棱镜折射外壳
+tile.magic_block.spell_prism.name=蕴魔棱镜折射外壳
+tile.magic_block.spell_prism_cold.name=蕴魔凛冰棱镜折射外壳
+tile.magic_block.spell_prism_hot.name=蕴魔炙焱棱镜折射外壳
+tile.magic_block.spell_prism_water.name=蕴魔流棱镜折射外壳
+tile.magic_block.spell_prism_order.name=蕴魔序棱镜折射外壳
+tile.magic_block.spell_prism_air.name=蕴魔气棱镜折射外壳
+tile.magic_block.spell_prism_earth.name=蕴魔地棱镜折射外壳
+tile.magic_block.spell_prism_void.name=蕴魔虚空棱镜折射外壳
+
+tile.magic_block.alloy_blast_casing.name=炼炉魂导束能器
+tile.magic_block.magic_battery.name=源质化魂导束能器
+
+tile.beam_core.beam_core_0.name=魔导强磁阵法核心
+tile.beam_core.beam_core_1.name=魔导内爆阵法核心
+tile.beam_core.beam_core_2.name=魔导导压阵法核心
+tile.beam_core.beam_core_3.name=魔导束流阵法核心
+tile.beam_core.beam_core_4.name=魔导聚能阵法核心
+
+tile.beam_core.filter_1.name=魔导一级聚能控制矩阵核心
+tile.beam_core.filter_2.name=魔导二级聚能控制矩阵核心
+tile.beam_core.filter_3.name=魔导三级聚能控制矩阵核心
+tile.beam_core.filter_4.name=魔导四级聚能控制矩阵核心
+tile.beam_core.filter_5.name=魔导五级聚能控制矩阵核心
+
+tile.turbine.bronze_gearbox.name=炼金青铜机关盒
+tile.turbine.steel_gearbox.name=炼金玄钢机关盒
+tile.turbine.stainless_steel_gearbox.name=炼金精钢机关盒
+tile.turbine.titanium_gearbox.name=炼金钛铁机关盒
+tile.turbine.tungstensteel_gearbox.name=炼金钨钢机关盒
+
+tile.turbine.bronze_pipe.name=炼金青铜源质输送构件
+tile.turbine.steel_pipe.name=炼金玄钢源质输送构件
+tile.turbine.titanium_pipe.name=炼金钛铁源质输送构件
+tile.turbine.tungstensteel_pipe.name=炼金钨钢源质输送构件
+tile.turbine.polytetrafluoroethylene_pipe.name=炼金特氟龙源质输送构件
+
+tile.glass.laminated_glass.name=蕴魔蓝波顿魔导术玻璃
+tile.glass.aaminated_glass.name=蕴魔阿斯麦魔导术玻璃
+tile.glass.baminated_glass.name=蕴魔伯明顿魔导术玻璃
+tile.glass.caminated_glass.name=蕴魔康德魔导术玻璃
+tile.glass.daminated_glass.name=蕴魔迪康维亚魔导术玻璃
+#线圈
+tile.wire_coil.machine_coil_cupronickel.name=一级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_kanthal.name=二级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_nichrome.name=三级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_rtm_alloy.name=四级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_hssg.name=五级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_naquadah.name=六级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_trinium.name=七级炽焱凝聚富集符文
+tile.wire_coil.machine_coil_tritanium.name=八级炽焱凝聚富集符文
+#  电路板
+metaitem.magic_circuit.ulv.name=蕴魔电路板 (§8ULV§r)
+metaitem.magic_circuit.lv.name=蕴魔电路板 (§7LV§r)
+metaitem.magic_circuit.mv.name=蕴魔电路板 (§bMV§r)
+metaitem.magic_circuit.hv.name=蕴魔电路板 (§6HV§r)
+metaitem.magic_circuit.ev.name=蕴魔电路板 (§5EV§r)
+metaitem.magic_circuit.iv.name=蕴魔电路板 (§1IV§r)
+metaitem.magic_circuit.luv.name=蕴魔电路板 (§dLuV§r)
+metaitem.magic_circuit.zpm.name=蕴魔电路板 (§cZPM§r)
+metaitem.magic_circuit.uv.name=蕴魔电路板 (§3UV§r)
+metaitem.magic_circuit.uhv.name=蕴魔电路板 (§4UHV§r)
+metaitem.magic_circuit.uev.name=蕴魔电路板 (§aUEV§r)
+metaitem.magic_circuit.uiv.name=蕴魔电路板 (§2UIV§r)
+metaitem.magic_circuit.uxv.name=蕴魔电路板 (§eUXV§r)
+metaitem.magic_circuit.opv.name=蕴魔电路板 (§9OpV§r)
+metaitem.magic_circuit.max.name=蕴魔电路板 (§c§lMAX§r)
+
+metaitem.magic_circuit.ulv.tooltip=魔力四射！
+metaitem.magic_circuit.lv.tooltip=§7魔力四射！§r
+metaitem.magic_circuit.mv.tooltip=§b魔力四射！§r
+metaitem.magic_circuit.hv.tooltip=§6魔力四射！§r
+metaitem.magic_circuit.ev.tooltip=§5魔力四射！§r
+metaitem.magic_circuit.iv.tooltip=§1魔力四射！§r
+metaitem.magic_circuit.luv.tooltip=§d魔力四射！§r
+metaitem.magic_circuit.zpm.tooltip=§c魔力四射！§r
+metaitem.magic_circuit.uv.tooltip=§3魔力四射！§r
+metaitem.magic_circuit.uhv.tooltip=§4魔力四射！§r
+metaitem.magic_circuit.uev.tooltip=§a魔力四射！§r
+metaitem.magic_circuit.uiv.tooltip=§2魔力四射！§r
+metaitem.magic_circuit.uxv.tooltip=§e魔力四射！§r
+metaitem.magic_circuit.opv.tooltip=§9魔力四射！§r
+metaitem.magic_circuit.max.tooltip=§c§l魔力四射！§r
+>>>>>>> Stashed changes
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
@@ -47,6 +177,53 @@ pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
 
+<<<<<<< Updated upstream
+=======
+#设备多方块
+pollution.machine.tank_test.name=源质离散器
+
+pollution.machine.magic_bender.name=魔导批量辊压机
+pollution.machine.magic_centrifuge.name=魔导旋风离心装置
+pollution.machine.magic_electric_blast_furnace.name=魔导烈火高炉
+pollution.machine.magic_mixer.name=魔导虚空搅拌矩阵
+pollution.machine.magic_electrolyzer.name=魔导解构分离者
+pollution.machine.magic_chemical_bath.name=魔导流水浸洗厂
+pollution.machine.magic_macerator.name=魔导泰坦级粉碎机
+pollution.machine.magic_sifter.name=魔导锱铢选矿厂
+pollution.machine.magic_cutter.name=魔导快刀剪切线
+pollution.machine.magic_wiremill.name=魔导千丝机关
+pollution.machine.magic_solidifier.name=魔导双相转换灌装仪
+pollution.machine.magic_brewery.name=魔导流质重组魂导矩阵
+pollution.machine.magic_distillery.name=魔导流质离散魂导矩阵
+pollution.machine.magic_battery.name=魔导电池
+pollution.machine.magic_alloy_blast.name=魔导合金炼炉
+
+pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
+pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
+pollution.machine.magic_electric_blast_furnace.tooltip=铁炉堡专利
+pollution.machine.magic_mixer.tooltip=又在搅什么了（恼）
+pollution.machine.magic_electrolyzer.tooltip=彩虹GT:电解是魔法
+pollution.machine.magic_chemical_bath.tooltip=你什么时候产生了我没有使用镜花水月的错觉
+pollution.machine.magic_macerator.tooltip=巨人城挑战模式真好玩，妈妈我想充10块钱点卡
+pollution.machine.magic_sifter.tooltip=奈何取之尽锱铢，用之如泥沙？
+pollution.machine.magic_cutter.tooltip=小小格温，擅长长期素食
+pollution.machine.magic_wiremill.tooltip=妹妹看它看到眼里都拉丝了
+pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
+#配方
+recipemap.magic_blast_smelter.name=魔导合金熔炼
+#魔法电池
+pollution.eke.count=魔导核心：%s 线圈等级：%s
+pollution.eke.eu1=输入/输出能量：%s / %s EU/t
+pollution.eke.eu2=存储能量：%s / %s EU %s
+pollution.eke.output1=充能功率：%s / %s EU/t
+pollution.eke.output2=放电功率：%s / %s EU/t
+pollution.eke.output3=最大功率：%s EU/t 能量平衡
+pollution.eke.outputA=还需%s天%s时%s分%s秒充满
+pollution.eke.outputB=还需%s天%s时%s分%s秒耗尽
+pollution.eke.outputC=可最大功率输出%s天%s时%s分%s秒
+pollution.eke.output4=最大功率：%s EU/t 暂停工作
+gregtech.multiblock.battery.EU=存储能量：%s / %s EU
+>>>>>>> Stashed changes
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

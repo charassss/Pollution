@@ -1,0 +1,79 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "spell_prism": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism"
+        }
+      },
+      "spell_prism_cold": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_cold"
+        }
+      },
+      "spell_prism_hot": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_hot"
+        }
+      },
+      "spell_prism_water": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_water"
+        }
+      },
+      "spell_prism_order": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_order"
+        }
+      },
+      "spell_prism_earth": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_earth"
+        }
+      },
+      "spell_prism_air": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_air"
+        }
+      },
+      "spell_prism_void": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/spell_prism_void"
+        }
+      },
+      "void_prism": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/void_prism"
+        }
+      },
+      "alloy_blast_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/alloy_blast_casing"
+        }
+      },
+      "magic_battery": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/magicblock/magic_battery"
+        }
+      }
+    }
+  }
+}

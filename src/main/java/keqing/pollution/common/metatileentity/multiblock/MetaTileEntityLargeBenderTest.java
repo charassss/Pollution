@@ -68,7 +68,11 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
+<<<<<<< Updated upstream:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityLargeBenderTest.java
         return GCYMTextures.LARGE_BENDER_OVERLAY;
+=======
+        return Textures.HPCA_OVERLAY;
+>>>>>>> Stashed changes:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityMagicElectrolyzer.java
     }
 
     @Override
