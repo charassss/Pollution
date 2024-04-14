@@ -6,10 +6,10 @@ public class RecipeManger {
     public static void init() {
         MachineRecipes.init();
         AERecipes.init();
-        InfusedManager.init();
-        CompoundAspectRecipes.init();
-        MagicGCYMRecipes.init();
         ThaumcraftRecipes.init();
+        MagicGCYMRecipes.init();
+        MagicGCYMRecipes.init();
+        CompoundAspectRecipes.init();
     }
 
 

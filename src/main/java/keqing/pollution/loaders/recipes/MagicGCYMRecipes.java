@@ -50,7 +50,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Manganese, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_air, 5)
                 .output(OrePrefix.dust, PollutionMaterials.aertitanium, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 
@@ -71,7 +71,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Lithium, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_fire, 5)
                 .output(OrePrefix.dust, PollutionMaterials.ignissteel, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 
@@ -92,7 +92,7 @@ public class MagicGCYMRecipes {
                 .fluidInputs(Mercury.getFluid(1000))
                 .input(OrePrefix.dust, PollutionMaterials.infused_water, 5)
                 .output(OrePrefix.dust, PollutionMaterials.aquasilver, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 
@@ -113,7 +113,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Carbon, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_earth, 5)
                 .output(OrePrefix.dust, PollutionMaterials.terracopper, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 
@@ -134,7 +134,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Gold, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_order, 5)
                 .output(OrePrefix.dust, PollutionMaterials.ordolead, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 
@@ -155,7 +155,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, Thorium, 1)
                 .input(OrePrefix.dust, PollutionMaterials.infused_entropy, 5)
                 .output(OrePrefix.dust, perditioaluminium, 9)
-                .duration(3000)
+                .duration(900)
                 .EUt(480)
                 .buildAndRegister();
 

@@ -90,10 +90,10 @@ public class MetaTileEntityMagicDistillery extends PORecipeMapMultiblockControll
                                 .setMinLayerLimited(1).setMaxLayerLimited(1)))
                 .where('Z', casingPredicate)
                 .where('P', states(getCasingState2()))
-                .where('A', states(getCasingState2()))
+                .where('A', states(getCasingState3()))
                 .where('C', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
-                .where('T', states(getCasingState2()))
+                .where('T', states(getCasingState4()))
                 .where('#', any())
                 .build();
     }
@@ -112,6 +112,9 @@ public class MetaTileEntityMagicDistillery extends PORecipeMapMultiblockControll
 
     private static IBlockState getCasingState2() {
         return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.TITANIUM_PIPE);
+    }
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.TITANIUM_GEARBOX);
     }
     private static IBlockState getCasingState3() {
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
