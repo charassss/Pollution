@@ -249,7 +249,7 @@ pollution.eke.outputC=可最大功率输出%s天%s时%s分%s秒
 pollution.eke.output4=最大功率：%s EU/t 暂停工作
 gregtech.multiblock.battery.EU=存储能量：%s / %s EU
 #配方
-recipemap.magic_blast_smelter,name=锻炉合金
+recipemap.magic_blast_smelter.name=锻炉合金
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱
