@@ -15,8 +15,6 @@ public class POTextures {
     public static SimpleOverlayRenderer SPELL_PRISM_ORDER;
     public static SimpleOverlayRenderer SPELL_PRISM_EARTH;
     public static SimpleOverlayRenderer VOID_PRISM;
-    public static SimpleOverlayRenderer ALLOY_BLAST;
-    public static SimpleOverlayRenderer MAGIC_BATTERY;
     public static void init() {
         SPELL_PRISM = new SimpleOverlayRenderer("magicblock/spell_prism");
         SPELL_PRISM_COLD = new SimpleOverlayRenderer("magicblock/spell_prism_cold");
@@ -27,8 +25,6 @@ public class POTextures {
         SPELL_PRISM_ORDER = new SimpleOverlayRenderer("magicblock/spell_prism_order");
         SPELL_PRISM_EARTH = new SimpleOverlayRenderer("magicblock/spell_prism_earth");
         VOID_PRISM = new SimpleOverlayRenderer("magicblock/void_prism");
-        ALLOY_BLAST = new SimpleOverlayRenderer("magicblock/alloy_blast_casing");
-        MAGIC_BATTERY = new SimpleOverlayRenderer("magicblock/magic_battery");
 
     }
     public static void register(TextureMap textureMap) {

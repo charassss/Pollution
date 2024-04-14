@@ -1,155 +1,143 @@
 package keqing.pollution.api.metatileentity;
 
-import gregtech.api.capability.impl.MultiblockRecipeLogic;
 import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
-import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
-import gregtech.api.unification.material.Material;
 import gregtech.api.util.GTTransferUtils;
-import keqing.pollution.api.capability.IVisMultiblock;
 import keqing.pollution.api.unification.PollutionMaterials;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import static keqing.pollution.api.unification.PollutionMaterials.*;
-
 public abstract class POTankMultiblockController extends MultiMapMultiblockController {
-
     int aX = 0;
     int aY = 0;
     int aZ = 0;
     public Aspect al;
-    public String name=null;
-    public int storage=0;
-    public int number=0;
+    public String name = null;
+    public int storage = 0;
+    public int number = 0;
+    FluidStack AIR_STACK;
+    FluidStack FIRE_STACK;
+    FluidStack WATER_STACK;
+    FluidStack ERATH_STACK;
+    FluidStack ORDER_STACK;
+    FluidStack ENTROPY_STACK;
+
     public POTankMultiblockController(ResourceLocation metaTileEntityId, RecipeMap<?>[] recipeMaps) {
         super(metaTileEntityId, recipeMaps);
+        this.AIR_STACK = PollutionMaterials.infused_air.getFluid(1);
+        this.FIRE_STACK = PollutionMaterials.infused_fire.getFluid(1);
+        this.WATER_STACK = PollutionMaterials.infused_water.getFluid(1);
+        this.ERATH_STACK = PollutionMaterials.infused_earth.getFluid(1);
+        this.ORDER_STACK = PollutionMaterials.infused_order.getFluid(1);
+        this.ENTROPY_STACK = PollutionMaterials.infused_entropy.getFluid(1);
     }
 
     public boolean fillTanks(FluidStack stack, boolean simulate) {
-        return GTTransferUtils.addFluidsToFluidHandler(getOutputFluidInventory(), simulate, Collections.singletonList(stack));
+        return GTTransferUtils.addFluidsToFluidHandler(this.getOutputFluidInventory(), simulate, Collections.singletonList(stack));
     }
 
-    @Override
     public void update() {
         super.update();
-        if(getWorld().getTileEntity(getPos().add(0,2,0)) instanceof TileJarFillable)
-        {
-            var s  = (TileJarFillable)getWorld().getTileEntity(getPos().add(0,2,0));
-                al=s.getEssentiaType(s.getFacing());
-                storage=s.getEssentiaAmount(s.getFacing());
-                if(al!=null)name=al.getName();
+        if (this.getWorld().getTileEntity(this.getPos().add(0, 2, 0)) instanceof TileJarFillable) {
+            TileJarFillable s = (TileJarFillable)this.getWorld().getTileEntity(this.getPos().add(0, 2, 0));
+            this.al = s.getEssentiaType(s.getFacing());
+            this.storage = s.getEssentiaAmount(s.getFacing());
+            if (this.al != null) {
+                this.name = this.al.getName();
+            }
         }
-        if(number==0)
-        {
-            number=storage;
-            clearInfused();
-            name=null;
+
+        if (this.number == 0) {
+            this.number = this.storage;
+            this.clearInfused();
+            this.name = null;
         }
-        doFillTank();
-    }
-    FluidStack AIR_STACK = infused_air.getFluid(1);
-    FluidStack FIRE_STACK = infused_fire.getFluid(1);
-    FluidStack WATER_STACK = infused_water.getFluid(1);
-    FluidStack ERATH_STACK = infused_earth.getFluid(1);
-    FluidStack ORDER_STACK = infused_order.getFluid(1);
-    FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
-    private void doFillTank() {
-        if(Objects.equals(name, "Aer") &&number>0)
-        {
-            fillTanks(AIR_STACK,false);
-            number--;
-        }
-        if(Objects.equals(name, "Terra") &&number>0)
-        {
-            fillTanks(ERATH_STACK,false);
-            number--;
-        }
-        if(Objects.equals(name, "Aqua") &&number>0)
-        {
-            fillTanks(WATER_STACK,false);
-            number--;
-        }
-        if(Objects.equals(name, "Ignis") &&number>0)
-        {
-            fillTanks(FIRE_STACK,false);
-            number--;
-        }
-        if(Objects.equals(name, "Ordo") &&number>0)
-        {
-            fillTanks(ORDER_STACK,false);
-            number--;
-        }
-        if(Objects.equals(name, "Perdition") &&number>0)
-        {
-            fillTanks(ENTROPY_STACK,false);
-            number--;
-        }
+
+        this.doFillTank();
     }
 
-    public  void clearInfused()
-    {
-        if(getWorld().getTileEntity(getPos().add(0,2,0)) instanceof TileJarFillable)
-        {
-            var s  = (TileJarFillable)getWorld().getTileEntity(getPos().add(0,2,0));
-            s.amount=0;
+    private void doFillTank() {
+        if (Objects.equals(this.name, "Aer") && this.number > 0) {
+            this.fillTanks(this.AIR_STACK, false);
+            --this.number;
         }
+
+        if (Objects.equals(this.name, "Terra") && this.number > 0) {
+            this.fillTanks(this.ERATH_STACK, false);
+            --this.number;
+        }
+
+        if (Objects.equals(this.name, "Aqua") && this.number > 0) {
+            this.fillTanks(this.WATER_STACK, false);
+            --this.number;
+        }
+
+        if (Objects.equals(this.name, "Ignis") && this.number > 0) {
+            this.fillTanks(this.FIRE_STACK, false);
+            --this.number;
+        }
+
+        if (Objects.equals(this.name, "Ordo") && this.number > 0) {
+            this.fillTanks(this.ORDER_STACK, false);
+            --this.number;
+        }
+
+        if (Objects.equals(this.name, "Perdition") && this.number > 0) {
+            this.fillTanks(this.ENTROPY_STACK, false);
+            --this.number;
+        }
+
     }
-    @Override
+
+    public void clearInfused() {
+        if (this.getWorld().getTileEntity(this.getPos().add(0, 2, 0)) instanceof TileJarFillable) {
+            TileJarFillable s = (TileJarFillable)this.getWorld().getTileEntity(this.getPos().add(0, 2, 0));
+            s.amount = 0;
+        }
+
+    }
+
     protected void formStructure(PatternMatchContext context) {
         super.formStructure(context);
-        //aX=this.getAbilities(POMultiblockAbility.TANK_HATCH).get(0).getX();
-        //aY=this.getAbilities(POMultiblockAbility.TANK_HATCH).get(0).getY();
-        //aZ=this.getAbilities(POMultiblockAbility.TANK_HATCH).get(0).getZ();
-
     }
-    @Override
+
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed())
-        textList.add(new TextComponentTranslation("Infused: %s  Amount: %s",name,storage));
-        textList.add(new TextComponentTranslation("Infused: %s  Amount: %s",name,number));
+        if (this.isStructureFormed()) {
+            textList.add(new TextComponentTranslation("Infused: %s  Amount: %s", new Object[]{this.name, this.storage}));
+        }
+
+        textList.add(new TextComponentTranslation("Infused: %s  Amount: %s", new Object[]{this.name, this.number}));
     }
 
-    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         data.setInteger("number", this.number);
         return super.writeToNBT(data);
     }
 
-    @Override
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         this.number = data.getInteger("number");
     }
 
-    @Override
     public void writeInitialSyncData(PacketBuffer buf) {
         super.writeInitialSyncData(buf);
         buf.writeInt(this.number);
     }
 
-    @Override
     public void receiveInitialSyncData(PacketBuffer buf) {
         super.receiveInitialSyncData(buf);
         this.number = buf.readInt();
     }
-
 }

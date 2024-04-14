@@ -1,16 +1,54 @@
 package keqing.pollution.common.block;
 
+import gregtech.common.blocks.MetaBlocks;
+import keqing.pollution.common.block.PollutionMetaBlock.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class PollutionMetaBlocks {
-
+    public static POMagicBlock MAGIC_BLOCK;
+    public static POTurbine TURBINE;
+    public static POMBeamCore BEAM_CORE;
+    public static POCoilBlock WIRE_COIL;
+    public static POGlass GLASS;
     private PollutionMetaBlocks() {}
+    public static void init() {
+        MAGIC_BLOCK = new POMagicBlock();
+        MAGIC_BLOCK.setRegistryName("magic_block");
 
-    public static void init() {}
+        TURBINE = new POTurbine();
+        TURBINE.setRegistryName("turbine");
+
+
+        BEAM_CORE = new POMBeamCore();
+        BEAM_CORE.setRegistryName("beam_core");
+
+        WIRE_COIL = new POCoilBlock();
+        WIRE_COIL.setRegistryName("wire_coil");
+
+        GLASS = new POGlass();
+        GLASS.setRegistryName("glass");
+    }
     @SideOnly(Side.CLIENT)
-    public static void registerItemModels() {}
+    public static void registerItemModels() {
+        registerItemModel(MAGIC_BLOCK);
+        registerItemModel(TURBINE);
+        registerItemModel(BEAM_CORE);
+        registerItemModel(WIRE_COIL);
+        registerItemModel(GLASS);
+    }
     @SideOnly(Side.CLIENT)
-    private static void registerItemModel(Block block) {}
+    private static void registerItemModel(Block block) {
+        for (IBlockState state : block.getBlockState().getValidStates()) {
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block),
+                    block.getMetaFromState(state),
+                    new ModelResourceLocation(block.getRegistryName(),
+                            MetaBlocks.statePropertiesToString(state.getProperties())));
+        }
+    }
 }

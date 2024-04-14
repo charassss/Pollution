@@ -6,8 +6,6 @@ gregtech.material.infused_water=流
 gregtech.material.infused_fire=焱
 gregtech.material.infused_air=气
 gregtech.material.thaumium=神秘
-<<<<<<< Updated upstream
-=======
 gregtech.material.syrmorite=赛摩铜
 gregtech.material.octine=炽炎铁
 gregtech.material.scabyst=痂壳晶
@@ -62,20 +60,11 @@ tile.magic_block.spell_prism_air.name=蕴魔气棱镜折射外壳
 tile.magic_block.spell_prism_earth.name=蕴魔地棱镜折射外壳
 tile.magic_block.spell_prism_void.name=蕴魔虚空棱镜折射外壳
 
-tile.magic_block.alloy_blast_casing.name=炼炉魂导束能器
-tile.magic_block.magic_battery.name=源质化魂导束能器
-
 tile.beam_core.beam_core_0.name=魔导强磁阵法核心
 tile.beam_core.beam_core_1.name=魔导内爆阵法核心
 tile.beam_core.beam_core_2.name=魔导导压阵法核心
 tile.beam_core.beam_core_3.name=魔导束流阵法核心
 tile.beam_core.beam_core_4.name=魔导聚能阵法核心
-
-tile.beam_core.filter_1.name=魔导一级聚能控制矩阵核心
-tile.beam_core.filter_2.name=魔导二级聚能控制矩阵核心
-tile.beam_core.filter_3.name=魔导三级聚能控制矩阵核心
-tile.beam_core.filter_4.name=魔导四级聚能控制矩阵核心
-tile.beam_core.filter_5.name=魔导五级聚能控制矩阵核心
 
 tile.turbine.bronze_gearbox.name=炼金青铜机关盒
 tile.turbine.steel_gearbox.name=炼金玄钢机关盒
@@ -135,7 +124,6 @@ metaitem.magic_circuit.uiv.tooltip=§2魔力四射！§r
 metaitem.magic_circuit.uxv.tooltip=§e魔力四射！§r
 metaitem.magic_circuit.opv.tooltip=§9魔力四射！§r
 metaitem.magic_circuit.max.tooltip=§c§l魔力四射！§r
->>>>>>> Stashed changes
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
@@ -154,6 +142,39 @@ pollution.machine.pollution_muffler_hatch.iv.name=简易消声仓（§1IV§r）
 pollution.machine.pollution_muffler_hatch.luv.name=简易消声仓（§dLuV§r）
 pollution.machine.pollution_muffler_hatch.zpm.name=简易消声仓（§cZPM§r）
 pollution.machine.pollution_muffler_hatch.uv.name=简易消声仓（§3UV§r）
+
+pollution.machine.vis_hatch.lv.name=灵气仓（§7LV§r）
+pollution.machine.vis_hatch.mv.name=灵气仓（§bMV§r）
+pollution.machine.vis_hatch.hv.name=灵气仓（§6HV§r）
+pollution.machine.vis_hatch.ev.name=灵气仓（§5EV§r）
+pollution.machine.vis_hatch.iv.name=灵气仓（§1IV§r）
+pollution.machine.vis_hatch.luv.name=灵气仓（§dLuV§r）
+pollution.machine.vis_hatch.zpm.name=灵气仓（§cZPM§r）
+pollution.machine.vis_hatch.uv.name=灵气仓（§3UV§r）
+pollution.machine.vis_hatch.uhv.name=灵气仓（§4UHV§r）
+pollution.machine.vis_hatch.uev.name=灵气仓（§aUEV§r）
+pollution.machine.vis_hatch.uiv.name=灵气仓（§2UIV§r）
+pollution.machine.vis_hatch.uxv.name=灵气仓（§eUXV§r）
+pollution.machine.vis_hatch.opv.name=灵气仓（§9OpV§r）
+pollution.machine.vis_hatch.max.name=灵气仓（§c§lMAX§r）
+
+pollution.machine.vis_hatch.lv.tooltip=天地精华
+pollution.machine.vis_hatch.mv.tooltip=天地精华
+pollution.machine.vis_hatch.hv.tooltip=天地精华
+pollution.machine.vis_hatch.ev.tooltip=天地精华
+pollution.machine.vis_hatch.iv.tooltip=天地精华
+pollution.machine.vis_hatch.luv.tooltip=天地精华
+pollution.machine.vis_hatch.zpm.tooltip=天地精华
+pollution.machine.vis_hatch.uv.tooltip=天地精华
+pollution.machine.vis_hatch.uhv.tooltip=天地精华
+pollution.machine.vis_hatch.uev.tooltip=天地精华
+pollution.machine.vis_hatch.uiv.tooltip=天地精华
+pollution.machine.vis_hatch.uxv.tooltip=天地精华
+pollution.machine.vis_hatch.opv.tooltip=天地精华
+pollution.machine.vis_hatch.max.tooltip=天地精华
+
+pollution.machine.tank_hatch.lv.name=源质仓（§7LV§r）
+pollution.machine.tank_hatch.lv.tooltip=灵魂汲取
 
 pollution.machine.vis_provider.lv.name=灵气再生机（§7LV§r）
 pollution.machine.vis_provider.mv.name=灵气再生机（§bMV§r）
@@ -177,8 +198,6 @@ pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
 
-<<<<<<< Updated upstream
-=======
 #设备多方块
 pollution.machine.tank_test.name=源质离散器
 
@@ -193,10 +212,7 @@ pollution.machine.magic_sifter.name=魔导锱铢选矿厂
 pollution.machine.magic_cutter.name=魔导快刀剪切线
 pollution.machine.magic_wiremill.name=魔导千丝机关
 pollution.machine.magic_solidifier.name=魔导双相转换灌装仪
-pollution.machine.magic_brewery.name=魔导流质重组魂导矩阵
-pollution.machine.magic_distillery.name=魔导流质离散魂导矩阵
 pollution.machine.magic_battery.name=魔导电池
-pollution.machine.magic_alloy_blast.name=魔导合金炼炉
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
@@ -209,8 +225,6 @@ pollution.machine.magic_sifter.tooltip=奈何取之尽锱铢，用之如泥沙�
 pollution.machine.magic_cutter.tooltip=小小格温，擅长长期素食
 pollution.machine.magic_wiremill.tooltip=妹妹看它看到眼里都拉丝了
 pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
-#配方
-recipemap.magic_blast_smelter.name=魔导合金熔炼
 #魔法电池
 pollution.eke.count=魔导核心：%s 线圈等级：%s
 pollution.eke.eu1=输入/输出能量：%s / %s EU/t
@@ -223,7 +237,6 @@ pollution.eke.outputB=还需%s天%s时%s分%s秒耗尽
 pollution.eke.outputC=可最大功率输出%s天%s时%s分%s秒
 pollution.eke.output4=最大功率：%s EU/t 暂停工作
 gregtech.multiblock.battery.EU=存储能量：%s / %s EU
->>>>>>> Stashed changes
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

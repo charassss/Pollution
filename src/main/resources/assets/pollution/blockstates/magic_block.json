@@ -61,18 +61,6 @@
         "textures": {
           "all": "gregtech:blocks/magicblock/void_prism"
         }
-      },
-      "alloy_blast_casing": {
-        "model": "minecraft:cube_all",
-        "textures": {
-          "all": "gregtech:blocks/magicblock/alloy_blast_casing"
-        }
-      },
-      "magic_battery": {
-        "model": "minecraft:cube_all",
-        "textures": {
-          "all": "gregtech:blocks/magicblock/magic_battery"
-        }
       }
     }
   }

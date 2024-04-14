@@ -4,7 +4,6 @@ import gregtech.api.unification.material.Material;
 import keqing.pollution.api.unification.Elements;
 import keqing.pollution.api.unification.PollutionMaterials;
 
-import static gregtech.api.unification.material.info.MaterialFlags.*;
 import static gregtech.api.util.GTUtility.gregtechId;
 
 public class PollutionElementMaterials {
@@ -20,7 +19,6 @@ public class PollutionElementMaterials {
         PollutionMaterials.infused_air= new Material.Builder(getMaterialsId(), gregtechId("infused_air"))
                 .color(0xFEFE7D)
                 .ore().gem().fluid()
-                .flags(NO_WORKING)
                 .element(Elements.Ae)
                 .build();
         PollutionMaterials.infused_fire= new Material.Builder(getMaterialsId(), gregtechId("infused_fire"))
@@ -48,8 +46,11 @@ public class PollutionElementMaterials {
                 .ore().gem().fluid()
                 .element(Elements.Ord)
                 .build();
-
-        //这里真的还需要注册其他要素吗
+        PollutionMaterials.mana= new Material.Builder(getMaterialsId(), gregtechId("mana"))
+                .color(0x87CEEB)
+                .fluid()
+                .element(Elements.Ma)
+                .build();
 
     }
 }
