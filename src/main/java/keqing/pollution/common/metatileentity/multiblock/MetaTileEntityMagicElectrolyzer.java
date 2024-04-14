@@ -8,6 +8,7 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -22,16 +23,16 @@ import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockController {
+public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockController {
 
-    public MetaTileEntityLargeBenderTest(ResourceLocation metaTileEntityId) {
+    public MetaTileEntityMagicElectrolyzer(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BENDER_RECIPES, RecipeMaps.COMPRESSOR_RECIPES,
                 RecipeMaps.FORMING_PRESS_RECIPES, RecipeMaps.FORGE_HAMMER_RECIPES });
     }
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
-        return new MetaTileEntityLargeBenderTest(this.metaTileEntityId);
+        return new MetaTileEntityMagicElectrolyzer(this.metaTileEntityId);
     }
 
     @Override
@@ -68,11 +69,7 @@ public class MetaTileEntityLargeBenderTest extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-<<<<<<< Updated upstream:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityLargeBenderTest.java
-        return GCYMTextures.LARGE_BENDER_OVERLAY;
-=======
         return Textures.HPCA_OVERLAY;
->>>>>>> Stashed changes:src/main/java/keqing/pollution/common/metatileentity/multiblock/MetaTileEntityMagicElectrolyzer.java
     }
 
     @Override

@@ -50,16 +50,16 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
                 new WrappedIntTired(COIL_LEVEL_8, 8));
 
 
-        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_0),
-                new WrappedIntTired(BEAM_CORE_0,1));
-        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_1),
-                new WrappedIntTired(BEAM_CORE_1,2));
-        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_2),
-                new WrappedIntTired(BEAM_CORE_2,3));
-        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_3),
-                new WrappedIntTired(BEAM_CORE_3,4));
-        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(BEAM_CORE_4),
-                new WrappedIntTired(BEAM_CORE_4,5));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_1),
+                new WrappedIntTired(FILTER_1,1));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_2),
+                new WrappedIntTired(FILTER_2,2));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_3),
+                new WrappedIntTired(FILTER_3,3));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_4),
+                new WrappedIntTired(FILTER_4,4));
+        TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_5),
+                new WrappedIntTired(FILTER_5,5));
 
 
     }
