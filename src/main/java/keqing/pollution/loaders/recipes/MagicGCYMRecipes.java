@@ -6,16 +6,12 @@ import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
-import gregtech.common.blocks.BlockWireCoil;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.unification.PollutionMaterials;
-import keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.*;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItem1;
 import keqing.pollution.common.items.PollutionMetaItems;
@@ -682,6 +678,128 @@ public class MagicGCYMRecipes {
                 new ItemStack(MetaItems.FIELD_GENERATOR_IV.getMetaItem(),1, 206),
                 new ItemStack(ItemsTC.visResonator),
                 new ItemStack(ItemsTC.morphicResonator)));
+        //管道
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-steel"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.STEEL_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateSteel",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-stainless"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.STEEL_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateStainlessSteel",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-polytetrafluoroethylene"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.POLYTETRAFLUOROETHYLENE_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "platePolytetrafluoroethylene",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-titanium"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.TITANIUM_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateTitanium",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.TITANIUM_PIPE)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-tungstensteel"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.TUNGSTENSTEEL_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateTungstenSteel",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.TUNGSTENSTEEL_PIPE)));
+        //齿轮
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "gearbox_steel"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.STEEL_GEARBOX),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateSteel",
+                'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "gearbox_bronze"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.BRONZE_GEARBOX),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateBronze",
+                'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.BRONZE_GEARBOX)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "gearbox_stainless"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateStainlessSteel",
+                'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "gearbox_titanium"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.TITANIUM_GEARBOX),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateTitanium",
+                'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.TITANIUM_GEARBOX)));
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "gearbox_tungstensteel"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.TUNGSTENSTEEL_GEARBOX),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateTungstenSteel",
+                'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.TUNGSTENSTEEL_GEARBOX)));
     }
 
 
