@@ -3,11 +3,11 @@ package keqing.pollution;
 import keqing.pollution.api.utils.PollutionLog;
 import keqing.pollution.client.ClientProxy;
 import keqing.pollution.common.CommonProxy;
+import keqing.pollution.common.block.CommonBlocks.PollutionBlocksInit;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
 import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
-import keqing.pollution.dimension.worldgen.PODimensionManager;
-import keqing.pollution.dimension.worldgen.PODimensionType;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -46,9 +46,8 @@ public class Pollution  {
         PollutionMetaTileEntities.initialization();
         PollutionMetaBlocks.init();
         PollutionMetaItems.initialization();
-        PODimensionType.init();
-        PODimensionManager.init();
         proxy.preLoad();
+        MinecraftForge.EVENT_BUS.register(new PollutionBlocksInit());
     }
 
 }
