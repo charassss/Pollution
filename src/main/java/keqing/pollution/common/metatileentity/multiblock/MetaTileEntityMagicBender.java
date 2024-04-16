@@ -27,6 +27,7 @@ import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
+import static keqing.pollution.api.unification.PollutionMaterials.infused_metal;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_order;
 
 public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
@@ -87,7 +88,7 @@ public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
     @Override
     public Material getMaterial()
     {
-        return infused_order;
+        return infused_metal;
     }
 
 
