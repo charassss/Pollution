@@ -11,12 +11,14 @@ import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityTankTest;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityFluxMuffler;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityTankHatch;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityVisHatch;
+import keqing.pollution.common.metatileentity.single.MetaTileEntitySolarPlate;
 import keqing.pollution.common.metatileentity.single.MetaTileEntityVisClear;
 import keqing.pollution.common.metatileentity.single.MetaTileEntityVisGenerator;
 import keqing.pollution.common.metatileentity.single.MetaTileEntityVisProvider;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
+import static keqing.pollution.client.textures.POTextures.*;
 
 public class PollutionMetaTileEntities {
     public static ResourceLocation gtqtcoreId(String id) {
@@ -49,21 +51,23 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicAlloyBlastSmelter MAGIC_ALLOY_BLAST;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
+
+    public static MetaTileEntitySolarPlate[] SOLAR_PLATE = new MetaTileEntitySolarPlate[18];
     public static void initialization() {
 
         for (int i = 0; i <= 4; i++) {
-            String tierName = GTValues.VN[i+1].toLowerCase();
-            AURA_GENERATORS[i] = registerMetaTileEntity(15900+i-1 ,new MetaTileEntityVisGenerator(gtqtcoreId("vis." + tierName), i+1));
+            String tierName = GTValues.VN[i + 1].toLowerCase();
+            AURA_GENERATORS[i] = registerMetaTileEntity(15900 + i - 1, new MetaTileEntityVisGenerator(gtqtcoreId("vis." + tierName), i + 1));
         }
 
         for (int i = 0; i <= 7; i++) {
-            String tierName = GTValues.VN[i+1].toLowerCase();
-            VIS_PROVIDERS[i] = registerMetaTileEntity(15920+i-1 ,new MetaTileEntityVisProvider(gtqtcoreId("vis_provider." + tierName), i+1));
+            String tierName = GTValues.VN[i + 1].toLowerCase();
+            VIS_PROVIDERS[i] = registerMetaTileEntity(15920 + i - 1, new MetaTileEntityVisProvider(gtqtcoreId("vis_provider." + tierName), i + 1));
         }
 
         for (int i = 0; i <= 2; i++) {
-            String tierName = GTValues.VN[i+1].toLowerCase();
-            VIS_CLEAR[i] = registerMetaTileEntity(15930+i-1 ,new MetaTileEntityVisClear(gtqtcoreId("flux_clear." + tierName), i+1));
+            String tierName = GTValues.VN[i + 1].toLowerCase();
+            VIS_CLEAR[i] = registerMetaTileEntity(15930 + i - 1, new MetaTileEntityVisClear(gtqtcoreId("flux_clear." + tierName), i + 1));
         }
 
         FLUX_CLEARS[1] = registerMetaTileEntity(15933, new MetaTileEntityFluxClear(gtqtcoreId("flux_clear.ev"), GTValues.EV));
@@ -88,7 +92,7 @@ public class PollutionMetaTileEntities {
 
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
-            FLUX_MUFFLERS[i] = registerMetaTileEntity(16000 + i-1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
+            FLUX_MUFFLERS[i] = registerMetaTileEntity(16000 + i - 1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
         }
 
         for (int i = 0; i < VIS_HATCH.length; i++) {
@@ -101,6 +105,17 @@ public class PollutionMetaTileEntities {
             int tier = GTValues.LV + i;
             TANK_HATCH[i] = registerMetaTileEntity(16040 + i, new MetaTileEntityTankHatch(
                     gtqtcoreId(String.format("tank_hatch.%s", GTValues.VN[tier])), tier));
+        }
+
+        int kind;
+        for (kind = 1; kind <= 6; kind++) {
+            SOLAR_PLATE[kind * 3 - 3] = registerMetaTileEntity(16060 + kind * 3 - 3, new MetaTileEntitySolarPlate(
+                    gtqtcoreId(String.format("solar_plate_%s.%s", 1, kind)), 1, kind, SOLAR_PLATE_I));
+            SOLAR_PLATE[kind * 3 - 2] = registerMetaTileEntity(16060 + kind * 3 - 2, new MetaTileEntitySolarPlate(
+                    gtqtcoreId(String.format("solar_plate_%s.%s", 2, kind)), 2, kind, SOLAR_PLATE_II));
+            SOLAR_PLATE[kind * 3 - 1] = registerMetaTileEntity(16060 + kind * 3 - 1, new MetaTileEntitySolarPlate(
+                    gtqtcoreId(String.format("solar_plate_%s.%s", 3, kind)), 3, kind, SOLAR_PLATE_III));
+
         }
     }
 }

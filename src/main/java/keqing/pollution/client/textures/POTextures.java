@@ -1,11 +1,23 @@
 package keqing.pollution.client.textures;
 
 import codechicken.lib.texture.TextureUtils;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
 
 public class POTextures {
+    public static OrientedOverlayRenderer SOLAR_PLATE_I = new OrientedOverlayRenderer("machines/solar_i");
+    public static OrientedOverlayRenderer SOLAR_PLATE_II = new OrientedOverlayRenderer("machines/solar_ii");
+    public static OrientedOverlayRenderer SOLAR_PLATE_III = new OrientedOverlayRenderer("machines/solar_iii");
+
+    public static SimpleOverlayRenderer AIR;
+    public static SimpleOverlayRenderer DARK;
+    public static SimpleOverlayRenderer EARTH;
+    public static SimpleOverlayRenderer FIRE;
+    public static SimpleOverlayRenderer ORDER;
+    public static SimpleOverlayRenderer WATER;
+
     public static SimpleOverlayRenderer SPELL_PRISM;
     public static SimpleOverlayRenderer SPELL_PRISM_COLD;
     public static SimpleOverlayRenderer SPELL_PRISM_HOT;
@@ -17,6 +29,14 @@ public class POTextures {
     public static SimpleOverlayRenderer VOID_PRISM;
     public static SimpleOverlayRenderer MAGIC_BATTERY;
     public static void init() {
+        AIR = new SimpleOverlayRenderer("machines/solars/airside");
+        DARK = new SimpleOverlayRenderer("machines/solars/darkside");
+        EARTH = new SimpleOverlayRenderer("machines/solars/earthside");
+        FIRE = new SimpleOverlayRenderer("machines/solars/fireside");
+        ORDER = new SimpleOverlayRenderer("machines/solars/orderside");
+        WATER = new SimpleOverlayRenderer("machines/solars/waterside");
+
+
         SPELL_PRISM = new SimpleOverlayRenderer("magicblock/spell_prism");
         SPELL_PRISM_COLD = new SimpleOverlayRenderer("magicblock/spell_prism_cold");
         SPELL_PRISM_HOT = new SimpleOverlayRenderer("magicblock/spell_prism_hot");
