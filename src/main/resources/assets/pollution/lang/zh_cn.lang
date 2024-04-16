@@ -205,7 +205,30 @@ pollution.flux_clear.flux=污染剩余:%s Vis
 pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
+#注魔太阳能
+pollution.machine.solar_plate_1.1.name=§e风注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.1.name=§e风注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.1.name=§e风注魔太阳能(3级)§r
 
+pollution.machine.solar_plate_1.2.name=§7混沌注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.2.name=§7混沌注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.2.name=§7混沌注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.3.name=§2地注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.3.name=§2地注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.3.name=§2地注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.4.name=§c火注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.4.name=§c火注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.4.name=§c火注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.5.name=§d秩序注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.5.name=§d秩序注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.5.name=§d秩序注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.6.name=§1水注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.6.name=§1水注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.6.name=§1水注魔太阳能(3级)§r
 #设备多方块
 pollution.machine.tank_test.name=源质离散器
 

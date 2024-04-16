@@ -1,8 +1,13 @@
 package keqing.pollution.common.items;
 
+import gregtech.api.items.armor.ArmorMetaItem;
 import gregtech.api.items.metaitem.MetaItem;
+import keqing.pollution.common.items.armor.MetaArmor;
 
 public class PollutionMetaItems {
+    public static MetaItem<?>.MetaValueItem NANO_GOGGLES;
+    public static MetaItem<?>.MetaValueItem WING_QUANTUM;
+    public static MetaItem<?>.MetaValueItem WING_NANO;
     public static MetaItem<?>.MetaValueItem TEST;
     public static MetaItem<?>.MetaValueItem BLANKCORE;
     public static MetaItem<?>.MetaValueItem HOTCORE;
@@ -28,6 +33,7 @@ public class PollutionMetaItems {
     public static void initialization()
     {
         PollutionMetaItem1 item1 = new PollutionMetaItem1();
+        MetaArmor armor = new MetaArmor();armor.setRegistryName("pollution_armor");
     }
     public static void initSubItems()
     {
