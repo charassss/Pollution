@@ -7,6 +7,29 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.MetaBlocks;
+
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import keqing.pollution.api.metatileentity.POMultiblockAbility;
+import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
@@ -68,7 +91,7 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.ELECTROLYZER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

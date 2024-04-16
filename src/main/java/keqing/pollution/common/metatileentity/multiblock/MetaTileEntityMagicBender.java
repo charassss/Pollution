@@ -10,6 +10,7 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.common.blocks.BlockGlassCasing;
 import gregtech.common.blocks.BlockTurbineCasing;
@@ -19,7 +20,9 @@ import gregicality.multiblocks.api.render.GCYMTextures;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
+import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
 import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -96,11 +99,11 @@ public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
     }
 
     private static IBlockState getCasingState2() {
-        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX);
     }
 
     private static IBlockState getCasingState3() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.LAMINATED_GLASS);
     }
 
     //覆盖层材质 就是给IO渲染的材质
@@ -112,7 +115,7 @@ public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
     //控制器的图形 比如传统的外观 或者聚变电脑的外观等等
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_BENDER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

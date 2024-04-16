@@ -73,7 +73,7 @@ public class MetaTileEntityMagicSolidifier extends PORecipeMapMultiblockControll
     }
 
     private static IBlockState getCasingState4() {
-        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.AAMINATED_GLASS);
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.DAMINATED_GLASS);
     }
 
     private static IBlockState getCasingState5() {
@@ -87,7 +87,7 @@ public class MetaTileEntityMagicSolidifier extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.FLUID_SOLIDIFIER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

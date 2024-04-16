@@ -48,8 +48,8 @@ public class MetaTileEntityMagicCutter extends PORecipeMapMultiblockController{
                 .where('X', states(getCasingState()).setMinGlobalLimited(65).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
                 .where('D', states(getCasingState3()))
+                .where('A', states(getCasingState4()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
-                .where('A', air())
                 .where('#', any())
                 .build();
     }
@@ -67,6 +67,9 @@ public class MetaTileEntityMagicCutter extends PORecipeMapMultiblockController{
     private static IBlockState getCasingState3() {
         return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.AAMINATED_GLASS);
     }
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.POLYTETRAFLUOROETHYLENE_PIPE);
+    }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
@@ -75,7 +78,7 @@ public class MetaTileEntityMagicCutter extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CUTTER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

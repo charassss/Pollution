@@ -37,6 +37,36 @@
         "textures": {
           "all": "gregtech:blocks/beamcore/beam_core_4"
         }
+      },
+      "filter_1": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/filter_1"
+        }
+      },
+      "filter_2": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/filter_2"
+        }
+      },
+      "filter_3": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/filter_3"
+        }
+      },
+      "filter_4": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/filter_4"
+        }
+      },
+      "filter_5": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/beamcore/filter_5"
+        }
       }
     }
   }

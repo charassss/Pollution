@@ -71,7 +71,7 @@ public class MetaTileEntityMagicMixer extends PORecipeMapMultiblockController{
     }
 
     private static IBlockState getCasingState4() {
-        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.AAMINATED_GLASS);
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.DAMINATED_GLASS);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class MetaTileEntityMagicMixer extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.MIXER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override
