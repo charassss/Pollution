@@ -8,14 +8,19 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.input.KeyBind;
 
 import gregtech.common.items.armor.Jetpack;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 
 public class NanosuitWings extends Jetpack {
@@ -46,6 +51,12 @@ public class NanosuitWings extends Jetpack {
             }
         }
 
+
+        if (!world.isRemote && canUseEnergy(item,energyPerUse*2)) {
+            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 1, true, false));
+            drainEnergy(item,energyPerUse*2);
+        }
+
         performFlying(player, hoverMode, item);
 
         if (toggleTimer > 0) toggleTimer--;
@@ -55,6 +66,12 @@ public class NanosuitWings extends Jetpack {
         player.inventoryContainer.detectAndSendChanges();
     }
 
+
+    @Override
+    public void addInfo(ItemStack itemStack, List<String> lines) {
+        super.addInfo(itemStack, lines);
+        lines.add(I18n.format("§d急行侠I：激活后获得急速增幅§r"));
+    }
     @Override
     public double getSprintEnergyModifier() {
         return 2.5D;

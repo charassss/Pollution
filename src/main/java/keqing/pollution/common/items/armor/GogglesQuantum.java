@@ -1,46 +1,31 @@
 package keqing.pollution.common.items.armor;
 
-import baubles.api.BaubleType;
-import baubles.api.IBauble;
-import baubles.api.render.IRenderBauble;
 import gregtech.api.capability.GregtechCapabilities;
 import gregtech.api.capability.IElectricItem;
 import gregtech.api.items.armor.ArmorLogicSuite;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.input.KeyBind;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.items.IGoggles;
 import thaumcraft.api.items.IRevealer;
 import thaumcraft.api.items.IVisDiscountGear;
-import thaumcraft.api.items.ItemsTC;
-import thaumcraft.client.lib.UtilsFX;
-import thaumcraft.common.items.IThaumcraftItems;
 
 import java.util.List;
 
-public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, IRevealer, IGoggles {
+public class GogglesQuantum extends ArmorLogicSuite  implements IVisDiscountGear, IRevealer, IGoggles {
 
-    public GogglesNano(int energyPerUse, long capacity, int voltageTier, EntityEquipmentSlot slot) {
+    public GogglesQuantum(int energyPerUse, long capacity, int voltageTier, EntityEquipmentSlot slot) {
         super(energyPerUse, capacity, voltageTier, slot);
     }
 
@@ -51,6 +36,8 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
             return;
         }
 
+
+
         FoodStats foodStats = player.getFoodStats();
         if(foodStats.needFood())
         {
@@ -59,7 +46,6 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
                 foodStats.addStats(1, 0.2f);
             }
         }
-
 
         NBTTagCompound nbtData = GTUtility.getOrCreateNbtCompound(itemStack);
         byte toggleTimer = nbtData.getByte("toggleTimer");
@@ -96,7 +82,10 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
                 player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 999999, 0, true, false));
                 item.discharge((energyPerUse), this.tier, true, false, false);
             }
-
+            if (!nightvision && !world.isRemote && world.isDaytime())
+            {
+                item.charge(energyPerUse*2L, this.tier, true, false);
+            }
             if (toggleTimer > 0) --toggleTimer;
 
             nbtData.setByte("toggleTimer", toggleTimer);
@@ -115,7 +104,7 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return "gregtech:textures/armor/nano_goggles.png";
+        return "gregtech:textures/armor/quantum_goggles.png";
     }
 
     @Override
@@ -125,6 +114,7 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
             NBTTagCompound nbtData = GTUtility.getOrCreateNbtCompound(itemStack);
             lines.add(I18n.format("§2饕餮：消耗电力自动恢复饱食度§r"));
             lines.add(I18n.format("§b水生：开启后获得水下速掘§r"));
+            lines.add(I18n.format("§1太阳能：不工作时在阳光下自然恢复电力§r"));
             lines.add(I18n.format("§a魔力减免：5§r"));
             boolean nv = nbtData.getBoolean("Nightvision");
             if (nv) {
@@ -146,8 +136,4 @@ public class GogglesNano extends ArmorLogicSuite  implements  IVisDiscountGear, 
     public boolean showIngamePopups(ItemStack itemstack, EntityLivingBase player) {
         return true;
     }
-
-
-
-
 }

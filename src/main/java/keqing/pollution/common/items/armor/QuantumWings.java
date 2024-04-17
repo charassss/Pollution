@@ -12,9 +12,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -53,6 +55,14 @@ public class QuantumWings extends Jetpack {
             }
         }
 
+        if (!world.isRemote && canUseEnergy(item,energyPerUse)) {
+            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 10, 1, true, false));
+            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 1, true, false));
+            player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 10, 1, true, false));
+            drainEnergy(item,energyPerUse);
+        }
+
+
         performFlying(player, hoverMode, item);
 
         if (toggleTimer > 0) toggleTimer--;
@@ -62,6 +72,12 @@ public class QuantumWings extends Jetpack {
         player.inventoryContainer.detectAndSendChanges();
     }
 
+    @Override
+    public void addInfo(ItemStack itemStack, List<String> lines) {
+        super.addInfo(itemStack, lines);
+        lines.add(I18n.format("§d急行侠II：激活后获得跳跃提升 急速增幅§r"));
+        lines.add(I18n.format("§a急死了：激活后获得急迫增幅§r"));
+    }
     @Override
     public double getSprintEnergyModifier() {
         return 5D;
