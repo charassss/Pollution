@@ -1,5 +1,6 @@
 package keqing.pollution.common.metatileentity.multiblock;
 
+import gregicality.multiblocks.api.recipes.GCYMRecipeMaps;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -45,7 +46,7 @@ public class MetaTileEntityMagicAlloyBlastSmelter extends PORecipeMapMultiblockC
     int CoilLevel;
     int Temp;
     public MetaTileEntityMagicAlloyBlastSmelter(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] { PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES });
+        super(metaTileEntityId, new RecipeMap[] { PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES, GCYMRecipeMaps.ALLOY_BLAST_RECIPES });
     }
 
     @Override

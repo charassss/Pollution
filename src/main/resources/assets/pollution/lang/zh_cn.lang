@@ -247,6 +247,7 @@ pollution.machine.magic_battery.name=魔导电池
 pollution.machine.magic_distillery.name=魔导流质扩散魂导矩阵
 pollution.machine.magic_brewery.name=魔导流质嬗变魂导矩阵
 pollution.machine.magic_alloy_blast.name=魔导炼炉魂导矩阵
+pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
