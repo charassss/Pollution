@@ -154,14 +154,16 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         aX = this.getPos().getX();
         aY = this.getPos().getY();
         aZ = this.getPos().getZ();
-        if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier*0.1), true) > 0)
+        for(int time=1;time<=20;time++)if(time==20)
+        if (AuraHelper.drainVis(getWorld(), getPos(),  (float) (tier*tier), true) > 0)
         {
             if(visStorage<visStorageMax)
             {
-                AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.01), false);
-                AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*0.0001), true);
+                AuraHelper.drainVis(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*tier*0.1), false);
+                AuraHelper.polluteAura(getWorld(), new BlockPos(aX, aY, aZ),  (float) (tier*0.001), true);
                 visStorage += tier * tier;
             }
+            time=1;
         }
         if(isActive())if(visStorage>10)visStorage-=tier;
     }
