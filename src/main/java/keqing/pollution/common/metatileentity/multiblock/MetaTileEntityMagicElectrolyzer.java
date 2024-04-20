@@ -20,6 +20,7 @@ import gregicality.multiblocks.common.block.GCYMMetaBlocks;
 import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
@@ -63,12 +64,14 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
+                .aisle("XXXXX", "XBDBX", "XCCCX")
+                .aisle("XXXXX", "XBDBX", "XCCCX")
                 .aisle("XXXXX", "XXSXX", "XXFXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
+                .where('B', states(getCasingState3()))
+                .where('D', states(getCasingState4()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .build();
     }
@@ -82,6 +85,14 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
 
     private static IBlockState getCasingState2() {
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
+    }
+
+    private static IBlockState getCasingState3() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.BRONZE_GEARBOX);
+    }
+
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.BRONZE_PIPE);
     }
 
     @Override

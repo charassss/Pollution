@@ -1,7 +1,6 @@
 package keqing.pollution.common.items;
 
 import gregtech.api.GregTechAPI;
-import gregtech.api.items.metaitem.MetaItem;
 import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
@@ -43,6 +42,12 @@ public class PollutionMetaItem1  extends StandardMetaItem {
         PollutionMetaItems.MAGIC_CIRCUIT_UXV = this.addItem(62, "magic_circuit.uxv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.UXV).setCreativeTabs(CommonProxy.Pollution_TAB);
         PollutionMetaItems.MAGIC_CIRCUIT_OpV = this.addItem(63, "magic_circuit.opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV).setCreativeTabs(CommonProxy.Pollution_TAB);
         PollutionMetaItems.MAGIC_CIRCUIT_MAX = this.addItem(64, "magic_circuit.max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX).setCreativeTabs(CommonProxy.Pollution_TAB);
+
+
+
+
+
+
     }
 
 }

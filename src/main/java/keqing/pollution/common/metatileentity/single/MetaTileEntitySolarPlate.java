@@ -31,8 +31,8 @@ import static keqing.pollution.client.textures.POTextures.*;
 public class MetaTileEntitySolarPlate extends TieredMetaTileEntity {
     int kind;
     protected final ICubeRenderer renderer;
-    boolean isActive=false;
-    boolean isWorkingEnabled=false;
+    boolean isActive=true;
+    boolean isWorkingEnabled=true;
     public MetaTileEntitySolarPlate(ResourceLocation metaTileEntityId, int tier, int kind, ICubeRenderer renderer) {
         super(metaTileEntityId, tier);
         this.kind=kind;
@@ -59,7 +59,7 @@ public class MetaTileEntitySolarPlate extends TieredMetaTileEntity {
             return "Booster: " + checkBooster(kind);
         }, 2302755);
         builder.dynamicLabel(7, 110, () -> {
-            return "Generator: " + VA[getTier()+(checkBooster(kind)?2:1)]+"EU/t";
+            return "Generator: " + VA[getTier()+(checkBooster(kind)?1:0)]/3+"EU/t";
         }, 2302755);
         return builder.build(this.getHolder(), entityPlayer);
     }
@@ -71,7 +71,7 @@ public class MetaTileEntitySolarPlate extends TieredMetaTileEntity {
         isWorkingEnabled=isActive;
         if(!getWorld().isRemote&&isWorkingEnabled)
         {
-            energyContainer.changeEnergy(VA[getTier()+(checkBooster(kind)?2:1)]);
+            energyContainer.changeEnergy(VA[getTier()+(checkBooster(kind)?1:0)]/3);
         }
     }
 
@@ -102,7 +102,7 @@ public class MetaTileEntitySolarPlate extends TieredMetaTileEntity {
             tooltip.add(1, I18n.format(mainKey));
         }
         tooltip.add(I18n.format("等级：%s 种类：%s",getTier(),kind));
-        tooltip.add(I18n.format("期望发电：%s EU/t 满足增产条件后发电升高一个电压",VA[getTier()+1]));
+        tooltip.add(I18n.format("期望发电：%s EU/t 满足增产条件后发电：%s EU/t",VA[getTier()]/3,VA[getTier()+1]/3));
         if(kind==1) tooltip.add(I18n.format("增产条件：高度大于160"));
         if(kind==2) tooltip.add(I18n.format("增产条件：只能在夜晚工作"));
         if(kind==3) tooltip.add(I18n.format("增产条件：高度小于10"));
