@@ -41,14 +41,15 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("#X#X#", "#X#X#", "#YYY#", "#YYY#", "#YYY#")
-                .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YAAAY")
-                .aisle("#XXX#", "#X#X#", "YCCCY", "YCCCY", "YAAAY")
-                .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YAAAY")
+                .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YEEEY")
+                .aisle("#XXX#", "#X#X#", "YCCCY", "YCCCY", "YEEEY")
+                .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YEEEY")
                 .aisle("#X#X#", "#X#X#", "#YYY#", "#YSY#", "#YFY#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(20).or(autoAbilities()))
                 .where('Y', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
+                .where('E', states(getCasingState4()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('A', air())
                 .where('#', any())
@@ -62,12 +63,16 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
         return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_EARTH);
     }
     private static IBlockState getCasingState2(){
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_AIR);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_EARTH);
     }
 
     private static IBlockState getCasingState3(){
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_3);
     }
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.BAMINATED_GLASS);
+    }
+
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
@@ -76,7 +81,7 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.SIFTER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

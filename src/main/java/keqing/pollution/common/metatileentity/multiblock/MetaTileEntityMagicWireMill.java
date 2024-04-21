@@ -57,24 +57,24 @@ public class MetaTileEntityMagicWireMill extends PORecipeMapMultiblockController
     public Material getMaterial() {return infused_instrument; }
 
     private static IBlockState getCasingState() {
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_ORDER);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER);
     }
     private static IBlockState getCasingState2(){
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
     }
 
     private static IBlockState getCasingState3() {
-        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.AAMINATED_GLASS);
+        return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.CAMINATED_GLASS);
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-        return POTextures.SPELL_PRISM_ORDER;
+        return POTextures.SPELL_PRISM_WATER;
     }
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.WIREMILL_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

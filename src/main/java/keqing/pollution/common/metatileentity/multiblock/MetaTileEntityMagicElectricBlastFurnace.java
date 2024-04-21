@@ -147,7 +147,7 @@ public class MetaTileEntityMagicElectricBlastFurnace extends PORecipeMapMultiblo
     //控制器的图形 比如传统的外观 或者聚变电脑的外观等等
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.BLAST_FURNACE_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

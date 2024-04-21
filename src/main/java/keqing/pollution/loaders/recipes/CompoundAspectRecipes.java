@@ -90,5 +90,13 @@ public class CompoundAspectRecipes {
                 .duration(200)
                 .EUt(30)
                 .buildAndRegister();
+        //交换
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(PollutionMaterials.infused_order.getFluid(1000))
+                .fluidInputs(PollutionMaterials.infused_entropy.getFluid(1000))
+                .fluidOutputs(PollutionMaterials.infused_exchange.getFluid(2000))
+                .duration(200)
+                .EUt(30)
+                .buildAndRegister();
     }
 }

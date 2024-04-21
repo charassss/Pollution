@@ -18,6 +18,7 @@ import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
 import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -39,21 +40,17 @@ public class MetaTileEntityMagicCentrifuge extends PORecipeMapMultiblockControll
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("BXXXB", "XXXXX", "BXXXB")
-                .aisle("XXXXX", "XAGAX", "XXXXX")
-                .aisle("XXXXX", "XGAGX", "XXXXX")
-                .aisle("XXXXX", "XAGAX", "XXXXX")
+                .aisle("XXXXX", "XHGHX", "XXXXX")
+                .aisle("XXXXX", "XGHGX", "XXXXX")
+                .aisle("XXXXX", "XHGHX", "XXXXX")
                 .aisle("BXXXB", "XXSXX", "BXFXB")
                 .where('S', selfPredicate())
                 .where('B', any())
                 .where('A', air())
                 .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
-//                .where('F', abilities(MultiblockAbility.IMPORT_FLUIDS).setMaxGlobalLimited(4).setPreviewCount(1))
-//                .where('D', abilities(MultiblockAbility.EXPORT_FLUIDS).setMaxGlobalLimited(4).setPreviewCount(1))
+                .where('H', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
-//                .where('I', abilities(MultiblockAbility.IMPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(1))
-//                .where('O', abilities(MultiblockAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(1))
-//                .where('E', abilities(MultiblockAbility.INPUT_ENERGY).setPreviewCount(1))
                 .build();
     }
 
@@ -68,7 +65,11 @@ public class MetaTileEntityMagicCentrifuge extends PORecipeMapMultiblockControll
     }
 
     private static IBlockState getCasingState2() {
-        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_TURBINE_CASING);
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STEEL_PIPE);
+    }
+
+    private static IBlockState getCasingState3() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STEEL_GEARBOX);
     }
 
     @Override
@@ -78,7 +79,7 @@ public class MetaTileEntityMagicCentrifuge extends PORecipeMapMultiblockControll
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.CENTRIFUGE_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override

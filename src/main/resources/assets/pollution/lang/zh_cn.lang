@@ -59,12 +59,20 @@ tile.magic_block.spell_prism_order.name=蕴魔序棱镜折射外壳
 tile.magic_block.spell_prism_air.name=蕴魔气棱镜折射外壳
 tile.magic_block.spell_prism_earth.name=蕴魔地棱镜折射外壳
 tile.magic_block.spell_prism_void.name=蕴魔虚空棱镜折射外壳
+tile.magic_block.magic_battery.name=蕴魔引导源质能场化外壳
+tile.magic_block.alloy_blast_casing.name=蕴魔炼炉扩散要素凝聚外壳
 
 tile.beam_core.beam_core_0.name=魔导强磁阵法核心
 tile.beam_core.beam_core_1.name=魔导内爆阵法核心
 tile.beam_core.beam_core_2.name=魔导导压阵法核心
 tile.beam_core.beam_core_3.name=魔导束流阵法核心
 tile.beam_core.beam_core_4.name=魔导聚能阵法核心
+
+tile.beam_core.filter_1.name=一级魔导束能聚合符文核心
+tile.beam_core.filter_2.name=二级魔导束能聚合符文核心
+tile.beam_core.filter_3.name=三级魔导束能聚合符文核心
+tile.beam_core.filter_4.name=四级魔导束能聚合符文核心
+tile.beam_core.filter_5.name=五级魔导束能聚合符文核心
 
 tile.turbine.bronze_gearbox.name=炼金青铜机关盒
 tile.turbine.steel_gearbox.name=炼金玄钢机关盒
@@ -197,7 +205,30 @@ pollution.flux_clear.flux=污染剩余:%s Vis
 pollution.flux_clear.tooltip=§b专业空气清洁
 
 pollution.vis.product=§6每秒污染产生%s Vis
+#注魔太阳能
+pollution.machine.solar_plate_1.1.name=§e风注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.1.name=§e风注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.1.name=§e风注魔太阳能(3级)§r
 
+pollution.machine.solar_plate_1.2.name=§7混沌注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.2.name=§7混沌注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.2.name=§7混沌注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.3.name=§2地注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.3.name=§2地注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.3.name=§2地注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.4.name=§c火注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.4.name=§c火注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.4.name=§c火注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.5.name=§d秩序注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.5.name=§d秩序注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.5.name=§d秩序注魔太阳能(3级)§r
+
+pollution.machine.solar_plate_1.6.name=§1水注魔太阳能(1级)§r
+pollution.machine.solar_plate_2.6.name=§1水注魔太阳能(2级)§r
+pollution.machine.solar_plate_3.6.name=§1水注魔太阳能(3级)§r
 #设备多方块
 pollution.machine.tank_test.name=源质离散器
 
@@ -213,6 +244,10 @@ pollution.machine.magic_cutter.name=魔导快刀剪切线
 pollution.machine.magic_wiremill.name=魔导千丝机关
 pollution.machine.magic_solidifier.name=魔导双相转换灌装仪
 pollution.machine.magic_battery.name=魔导电池
+pollution.machine.magic_distillery.name=魔导流质扩散魂导矩阵
+pollution.machine.magic_brewery.name=魔导流质嬗变魂导矩阵
+pollution.machine.magic_alloy_blast.name=魔导炼炉魂导矩阵
+pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
@@ -237,6 +272,8 @@ pollution.eke.outputB=还需%s天%s时%s分%s秒耗尽
 pollution.eke.outputC=可最大功率输出%s天%s时%s分%s秒
 pollution.eke.output4=最大功率：%s EU/t 暂停工作
 gregtech.multiblock.battery.EU=存储能量：%s / %s EU
+#配方
+recipemap.magic_blast_smelter.name=锻炉合金
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

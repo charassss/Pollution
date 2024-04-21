@@ -46,7 +46,6 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicBattery MAGIC_BATTERY;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
-    public static MetaTileEntityIndustrialInfusion INDUSTRIAL_INFUSION ;
     public static void initialization() {
 
         for (int i = 0; i <= 4; i++) {
@@ -98,6 +97,5 @@ public class PollutionMetaTileEntities {
             int tier = 1 + i;
             TANK_HATCH[i] =registerMetaTileEntity(16030 + i, new MetaTileEntityTankHatch(gtqtcoreId(String.format("tank_hatch.%s", GTValues.VN[tier])), tier));
         }
-        INDUSTRIAL_INFUSION = registerMetaTileEntity(16032,new MetaTileEntityIndustrialInfusion(gtqtcoreId("industrial_infusion")));
     }
 }

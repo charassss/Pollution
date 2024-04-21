@@ -38,10 +38,11 @@ public class MetaTileEntityVisProvider extends TieredMetaTileEntity {
     @Override
     public void update() {
         super.update();
+        for(int time=1;time<=20;time++)if(time==20)
         if (!getWorld().isRemote && energyContainer.getEnergyStored() >= energyAmountPer) {
             energyContainer.removeEnergy(energyAmountPer);
-            AuraHelper.addVis(getWorld(), getPos(), (float) (VisTicks));
-
+            AuraHelper.addVis(getWorld(), getPos(), (float) (VisTicks)*10);
+            time=1;
         }
     }
     @Override

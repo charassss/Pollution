@@ -7,6 +7,30 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.RecipeMaps;
+import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.common.blocks.BlockGlassCasing;
+import gregtech.common.blocks.BlockTurbineCasing;
+import gregtech.common.blocks.MetaBlocks;
+
+import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
+import gregicality.multiblocks.api.render.GCYMTextures;
+import gregicality.multiblocks.common.block.GCYMMetaBlocks;
+import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
+import keqing.pollution.api.metatileentity.POMultiblockAbility;
+import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+
+import gregtech.api.metatileentity.MetaTileEntity;
+import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
+import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.pattern.BlockPattern;
+import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.recipes.RecipeMap;
+import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
@@ -40,12 +64,14 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXXXX", "XXXXX", "XXXXX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
-                .aisle("XXXXX", "XCCCX", "XCCCX")
+                .aisle("XXXXX", "XBDBX", "XCCCX")
+                .aisle("XXXXX", "XBDBX", "XCCCX")
                 .aisle("XXXXX", "XXSXX", "XXFXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(30).or(autoAbilities()))
                 .where('C', states(getCasingState2()))
+                .where('B', states(getCasingState3()))
+                .where('D', states(getCasingState4()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .build();
     }
@@ -61,6 +87,14 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
         return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
     }
 
+    private static IBlockState getCasingState3() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.BRONZE_GEARBOX);
+    }
+
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.BRONZE_PIPE);
+    }
+
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return POTextures.SPELL_PRISM_ORDER;
@@ -68,7 +102,7 @@ public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockContro
 
     @Override
     protected  OrientedOverlayRenderer getFrontOverlay() {
-        return Textures.ELECTROLYZER_OVERLAY;
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override
