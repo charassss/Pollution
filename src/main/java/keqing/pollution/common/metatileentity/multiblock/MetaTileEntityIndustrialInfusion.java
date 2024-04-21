@@ -9,6 +9,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
@@ -19,22 +20,31 @@ import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
 import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.HoverEvent;
+import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -47,6 +57,7 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
     private int tick=0;
     private int timeAmount=0;
     private boolean canOutput=false;
+    private int eut=0;
     public MetaTileEntityIndustrialInfusion(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
     }
@@ -64,9 +75,11 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                 .aisle("XXXXXXX", "XSXDDDX", "XFXDDDX", "##XXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(60)
-                        .or( abilities(MultiblockAbility.IMPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(1))
+                        .or( abilities(MultiblockAbility.IMPORT_ITEMS).setMaxGlobalLimited(5).setPreviewCount(1))
                                         .or(abilities(MultiblockAbility.EXPORT_ITEMS).setMaxGlobalLimited(1).setPreviewCount(1))
-                                        .or(abilities(MultiblockAbility.MAINTENANCE_HATCH).setExactLimit(1)))
+                                        .or(abilities(MultiblockAbility.MAINTENANCE_HATCH).setExactLimit(1))
+                        .or(abilities(MultiblockAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1))
+                )
                 .where('C', states(getCasingState2()))
                 .where('D', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
@@ -89,11 +102,23 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
     public boolean onRightClick(EntityPlayer playerIn, EnumHand hand, EnumFacing facing, CuboidRayTraceResult hitResult) {
         if(playerIn.isSneaking())
         {
-            this.uuid = playerIn.getUniqueID();
+            setUUID(playerIn.getUniqueID()) ;
         }
         return super.onRightClick(playerIn, hand, facing, hitResult);
     }
-
+    public void setUUID(UUID uuid) {
+        this.uuid = uuid;
+        this.writeCustomData(1919, (b) -> {
+            b.writeUniqueId(this.uuid);
+        });
+    }
+    @Override
+    public void receiveCustomData(int dataId, PacketBuffer buf) {
+        super.receiveCustomData(dataId, buf);
+        if (dataId == 1919) {
+            this.uuid = buf.readUniqueId();
+        }
+    }
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return POTextures.SPELL_PRISM_HOT;
@@ -106,7 +131,9 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
 
     @Override
     protected void updateFormedValid() {
-        if(!this.getWorld().isRemote && this.inputInventory!=null && this.inputInventory.getSlots()>0 && this.uuid!=null)
+        if(!this.isActive())
+            setActive(true);
+        if(!this.getWorld().isRemote && this.inputInventory!=null && this.inputInventory.getSlots()>0 && this.uuid!=null && this.isWorkingEnabled() && this.isActive())
         {
             if(++tick>=20)
             {
@@ -125,7 +152,9 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                         list.add(this.inputInventory.getStackInSlot(i));
                 }
             }
-            InfusionRecipe recipe = ThaumcraftCraftingManager.findMatchingInfusionRecipe(list, center, getWorld().getPlayerEntityByUUID(this.uuid));
+            InfusionRecipe recipe = null;
+            if(list.size()>0 && center!=null && center!=ItemStack.EMPTY && !canOutput)
+                recipe =ThaumcraftCraftingManager.findMatchingInfusionRecipe(list, center, getWorld().getPlayerEntityByUUID(this.uuid));
             if(recipe!=null && !canOutput)
             {
                 outputItem = ((ItemStack)recipe.recipeOutput).copy();
@@ -169,18 +198,47 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                 this.canOutput=bl;
             }
             //是否可以耗电 可以耗电继续进行进度结算
-            if(this.energyContainer.getEnergyStored()>2000 && this.energyContainer.getInputVoltage()>= GTValues.EV)
+            if(this.energyContainer.getEnergyStored()>480 && this.energyContainer.getInputVoltage()>= GTValues.HV)
                 if(canOutput && timeAmount--<0 && outputItem!=ItemStack.EMPTY)
                 {
-                    this.energyContainer.changeEnergy(2000);
+                    this.energyContainer.changeEnergy(480);
                     canOutput=false;
                     if(this.outputInventory!=null && this.outputInventory.getSlots()>0)
                         GTTransferUtils.insertItem(this.outputInventory,outputItem,false);
+                    this.outputItem=ItemStack.EMPTY;
                     this.timeAmount=0;
                 }
         }
 
     }
+    public void addInformation(ItemStack stack,  World world,  List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, world, tooltip, advanced);
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.1", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.2", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.3", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.4", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.5", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.6", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.industrial_infusion.tooltip.7", new Object[0]));
+    }
+
+    @Override
+    protected void addDisplayText(List<ITextComponent> textList) {
+        super.addDisplayText(textList);
+        textList.add((new TextComponentTranslation("pollution.machine.output_item",this.outputItem.getDisplayName())).setStyle((new Style()).setColor(TextFormatting.RED)));
+        textList.add((new TextComponentTranslation("pollution.machine.canoutput",this.canOutput)).setStyle((new Style()).setColor(TextFormatting.RED)));
+        textList.add((new TextComponentTranslation("pollution.machine.process",this.timeAmount)).setStyle((new Style()).setColor(TextFormatting.RED)));
+        if(this.aspectList.getAspects().length>0)
+        {
+            textList.add(TextComponentUtil.translationWithColor(TextFormatting.GOLD, "======================"));
+            for (var s: this.aspectList.getAspects())
+            {
+                textList.add((new TextComponentTranslation("pollution.machine.aspect",s.getName(),this.aspectList.getAmount(s))).setStyle((new Style()).setColor(TextFormatting.RED)));
+            }
+            textList.add(TextComponentUtil.translationWithColor(TextFormatting.GOLD, "======================"));
+        }
+    }
+
     private void getAspectFromWorld()
     {
         //中心位置
@@ -193,18 +251,23 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                     TileEntity te = this.getWorld().getTileEntity(currentPos);
                     if(te!= null && te instanceof IAspectSource)
                     {
-                        final var s=(IAspectSource)te;
-                        for (Aspect a:s.getAspects().getAspects())
+                        if(this.energyContainer!=null && this.energyContainer.getEnergyStored()>128)
                         {
-                            if(this.aspectList.getAmount(a)<1000)
+                            this.energyContainer.changeEnergy(-128l);
+                            final var s=(IAspectSource)te;
+                            for (Aspect a:s.getAspects().getAspects())
                             {
-                                int max = Math.min(1000-this.aspectList.getAmount(a),s.containerContains(a));
-                                if(s.takeFromContainer(a,max))
+                                if(this.aspectList.getAmount(a)<1000)
                                 {
-                                    this.aspectList.merge(a,max+this.aspectList.getAmount(a));
+                                    int max = Math.min(1000-this.aspectList.getAmount(a),s.containerContains(a));
+                                    if(s.takeFromContainer(a,max))
+                                    {
+                                        this.aspectList.merge(a,max+this.aspectList.getAmount(a));
+                                    }
                                 }
                             }
                         }
+
                     }
                 }
             }
@@ -215,6 +278,10 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
         super.writeToNBT(data);
         this.aspectList.writeToNBT(data,"IndusList");
+        data.setBoolean("canOutPut",canOutput);
+        if(this.uuid!=null)
+            data.setUniqueId("uid",this.uuid);
+        data.setInteger("eut",this.eut);
         return data;
     }
 
@@ -222,5 +289,10 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
     public void readFromNBT(NBTTagCompound data) {
         super.readFromNBT(data);
         this.aspectList.readFromNBT(data,"IndusList");
+        this.canOutput = data.getBoolean("canOutPut");
+        if(data.hasKey("uidMost"))
+            this.uuid = data.getUniqueId("uid");
+        this.eut = data.getInteger("eut");
+
     }
 }
