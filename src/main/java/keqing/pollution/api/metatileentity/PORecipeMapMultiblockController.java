@@ -107,47 +107,47 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
                 return true;
             }}
         if (material == infused_crystal){
-            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, false))) {
+            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, consume))) {
                 return true;
             }}
         if (material == infused_weapon){
-            if (WEAPON_STACK.isFluidStackIdentical(inputTank.drain(WEAPON_STACK, false))) {
+            if (WEAPON_STACK.isFluidStackIdentical(inputTank.drain(WEAPON_STACK, consume))) {
                 return true;
             }}
         if (material == infused_instrument){
-            if (INSTRUMENT_STACK.isFluidStackIdentical(inputTank.drain(INSTRUMENT_STACK, false))) {
+            if (INSTRUMENT_STACK.isFluidStackIdentical(inputTank.drain(INSTRUMENT_STACK, consume))) {
                 return true;
             }}
         if (material == infused_exchange){
-            if (EXCHANGE_STACK.isFluidStackIdentical(inputTank.drain(EXCHANGE_STACK, false))) {
+            if (EXCHANGE_STACK.isFluidStackIdentical(inputTank.drain(EXCHANGE_STACK, consume))) {
                 return true;
             }}
         if (material == infused_life){
-            if (LIFE_STACK.isFluidStackIdentical(inputTank.drain(LIFE_STACK, false))) {
+            if (LIFE_STACK.isFluidStackIdentical(inputTank.drain(LIFE_STACK, consume))) {
                 return true;
             }}
         if (material == infused_death){
-            if (DEATH_STACK.isFluidStackIdentical(inputTank.drain(DEATH_STACK, false))) {
+            if (DEATH_STACK.isFluidStackIdentical(inputTank.drain(DEATH_STACK, consume))) {
                 return true;
             }}
         if (material == infused_soul){
-            if (SOUL_STACK.isFluidStackIdentical(inputTank.drain(SOUL_STACK, false))) {
+            if (SOUL_STACK.isFluidStackIdentical(inputTank.drain(SOUL_STACK, consume))) {
                 return true;
             }}
         if (material == infused_energy){
-            if (ENERGY_STACK.isFluidStackIdentical(inputTank.drain(ENERGY_STACK, false))) {
+            if (ENERGY_STACK.isFluidStackIdentical(inputTank.drain(ENERGY_STACK, consume))) {
                 return true;
             }}
         if (material == infused_magic){
-            if (MAGIC_STACK.isFluidStackIdentical(inputTank.drain(MAGIC_STACK, false))) {
+            if (MAGIC_STACK.isFluidStackIdentical(inputTank.drain(MAGIC_STACK, consume))) {
                 return true;
             }}
         if (material == infused_alchemy){
-            if (ALCHEMY_STACK.isFluidStackIdentical(inputTank.drain(ALCHEMY_STACK, false))) {
+            if (ALCHEMY_STACK.isFluidStackIdentical(inputTank.drain(ALCHEMY_STACK, consume))) {
                 return true;
             }}
         if (material == infused_metal){
-            if (METAL_STACK.isFluidStackIdentical(inputTank.drain(METAL_STACK, false))) {
+            if (METAL_STACK.isFluidStackIdentical(inputTank.drain(METAL_STACK, consume))) {
                 return true;
             }}
         return false;
@@ -214,8 +214,9 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (isStructureFormed())
-        textList.add(new TextComponentTranslation("Vis: %s / %s Tier:  %s",visStorage,visStorageMax,tier));
-        textList.add(new TextComponentTranslation("Infused need : %s Statue: %s",material,isCheckVis(material,false)));
+        textList.add(new TextComponentTranslation("区块灵气: %s / %s 灵气等级: %s",visStorage,visStorageMax,tier));
+        if(material!=null)
+        textList.add(new TextComponentTranslation("要素需求 : %s 工作状态: %s",material.getLocalizedName(),isCheckVis(material,false)));
     }
 
     @Override
