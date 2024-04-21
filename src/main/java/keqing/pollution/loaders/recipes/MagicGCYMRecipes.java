@@ -223,6 +223,53 @@ public class MagicGCYMRecipes {
                 .buildAndRegister();
         //这里是主方块的注魔配方
         //配方暂定造价：主注魔材料催化剂，次要材料mv电路板*4+对应要素的水晶+mv级别的对应小机器一台+一个对应外壳+法罗钠晶体一个
+        //化反
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_chemical_reactor"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_CHEMICAL_REACTOR.getStackForm(),
+                5,
+                new AspectList().add(Aspect.ALCHEMY, 250).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
+                MetaTileEntities.LARGE_CHEMICAL_REACTOR.getStackForm(),
+                "gemValonite",
+                new ItemStack(PollutionMetaItems.HOTCORE.getMetaItem(), 1, 3),
+                new ItemStack(PollutionMetaItems.COLDCORE.getMetaItem(), 1, 4),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
+                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
+                "oreCrystalWater",
+                MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.POLYTETRAFLUOROETHYLENE_PIPE),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER)));
+        //高压
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_autoclave"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_AUTOCLAVE.getStackForm(),
+                5,
+                new AspectList().add(Aspect.AIR, 250).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
+                "gemValonite",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "oreCrystalAir",
+                "oreCrystalWater",
+                MetaTileEntities.AUTOCLAVE[MV].getStackForm(),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_AIR)));
+        //压模
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_extruder"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_EXTRUDER.getStackForm(),
+                5,
+                new AspectList().add(Aspect.TOOL, 250).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
+                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
+                "gemValonite",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "oreCrystalOrder",
+                MetaTileEntities.EXTRUDER[MV].getStackForm(),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_ORDER)));
         //卷板
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_bender"), new InfusionRecipe(
                 "INFUSION@2",
@@ -344,6 +391,7 @@ public class MagicGCYMRecipes {
                 "circuitMv",
                 "oreCrystalFire",
                 MetaTileEntities.ELECTRIC_FURNACE[MV].getStackForm(),
+                MetaTileEntities.ALLOY_SMELTER[MV].getStackForm(),
                 PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_HOT)));
         //洗矿机
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_chemical_bath"), new InfusionRecipe(

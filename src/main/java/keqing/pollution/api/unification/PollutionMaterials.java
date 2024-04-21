@@ -24,6 +24,8 @@ public class PollutionMaterials {
     public static Material infused_energy;
     public static Material infused_instrument;
     public static Material infused_exchange;
+    public static Material infused_magic;
+    public static Material infused_alchemy;
     //mana酱
     public static Material mana;
     //材料
