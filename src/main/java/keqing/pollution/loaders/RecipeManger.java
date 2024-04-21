@@ -10,6 +10,7 @@ public class RecipeManger {
         MagicGCYMRecipes.init();
         MagicGCYMRecipes.init();
         CompoundAspectRecipes.init();
+        MagicChemicalRecipes.init();
     }
 
 

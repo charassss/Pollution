@@ -98,5 +98,21 @@ public class CompoundAspectRecipes {
                 .duration(200)
                 .EUt(30)
                 .buildAndRegister();
+        //魔法
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(PollutionMaterials.infused_air.getFluid(1000))
+                .fluidInputs(PollutionMaterials.infused_energy.getFluid(1000))
+                .fluidOutputs(PollutionMaterials.infused_magic.getFluid(2000))
+                .duration(200)
+                .EUt(30)
+                .buildAndRegister();
+        //炼金
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .fluidInputs(PollutionMaterials.infused_magic.getFluid(1000))
+                .fluidInputs(PollutionMaterials.infused_water.getFluid(1000))
+                .fluidOutputs(PollutionMaterials.infused_alchemy.getFluid(2000))
+                .duration(200)
+                .EUt(30)
+                .buildAndRegister();
     }
 }

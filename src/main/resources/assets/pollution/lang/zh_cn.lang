@@ -5,6 +5,19 @@ gregtech.material.infused_earth=土
 gregtech.material.infused_water=流
 gregtech.material.infused_fire=焱
 gregtech.material.infused_air=气
+
+gregtech.material.infused_crystal=晶
+gregtech.material.infused_life=生
+gregtech.material.infused_death=死
+gregtech.material.infused_soul=魂
+gregtech.material.infused_weapon=武
+gregtech.material.infused_metal=金属
+gregtech.material.infused_energy=能
+gregtech.material.infused_instrument=器
+gregtech.material.infused_exchange=置换
+gregtech.material.infused_magic=魔
+gregtech.material.infused_alchemy=炼金
+
 gregtech.material.thaumium=神秘
 gregtech.material.syrmorite=赛摩铜
 gregtech.material.octine=炽炎铁
@@ -247,6 +260,9 @@ pollution.machine.magic_battery.name=魔导电池
 pollution.machine.magic_distillery.name=魔导流质扩散魂导矩阵
 pollution.machine.magic_brewery.name=魔导流质嬗变魂导矩阵
 pollution.machine.magic_alloy_blast.name=魔导炼炉魂导矩阵
+pollution.machine.magic_autoclave.name=魔导强压反应室
+pollution.machine.magic_extruder.name=魔导百变模型厂
+pollution.machine.magic_chemical_reactor.name=魔导催化奇迹作坊
 pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
@@ -260,6 +276,10 @@ pollution.machine.magic_sifter.tooltip=奈何取之尽锱铢，用之如泥沙�
 pollution.machine.magic_cutter.tooltip=小小格温，擅长长期素食
 pollution.machine.magic_wiremill.tooltip=妹妹看它看到眼里都拉丝了
 pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
+pollution.machine.magic_autoclave.tooltip=它平等地压力每一个人，包括自己
+pollution.machine.magic_extruder.tooltip=你想要一台高达，还是一个扎古
+pollution.machine.magic_chemical_reactor.tooltip=七星七金贤者之石，或化学跳过者青春版
+
 #魔法电池
 pollution.eke.count=魔导核心：%s 线圈等级：%s
 pollution.eke.eu1=输入/输出能量：%s / %s EU/t
@@ -274,6 +294,7 @@ pollution.eke.output4=最大功率：%s EU/t 暂停工作
 gregtech.multiblock.battery.EU=存储能量：%s / %s EU
 #配方
 recipemap.magic_blast_smelter.name=锻炉合金
+recipemap.magic_chemical_reactor.name=魔导催化反应
 #事件
 pollution.command.slowness=§7你感到行动不便
 pollution.command.weakness=§b你感到一阵虚弱

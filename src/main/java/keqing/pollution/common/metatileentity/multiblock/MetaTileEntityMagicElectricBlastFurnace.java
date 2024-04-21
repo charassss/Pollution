@@ -59,7 +59,7 @@ public class MetaTileEntityMagicElectricBlastFurnace extends PORecipeMapMultiblo
     int CoilLevel;
     int Temp;
     public MetaTileEntityMagicElectricBlastFurnace(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BLAST_RECIPES });
+        super(metaTileEntityId, new RecipeMap[] { RecipeMaps.BLAST_RECIPES, RecipeMaps.ALLOY_SMELTER_RECIPES });
     }
 
     @Override

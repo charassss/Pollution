@@ -73,5 +73,17 @@ public class CompoundAspectMaterials {
                 .ore().gem().fluid()
                 .components(PollutionMaterials.infused_order, 1, PollutionMaterials.infused_entropy, 1)
                 .build();
+        //魔法=风+能量
+        PollutionMaterials.infused_magic = new Material.Builder(getMaterialsId(), gregtechId("infused_magic"))
+                .color(0x8A2BE2)
+                .ore().gem().fluid()
+                .components(PollutionMaterials.infused_air, 1, PollutionMaterials.infused_energy, 1)
+                .build();
+        //炼金=魔法+水
+        PollutionMaterials.infused_alchemy = new Material.Builder(getMaterialsId(), gregtechId("infused_alchemy"))
+                .color(0x8FBC8F)
+                .ore().gem().fluid()
+                .components(PollutionMaterials.infused_magic, 1, PollutionMaterials.infused_water, 1)
+                .build();
     }
 }
