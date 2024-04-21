@@ -18,6 +18,7 @@ import keqing.pollution.client.textures.POTextures;
 import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
 import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
 import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
@@ -48,7 +49,7 @@ public class MetaTileEntityMagicExtruder extends PORecipeMapMultiblockController
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
-                .where('A', air())
+                .where('A', states(getCasingState4()))
                 .where('#', any())
                 .build();
     }
@@ -64,13 +65,15 @@ public class MetaTileEntityMagicExtruder extends PORecipeMapMultiblockController
     }
 
     private static IBlockState getCasingState2() {
-        return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_1);
+        return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_0);
     }
 
     private static IBlockState getCasingState3() {
         return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.AAMINATED_GLASS);
     }
-
+    private static IBlockState getCasingState4() {
+        return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX);
+    }
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return POTextures.SPELL_PRISM_ORDER;
