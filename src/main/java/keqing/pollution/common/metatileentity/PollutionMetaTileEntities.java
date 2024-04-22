@@ -50,9 +50,6 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicGreenHouse MAGIC_GREEN_HOUSE;
     public static MetaTileEntityMagicDistillery MAGIC_DISTILLERY;
     public static MetaTileEntityMagicAlloyBlastSmelter MAGIC_ALLOY_BLAST;
-    public static MetaTileEntityMagicChemicalReactor MAGIC_CHEMICAL_REACTOR;
-    public static MetaTileEntityMagicAutoclave MAGIC_AUTOCLAVE;
-    public static MetaTileEntityMagicExtruder MAGIC_EXTRUDER;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
 
@@ -91,12 +88,14 @@ public class PollutionMetaTileEntities {
         MAGIC_SOLIDIFIER = registerMetaTileEntity(15946, new MetaTileEntityMagicSolidifier(gtqtcoreId("magic_solidifier")));
         MAGIC_BREWERY = registerMetaTileEntity(15947, new MetaTileEntityMagicBrewery(gtqtcoreId("magic_brewery")));
         MAGIC_DISTILLERY = registerMetaTileEntity(15948, new MetaTileEntityMagicDistillery(gtqtcoreId("magic_distillery")));
-        MAGIC_BATTERY = registerMetaTileEntity(15950, new MetaTileEntityMagicBattery(gtqtcoreId("magic_battery")));
-        MAGIC_ALLOY_BLAST = registerMetaTileEntity(15951, new MetaTileEntityMagicAlloyBlastSmelter(gtqtcoreId("magic_alloy_blast")));
-        MAGIC_CHEMICAL_REACTOR = registerMetaTileEntity(15952, new MetaTileEntityMagicChemicalReactor(gtqtcoreId("magic_chemical_reactor")));
-        MAGIC_AUTOCLAVE = registerMetaTileEntity(15953, new MetaTileEntityMagicAutoclave(gtqtcoreId("magic_autoclave")));
-        MAGIC_EXTRUDER = registerMetaTileEntity(15954, new MetaTileEntityMagicExtruder(gtqtcoreId("magic_extruder")));
+        MAGIC_BATTERY = registerMetaTileEntity(15949, new MetaTileEntityMagicBattery(gtqtcoreId("magic_battery")));
+        MAGIC_ALLOY_BLAST = registerMetaTileEntity(15950, new MetaTileEntityMagicAlloyBlastSmelter(gtqtcoreId("magic_alloy_blast")));
+        MAGIC_CHEMICAL_REACTOR = registerMetaTileEntity(15951, new MetaTileEntityMagicChemicalReactor(gtqtcoreId("magic_chemical_reactor")));
+        MAGIC_AUTOCLAVE = registerMetaTileEntity(15952, new MetaTileEntityMagicAutoclave(gtqtcoreId("magic_autoclave")));
+        MAGIC_EXTRUDER = registerMetaTileEntity(15953, new MetaTileEntityMagicExtruder(gtqtcoreId("magic_extruder")));
+        MAGIC_GREEN_HOUSE = registerMetaTileEntity(15954, new MetaTileEntityMagicGreenHouse(gtqtcoreId("magic_green_house")));
         MAGIC_GREEN_HOUSE = registerMetaTileEntity(15955, new MetaTileEntityMagicGreenHouse(gtqtcoreId("magic_green_house")));
+
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
             FLUX_MUFFLERS[i] = registerMetaTileEntity(16000 + i - 1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));
