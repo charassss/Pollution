@@ -74,7 +74,7 @@ public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
         return FactoryBlockPattern.start()
                 .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
                 .aisle("XXXXXXX", "XXXGGGX", "XXXXXXX")
-                .aisle("IFXXXXX", "XSXCCCX", "XXXXXXX")
+                .aisle("IFXXXXX", "XSXCCCX", "XQXXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('G', states(getCasingState2()))

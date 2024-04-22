@@ -3,6 +3,7 @@ package keqing.pollution.common.metatileentity.multiblock;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
@@ -44,12 +45,13 @@ public class MetaTileEntityMagicSifter extends PORecipeMapMultiblockController{
                 .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YEEEY")
                 .aisle("#XXX#", "#X#X#", "YCCCY", "YCCCY", "YEEEY")
                 .aisle("XXXXX", "X#X#X", "YCCCY", "YCCCY", "YEEEY")
-                .aisle("#X#X#", "#X#X#", "#YYY#", "#YSY#", "#YFY#")
+                .aisle("#X#X#", "#X#X#", "#YIY#", "#YSY#", "#YFY#")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(20).or(autoAbilities()))
                 .where('Y', states(getCasingState2()))
                 .where('C', states(getCasingState3()))
                 .where('E', states(getCasingState4()))
+                .where('I', abilities(MultiblockAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('A', air())
                 .where('#', any())
