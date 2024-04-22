@@ -3,6 +3,7 @@ package keqing.pollution.common.metatileentity.multiblock;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
+import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
@@ -43,11 +44,12 @@ public class MetaTileEntityMagicExtruder extends PORecipeMapMultiblockController
                 .aisle("##XXX", "##XPX", "##XGX").setRepeatable(2)
                 .aisle("XXXXX", "XXXPX", "XXXGX")
                 .aisle("XXXXX", "XAXPX", "XXXGX")
-                .aisle("XXXXX", "XSXXX", "XFXXX")
+                .aisle("XIXXX", "XSXXX", "XFXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(35).or(autoAbilities()))
                 .where('P', states(getCasingState2()))
                 .where('G', states(getCasingState3()))
+                .where('I', abilities(MultiblockAbility.IMPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('F', abilities(POMultiblockAbility.VIS_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .where('A', states(getCasingState4()))
                 .where('#', any())

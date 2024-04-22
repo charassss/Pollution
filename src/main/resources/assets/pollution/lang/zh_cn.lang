@@ -262,7 +262,7 @@ pollution.machine.magic_brewery.name=魔导流质嬗变魂导矩阵
 pollution.machine.magic_alloy_blast.name=魔导炼炉魂导矩阵
 pollution.machine.magic_autoclave.name=魔导强压反应室
 pollution.machine.magic_extruder.name=魔导百变模型厂
-pollution.machine.magic_chemical_reactor.name=魔导催化奇迹作坊
+pollution.machine.magic_chemical_reactor.name="空忆级"魔导化学催化控制台
 pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
@@ -279,6 +279,9 @@ pollution.machine.magic_solidifier.tooltip=三位一体，圣GT5圣GT6圣GT7
 pollution.machine.magic_autoclave.tooltip=它平等地压力每一个人，包括自己
 pollution.machine.magic_extruder.tooltip=你想要一台高达，还是一个扎古
 pollution.machine.magic_chemical_reactor.tooltip=七星七金贤者之石，或化学跳过者青春版
+pollution.machine.magic_brewery.tooltip=适量饮酒也有害健康哦
+pollution.machine.magic_distillery.tooltip=你说得对，但是我们的整合包正在蒸蒸日上！
+pollution.machine.magic_battery.tooltip=§5纵使神曈黯淡，亦可再造鸿蒙§r
 
 #魔法电池
 pollution.eke.count=魔导核心：%s 线圈等级：%s
