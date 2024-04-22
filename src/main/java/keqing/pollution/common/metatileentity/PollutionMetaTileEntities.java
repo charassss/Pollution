@@ -96,7 +96,7 @@ public class PollutionMetaTileEntities {
         MAGIC_CHEMICAL_REACTOR = registerMetaTileEntity(15952, new MetaTileEntityMagicChemicalReactor(gtqtcoreId("magic_chemical_reactor")));
         MAGIC_AUTOCLAVE = registerMetaTileEntity(15953, new MetaTileEntityMagicAutoclave(gtqtcoreId("magic_autoclave")));
         MAGIC_EXTRUDER = registerMetaTileEntity(15954, new MetaTileEntityMagicExtruder(gtqtcoreId("magic_extruder")));
-        MAGIC_GREEN_HOUSE = registerMetaTileEntity(15952, new MetaTileEntityMagicGreenHouse(gtqtcoreId("magic_green_house")));
+        MAGIC_GREEN_HOUSE = registerMetaTileEntity(15955, new MetaTileEntityMagicGreenHouse(gtqtcoreId("magic_green_house")));
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();
             FLUX_MUFFLERS[i] = registerMetaTileEntity(16000 + i - 1, new MetaTileEntityFluxMuffler(gtqtcoreId("pollution_muffler_hatch." + tierName), i));

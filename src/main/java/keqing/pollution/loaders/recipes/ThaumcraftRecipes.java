@@ -134,6 +134,21 @@ public class ThaumcraftRecipes {
                 new ItemStack(ItemsTC.voidSeed),
                 "dustGunpowder",
                 "dustGunpowder"));
+
+        //一个配方糖，在拥有一个空白核心以后就可以方便地制作更多了！
+        //强制HV等级的大型化学反应釜制作！
+        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+                .fluidInputs(PollutionMaterials.infused_water.getFluid(9216))
+                .fluidInputs(PollutionMaterials.infused_fire.getFluid(9216))
+                .fluidInputs(PollutionMaterials.infused_order.getFluid(9216))
+                .fluidInputs(PollutionMaterials.infused_air.getFluid(9216))
+                .input(OrePrefix.gem, PollutionMaterials.valonite)
+                .notConsumable(new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2))
+                .outputs(new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2))
+                .duration(3600)
+                .EUt(480)
+                .buildAndRegister();
+
     }
     private static void misc() {
         //杂项，包括奇珍的基本利用方法等

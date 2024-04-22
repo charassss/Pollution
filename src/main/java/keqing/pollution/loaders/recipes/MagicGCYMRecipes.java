@@ -9,6 +9,9 @@ import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
+import gregtechfoodoption.GregTechFoodOption;
+import gregtechfoodoption.machines.GTFOTileEntities;
+import keqing.gtqtcore.common.metatileentities.GTQTMetaTileEntities;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.unification.PollutionMaterials;
 import keqing.pollution.common.block.PollutionMetaBlock.*;
@@ -221,8 +224,70 @@ public class MagicGCYMRecipes {
                 .duration(300)
                 .EUt(120)
                 .buildAndRegister();
+        //温室
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_greenhouse"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_GREEN_HOUSE,
+                5,
+                new AspectList().add(Aspect.PLANT, 250).add(Aspect.MAGIC, 128).add(Aspect.MECHANISM, 128),
+                GTFOTileEntities.GREENHOUSE.getStackForm(),
+                "gemValonite",
+                "circuitHv",
+                "circuitHv",
+                "circuitHv",
+                "circuitHv",
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_3)));
+        //魔导电池配方（试作）
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_battery"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_BATTERY.getStackForm(),
+                7,
+                new AspectList().add(Aspect.ENERGY, 250).add(Aspect.MAGIC, 128).add(Aspect.MECHANISM, 128),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_1),
+                "gemValonite",
+                "batteryMv",
+                "batteryMv",
+                "batteryMv",
+                new ItemStack(MetaItems.FIELD_GENERATOR_MV.getMetaItem(), 1, 203),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_VOID),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_4)));
         //这里是主方块的注魔配方
         //配方暂定造价：主注魔材料催化剂，次要材料mv电路板*4+对应要素的水晶+mv级别的对应小机器一台+一个对应外壳+法罗钠晶体一个
+        //蒸馏二合一
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_distillery"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_DISTILLERY.getStackForm(),
+                5,
+                new AspectList().add(Aspect.AIR, 125).add(Aspect.WATER, 125).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
+                new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
+                "gemValonite",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "oreCrystalAir",
+                "oreCrystalWater",
+                GTQTMetaTileEntities.DISTILLATION_TOWER.getStackForm(),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_COLD)));
+        //酿造三合一
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_brewery"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.MAGIC_BREWERY.getStackForm(),
+                5,
+                new AspectList().add(Aspect.AIR, 125).add(Aspect.WATER, 125).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
+                "gemValonite",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "circuitMv",
+                "oreCrystalAir",
+                "oreCrystalWater",
+                MetaTileEntities.BREWERY[MV].getStackForm(),
+                MetaTileEntities.FLUID_HEATER[MV].getStackForm(),
+                MetaTileEntities.FERMENTER[MV].getStackForm(),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_COLD)));
         //化反
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_chemical_reactor"), new InfusionRecipe(
                 "INFUSION@2",
@@ -700,8 +765,64 @@ public class MagicGCYMRecipes {
                 new ResourceLocation(""),
                 "FIRSTSTEPS@2",
                 25,
-                new AspectList().add(Aspect.EARTH, 1).add(Aspect.AIR, 1),
+                new AspectList().add(Aspect.FIRE, 1),
                 PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.AAMINATED_GLASS),
+                "ADA",
+                "BCB",
+                "ADA",
+                'A', "blockGlass",
+                'B', new ItemStack(ItemsTC.visResonator),
+                'C', new ItemStack(ItemsTC.morphicResonator),
+                'D', "plateMansussteel"));
+        //b型玻璃
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "glass-b"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.AIR, 1),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.BAMINATED_GLASS),
+                "ADA",
+                "BCB",
+                "ADA",
+                'A', "blockGlass",
+                'B', new ItemStack(ItemsTC.visResonator),
+                'C', new ItemStack(ItemsTC.morphicResonator),
+                'D', "plateMansussteel"));
+        //c型玻璃
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "glass-c"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.WATER, 1),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.CAMINATED_GLASS),
+                "ADA",
+                "BCB",
+                "ADA",
+                'A', "blockGlass",
+                'B', new ItemStack(ItemsTC.visResonator),
+                'C', new ItemStack(ItemsTC.morphicResonator),
+                'D', "plateMansussteel"));
+        //d型玻璃
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "glass-d"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.ENTROPY, 1),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.DAMINATED_GLASS),
+                "ADA",
+                "BCB",
+                "ADA",
+                'A', "blockGlass",
+                'B', new ItemStack(ItemsTC.visResonator),
+                'C', new ItemStack(ItemsTC.morphicResonator),
+                'D', "plateMansussteel"));
+        //l型玻璃
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "glass-l"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.LAMINATED_GLASS),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -917,6 +1038,82 @@ public class MagicGCYMRecipes {
                 'A', "plateMansussteel",
                 'B', "plateTungstenSteel",
                 'C', MetaBlocks.TURBINE_CASING.getItemVariant(BlockTurbineCasing.TurbineCasingType.TUNGSTENSTEEL_GEARBOX)));
+        //蕴魔引导外壳，电池外壳
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "battery_casing"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                75,
+                new AspectList().add(Aspect.FIRE, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.MAGIC_BATTERY, 32),
+                "BAB",
+                "DCD",
+                "BAB",
+                'A', "plateMansussteel",
+                'B', "plateThaumium",
+                'C', "frameGtMansussteel",
+                'D', new ItemStack(MetaItems.FIELD_GENERATOR_MV.getMetaItem(), 1, 203)));
+        //filter配方
+        //一级
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "filter_1"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                50,
+                new AspectList().add(Aspect.FIRE, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_1, 8),
+                "AAA",
+                "DCD",
+                "AAA",
+                'A', "plateMansussteel",
+                'C', "frameGtMansussteel",
+                'D', new ItemStack(BlocksTC.visBattery)));
+        //二级
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "filter_2"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                75,
+                new AspectList().add(Aspect.FIRE, 2).add(Aspect.ORDER, 2),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_2, 8),
+                "AAA",
+                "ABA",
+                "AAA",
+                'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_1),
+                'B', new ItemStack(MetaItems.FIELD_GENERATOR_LV.getMetaItem(), 1, 202)));
+        //三级
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "filter_3"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                100,
+                new AspectList().add(Aspect.FIRE, 3).add(Aspect.ORDER, 3),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_2, 8),
+                "AAA",
+                "ABA",
+                "AAA",
+                'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_2),
+                'B', new ItemStack(MetaItems.FIELD_GENERATOR_MV.getMetaItem(), 1, 203)));
+        //四级
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "filter_4"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                125,
+                new AspectList().add(Aspect.FIRE, 4).add(Aspect.ORDER, 4),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_2, 8),
+                "AAA",
+                "ABA",
+                "AAA",
+                'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_3),
+                'B', new ItemStack(MetaItems.FIELD_GENERATOR_HV.getMetaItem(), 1, 204)));
+        //五级
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "filter_5"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                150,
+                new AspectList().add(Aspect.FIRE, 5).add(Aspect.ORDER, 5),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_5, 8),
+                "AAA",
+                "ABA",
+                "AAA",
+                'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_4),
+                'B', new ItemStack(MetaItems.FIELD_GENERATOR_EV.getMetaItem(), 1, 205)));
     }
 
 
