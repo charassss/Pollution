@@ -36,7 +36,11 @@ public class MetaTileEntityVisClear extends TieredMetaTileEntity {
     }
     @Override
     protected ModularUI createUI(EntityPlayer entityPlayer) {
-        return null;
+        ModularUI.Builder builder = ModularUI.defaultBuilder();
+        builder.dynamicLabel(7, 30, () -> "Vis Clear", 0x232323);
+        builder.dynamicLabel(7, 50, () -> "Tier: " + this.getTier(), 0x232323);
+        builder.dynamicLabel(7, 70, () -> "Vis: " + AuraHelper.getFlux(getWorld(),getPos()), 0x232323);
+        return builder.build(getHolder(), entityPlayer);
     }
     @Override
     public void update() {

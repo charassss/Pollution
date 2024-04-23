@@ -917,6 +917,19 @@ public class MagicGCYMRecipes {
                 new ItemStack(ItemsTC.visResonator),
                 new ItemStack(ItemsTC.morphicResonator)));
         //管道
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-bronze"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.BRONZE_PIPE),
+                "BBB",
+                "ACA",
+                "BBB",
+                'A', "plateMansussteel",
+                'B', "plateBronze",
+                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.BRONZE_PIPE)));
+
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-steel"), new ShapedArcaneRecipe(
                 new ResourceLocation(""),
                 "FIRSTSTEPS@2",
@@ -928,18 +941,6 @@ public class MagicGCYMRecipes {
                 "BBB",
                 'A', "plateMansussteel",
                 'B', "plateSteel",
-                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)));
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-stainless"), new ShapedArcaneRecipe(
-                new ResourceLocation(""),
-                "FIRSTSTEPS@2",
-                25,
-                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
-                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.STEEL_PIPE),
-                "BBB",
-                "ACA",
-                "BBB",
-                'A', "plateMansussteel",
-                'B', "plateStainlessSteel",
                 'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE)));
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-polytetrafluoroethylene"), new ShapedArcaneRecipe(
                 new ResourceLocation(""),

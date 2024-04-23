@@ -36,16 +36,6 @@ public class MetaTileEntityVisHatch  extends MetaTileEntityMultiblockPart
         implements IMultiblockAbilityPart<IVisHatch>, IVisHatch {
 
     int tier;
-    int aX = 0;
-    int aY = 0;
-    int aZ = 0;
-    @Override
-    public void update() {
-        super.update();
-        aX = this.getPos().getX();
-        aY = this.getPos().getY();
-        aZ = this.getPos().getZ();
-    }
     public MetaTileEntityVisHatch(ResourceLocation metaTileEntityId, int tier) {
         super(metaTileEntityId, tier);
         this.tier=tier;
@@ -67,8 +57,6 @@ public class MetaTileEntityVisHatch  extends MetaTileEntityMultiblockPart
         ModularUI.Builder builder = ModularUI.defaultBuilder();
         builder.dynamicLabel(7, 30, () -> "Vis Hatch", 0x232323);
         builder.dynamicLabel(7, 50, () -> "Tier: " + this.getTier(), 0x232323);
-        builder.dynamicLabel(7, 70, () -> "locate: " + this.aX+" / "+this.aY+" / "+this.aZ, 0x232323);
-        builder.dynamicLabel(7, 90, () -> "Vis: " + AuraHelper.getVis(getWorld(),getPos()), 0x232323);
         return builder.build(getHolder(), entityPlayer);
     }
 
