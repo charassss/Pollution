@@ -1116,6 +1116,4 @@ public class MagicGCYMRecipes {
                 'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_4),
                 'B', new ItemStack(MetaItems.FIELD_GENERATOR_EV.getMetaItem(), 1, 205)));
     }
-
-
 }

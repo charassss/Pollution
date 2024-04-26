@@ -198,7 +198,7 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                 this.canOutput=bl;
             }
             //是否可以耗电 可以耗电继续进行进度结算
-            if(this.energyContainer.getEnergyStored()>480 && this.energyContainer.getInputVoltage()>= GTValues.HV)
+            if(this.energyContainer.getEnergyStored()>480 && this.energyContainer.getInputVoltage()>= GTValues.V[GTValues.HV])
                 if(canOutput && timeAmount--<0 && outputItem!=ItemStack.EMPTY)
                 {
                     this.energyContainer.changeEnergy(480);
