@@ -1,19 +1,39 @@
 package keqing.pollution.loaders.recipes;
 
 import com.cleanroommc.groovyscript.api.IIngredient;
+import gregtech.api.GTValues;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
+import gregtech.common.blocks.BlockBoilerCasing;
+import gregtech.common.blocks.MetaBlocks;
 import keqing.gtqtcore.api.recipes.GTQTcoreRecipeMaps;
 import keqing.gtqtcore.api.unification.GCYSMaterials;
 import keqing.gtqtcore.api.unification.GTQTMaterials;
+import keqing.gtqtcore.api.unification.TJMaterials;
 import keqing.gtqtcore.loaders.recipes.GTQTRecipes;
 import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.unification.PollutionMaterials;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.PollutionMetaBlocks;
+import keqing.pollution.common.items.PollutionMetaItem1;
 import keqing.pollution.common.items.PollutionMetaItems;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemSaddle;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+import thaumcraft.Thaumcraft;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.crafting.CrucibleRecipe;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.items.ItemsTC;
 
 public class MagicChemicalRecipes {
     public static void init() {
@@ -55,8 +75,6 @@ public class MagicChemicalRecipes {
                     .duration(3600)
                     .EUt(480)
                     .buildAndRegister();
-
-
             //可燃冰→石墨烯+氢
             PORecipeMaps.MAGIC_CHEMICAL_REACTOR_RECIPES.recipeBuilder()
                     .input(OrePrefix.dust, GTQTMaterials.Gashydrate, 4)
@@ -162,7 +180,169 @@ public class MagicChemicalRecipes {
                     .duration(20)
                     .EUt(120)
                     .buildAndRegister();
-
-
+            //悖论物质
+            PORecipeMaps.MAGIC_CHEMICAL_REACTOR_RECIPES.recipeBuilder()
+                    .fluidInputs(PollutionMaterials.infused_entropy.getFluid(2304))
+                    .fluidInputs(PollutionMaterials.infused_energy.getFluid(2304))
+                    .input(ItemsTC.alumentum)
+                    .output(ItemsTC.causalityCollapser)
+                    .duration(200)
+                    .EUt(120)
+                    .buildAndRegister();
+            //史莱姆产出：焦油、糖、甘油、胶水、橡胶、燃油（特殊）
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(200))
+                    .notConsumable(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(), 1, 20))
+                    .fluidOutputs(Materials.OilHeavy.getFluid(1000))
+                    .rate(10)
+                    .duration(60)
+                    .EUt(120)
+                    .buildAndRegister();
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(200))
+                    .notConsumable(new ItemStack(PollutionMetaItems.SUGARSLIME.getMetaItem(), 1, 21))
+                    .output(Items.SUGAR, 16)
+                    .rate(10)
+                    .duration(60)
+                    .EUt(120)
+                    .buildAndRegister();
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(200))
+                    .notConsumable(new ItemStack(PollutionMetaItems.GLYCEROLSLIME.getMetaItem(), 1, 22))
+                    .fluidOutputs(Materials.Glycerol.getFluid(1000))
+                    .rate(10)
+                    .duration(60)
+                    .EUt(120)
+                    .buildAndRegister();
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(200))
+                    .notConsumable(new ItemStack(PollutionMetaItems.GLUESLIME.getMetaItem(), 1, 23))
+                    .fluidOutputs(Materials.Glue.getFluid(1000))
+                    .rate(10)
+                    .duration(60)
+                    .EUt(120)
+                    .buildAndRegister();
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(200))
+                    .notConsumable(new ItemStack(PollutionMetaItems.RUBBERSLIME.getMetaItem(), 1, 24))
+                    .fluidOutputs(Materials.Rubber.getFluid(1000))
+                    .rate(10)
+                    .duration(60)
+                    .EUt(120)
+                    .buildAndRegister();
+            GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
+                    .fluidInputs(Materials.Biomass.getFluid(1000))
+                    .notConsumable(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(), 1, 20))
+                    .fluidInputs(PollutionMaterials.infused_energy.getFluid(144))
+                    .fluidOutputs(Materials.Diesel.getFluid(1000))
+                    .rate(30)
+                    .duration(120)
+                    .EUt(120)
+                    .buildAndRegister();
+            //纯化焦油+粘液球 搅拌
+            RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                    .input(Items.SLIME_BALL, 4)
+                    .fluidInputs(PollutionMaterials.pure_tar.getFluid(1000))
+                    .fluidOutputs(PollutionMaterials.super_sticky_tar.getFluid(1000))
+                    .duration(200)
+                    .EUt(120)
+                    .buildAndRegister();
+            //超粘稠焦油 魔导催化反应 焦油史莱姆
+            PORecipeMaps.MAGIC_CHEMICAL_REACTOR_RECIPES.recipeBuilder()
+                    .fluidInputs(PollutionMaterials.super_sticky_tar.getFluid(4000))
+                    .fluidInputs(PollutionMaterials.infused_life.getFluid(9216))
+                    .fluidInputs(PollutionMaterials.infused_soul.getFluid(576))
+                    .outputs(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(),1, 20))
+                    .duration(2000)
+                    .EUt(120)
+                    .buildAndRegister();
+            //其他的史莱姆
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(),1, 20))
+                    .input(Items.SUGAR, 4)
+                    .outputs(new ItemStack(PollutionMetaItems.SUGARSLIME.getMetaItem(),1, 21))
+                    .duration(100)
+                    .EUt(120)
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(),1, 20))
+                    .fluidInputs(Materials.Glue.getFluid(1000))
+                    .outputs(new ItemStack(PollutionMetaItems.GLUESLIME.getMetaItem(),1, 22))
+                    .duration(100)
+                    .EUt(120)
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(),1, 20))
+                    .fluidInputs(Materials.Glycerol.getFluid(1000))
+                    .outputs(new ItemStack(PollutionMetaItems.GLYCEROLSLIME.getMetaItem(),1, 23))
+                    .duration(100)
+                    .EUt(120)
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .inputs(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(),1, 20))
+                    .fluidInputs(Materials.Rubber.getFluid(1000))
+                    .outputs(new ItemStack(PollutionMetaItems.RUBBERSLIME.getMetaItem(),1, 24))
+                    .duration(100)
+                    .EUt(120)
+                    .buildAndRegister();
+            //焦化催化剂核心
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "coking_core"), new InfusionRecipe(
+                    "INFUSION@2",
+                    new ItemStack(PollutionMetaItems.COKINGCORE.getMetaItem(), 1, 7),
+                    3,
+                    new AspectList().add(Aspect.ENERGY, 128).add(Aspect.AURA, 32),
+                    new ItemStack(PollutionMetaItems.BLANKCORE.getMetaItem(), 1, 2),
+                    "gemCoke",
+                    "gemCoke",
+                    "gemCoal",
+                    "gemCoal",
+                    new ItemStack(ItemsTC.alumentum),
+                    new ItemStack(ItemsTC.alumentum),
+                    new ItemStack(BlocksTC.crystalEntropy),
+                    new ItemStack(BlocksTC.crystalEntropy)));
+            //糖——HMF
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .input(Items.SUGAR, 8)
+                    .notConsumable(Materials.DilutedSulfuricAcid.getFluid(1000))
+                    .notConsumable(TJMaterials.ZirconiumTetrachloride.getFluid(1000))
+                    .fluidOutputs(GTQTMaterials.Hydroxymethylfurfural.getFluid(1000))
+                    .duration(400)
+                    .EUt(30)
+                    .buildAndRegister();
+            //HMF——2-甲基呋喃
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .notConsumable(OrePrefix.dust, Materials.Palladium)
+                    .notConsumable(OrePrefix.dust, Materials.SodiumBicarbonate, 8)
+                    .fluidInputs(GTQTMaterials.Hydroxymethylfurfural.getFluid(1000))
+                    .fluidInputs(Materials.Hydrogen.getFluid(10000))
+                    .fluidOutputs(GTQTMaterials.Methylfuran.getFluid(500))
+                    .duration(400)
+                    .EUt(120)
+                    .buildAndRegister();
+            RecipeMaps.CHEMICAL_RECIPES.recipeBuilder()
+                    .notConsumable(OrePrefix.dust, PollutionMaterials.thaummix)
+                    .notConsumable(OrePrefix.dust, Materials.SodiumBicarbonate, 8)
+                    .fluidInputs(GTQTMaterials.Hydroxymethylfurfural.getFluid(1000))
+                    .fluidInputs(Materials.Hydrogen.getFluid(10000))
+                    .fluidOutputs(GTQTMaterials.Methylfuran.getFluid(500))
+                    .duration(400)
+                    .EUt(120)
+                    .buildAndRegister();
+            //魔力抗爆焦化硝基苯
+            PORecipeMaps.MAGIC_CHEMICAL_REACTOR_RECIPES.recipeBuilder()
+                    .fluidInputs(GTQTMaterials.Methylfuran.getFluid(1000))
+                    .fluidInputs(Materials.Ethanol.getFluid(1000))
+                    .fluidInputs(Materials.Nitrobenzene.getFluid(10000))
+                    .fluidInputs(PollutionMaterials.infused_energy.getFluid(1152))
+                    .notConsumable(new ItemStack(PollutionMetaItems.COKINGCORE.getMetaItem(),1, 7))
+                    .fluidOutputs(PollutionMaterials.magic_nitrobenzene.getFluid(16000))
+                    .duration(200)
+                    .EUt(480)
+                    .buildAndRegister();
+            RecipeMaps.GAS_TURBINE_FUELS.recipeBuilder()
+                    .fluidInputs(new FluidStack[]{PollutionMaterials.magic_nitrobenzene.getFluid(1)})
+                    .duration(160)
+                    .EUt((int) GTValues.V[1])
+                    .buildAndRegister();
     }
 }

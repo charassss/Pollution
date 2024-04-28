@@ -57,6 +57,9 @@ public class PollutionMaterials {
     public static Material rough_llp;
     public static Material llp;
     public static Material oil_with_llp;
+    public static Material super_sticky_tar;
+    public static Material magic_nitrobenzene;
+    public static Material pure_tar;
 
     public PollutionMaterials() {}
 

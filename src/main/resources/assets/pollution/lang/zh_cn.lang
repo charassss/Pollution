@@ -39,11 +39,14 @@ gregtech.material.manasteel=魔力钢
 gregtech.material.salismundus=世界盐
 gregtech.material.mansussteel=漫宿钢
 
-gregtech.material.lotus_dust=荷叶粉
+gregtech.material.lotus_dust=荷叶
 gregtech.material.ethyl_silicate=硅酸乙酯
 gregtech.material.rough_llp=LLP@SiO2粗胚
 gregtech.material.llp=超亲疏水LLP@SiO2
 gregtech.material.oil_with_llp=LLP-石油悬浊液
+gregtech.material.super_sticky_tar=超粘稠焦油
+gregtech.material.magic_nitrobenzene=魔力抗爆焦化硝基苯
+gregtech.material.pure_tar=纯化焦油
 
 gregtech.material.kobemetal=牢大金
 metaitem.ingotKobemetal.tooltip=牢大，想你了
@@ -63,12 +66,14 @@ metaitem.cold_catalyst_core.name=§b凛冰催化剂核心§r
 metaitem.hot_catalyst_core.name=§c炽焱催化剂核心§r
 metaitem.integration_catalyst_core.name=§6聚合催化剂核心§r
 metaitem.segregation_catalyst_core.name=§a扩散催化剂核心§r
+metaitem.coking_catalyst_core.name=§8§l焦化催化剂核心§r
 
 metaitem.blank_catalyst_core.tooltip=§8无限可能§r
 metaitem.cold_catalyst_core.tooltip=§b极度冰寒§r
 metaitem.hot_catalyst_core.tooltip=§c熊熊烈焰§r
 metaitem.integration_catalyst_core.tooltip=§6百川东流§r
 metaitem.segregation_catalyst_core.tooltip=§a大风起兮§r
+metaitem.coking_catalyst_core.tooltip=§8§l焦油踽行§r
 #方块
 tile.magic_block.void_prism.name=蕴魔虚空棱镜折射外壳
 tile.magic_block.spell_prism.name=蕴魔棱镜折射外壳
@@ -120,7 +125,7 @@ tile.wire_coil.machine_coil_hssg.name=五级炽焱凝聚富集符文
 tile.wire_coil.machine_coil_naquadah.name=六级炽焱凝聚富集符文
 tile.wire_coil.machine_coil_trinium.name=七级炽焱凝聚富集符文
 tile.wire_coil.machine_coil_tritanium.name=八级炽焱凝聚富集符文
-#  电路板
+#电路板
 metaitem.magic_circuit.ulv.name=蕴魔电路板 (§8ULV§r)
 metaitem.magic_circuit.lv.name=蕴魔电路板 (§7LV§r)
 metaitem.magic_circuit.mv.name=蕴魔电路板 (§bMV§r)
@@ -152,6 +157,17 @@ metaitem.magic_circuit.uiv.tooltip=§2魔力四射！§r
 metaitem.magic_circuit.uxv.tooltip=§e魔力四射！§r
 metaitem.magic_circuit.opv.tooltip=§9魔力四射！§r
 metaitem.magic_circuit.max.tooltip=§c§l魔力四射！§r
+#史莱姆
+metaitem.tar_slime.name=焦油史莱姆
+metaitem.sugar_slime.name=糖果史莱姆
+metaitem.glycerol_slime.name=甘露史莱姆
+metaitem.glue_slime.name=凝胶史莱姆
+metaitem.rubber_slime.name=橡胶史莱姆
+metaitem.tar_slime.tooltip=用不完的油
+metaitem.sugar_slime.tooltip=吃不完的糖
+metaitem.glycerol_slime.tooltip=用不完的开塞露
+metaitem.glue_slime.tooltip=打不完的胶
+metaitem.rubber_slime.tooltip=擦不完的橡皮
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
@@ -323,3 +339,11 @@ pollution.machine.canoutput=源质是否满足:%s
 pollution.machine.output_item=输出物品:%s
 pollution.machine.process=工作进度:%s
 pollution.machine.aspect=源质:%s:%s
+
+#聚灵阵
+pollution.machine.essence_collector.name=六彩要素聚灵阵
+pollution.machine.essence_collector.tooltip.1=§5七曜魔女为什么保留她只会六种元素魔法的历史？§r
+pollution.machine.essence_collector.tooltip.2=机械修仙，自动产出6种要素的流体版本！
+pollution.machine.essence_collector.tooltip.3=产出量和电压等级、当前区块污染、当前区块灵气有关，建议清理污染再使用
+pollution.machine.essence_collector.tooltip.4=在输入总线第一格放置一个要素水晶，以开启聚焦模式
+pollution.machine.essence_collector.tooltip.5=聚焦模式下只产出该要素水晶对应的要素，且总产出量减半

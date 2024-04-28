@@ -21,12 +21,14 @@ import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import org.lwjgl.openal.EFXUtil;
 import scala.xml.dtd.EMPTY;
@@ -131,7 +133,6 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
             //有聚焦器的情况，也就是输入总线第一格不是空的，此时判断是否有电
             //如果是六种聚焦器（水晶）之一，则说明有聚焦器，再判断是否有仓，且仓是否够大，然后扣电，然后输出一种流体；
             //如果聚焦器不是六种之一，或者输入总线什么都没有，进入一般模式产出六种
-
             if (!this.inputInventory.getStackInSlot(0).isEmpty()
                     && this.energyContainer.getEnergyStored() > this.energyContainer.getInputVoltage()
                     && this.energyContainer.getInputVoltage() >= EUt) {
@@ -195,7 +196,16 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
                             Collections.singletonList(PollutionMaterials.infused_entropy.getFluid(finalSpeedPerTick)));
                 }
             }
-
-
         }
-    }}
+    }
+
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, world, tooltip, advanced);
+        tooltip.add(I18n.format("pollution.machine.essence_collector.tooltip.1", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.essence_collector.tooltip.2", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.essence_collector.tooltip.3", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.essence_collector.tooltip.4", new Object[0]));
+        tooltip.add(I18n.format("pollution.machine.essence_collector.tooltip.5", new Object[0]));
+
+    }
+}

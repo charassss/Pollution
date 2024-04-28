@@ -2,6 +2,7 @@ package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
 import keqing.pollution.api.unification.PollutionMaterials;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
@@ -68,7 +69,20 @@ public class CatalystMaterials {
                 .color(0x698B69)
                 .fluid()
                 .build();
-
-
+        //超粘稠焦油 魔力抗爆焦化硝基苯 纯化焦油
+        PollutionMaterials.super_sticky_tar = new Material.Builder(getMaterialsId(), gregtechId("super_sticky_tar"))
+                .color(0x4F4F4F)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
+        PollutionMaterials.magic_nitrobenzene = new Material.Builder(getMaterialsId(), gregtechId("magic_nitrobenzene"))
+                .color(0x8B1A1A)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
+        PollutionMaterials.pure_tar = new Material.Builder(getMaterialsId(), gregtechId("pure_tar"))
+                .color(0x4F4F4F)
+                .fluid()
+                .build();
     }
 }
