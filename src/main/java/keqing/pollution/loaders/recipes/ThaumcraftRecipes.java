@@ -3,9 +3,15 @@ package keqing.pollution.loaders.recipes;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.items.MetaItems;
+import keqing.gtqtcore.api.unification.GTQTMaterials;
+import keqing.gtqtcore.common.items.GTQTMetaItems;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.unification.PollutionMaterials;
+import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
+import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
+import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,7 +35,25 @@ public class ThaumcraftRecipes {
     public static void init(){
         catalyst();
         misc();
+        solar();
 
+    }
+    private static void solar(){
+        //太阳能试写
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "air_solar_1"), new InfusionRecipe(
+                "",
+                PollutionMetaTileEntities.SOLAR_PLATE,
+                2,
+                new AspectList().add(Aspect.ENERGY, 16).add(Aspect.AIR, 16),
+                "frameGtMansussteel",
+                new ItemStack(GTQTMetaItems.SOLAR_PLATE_MKI.getMetaItem(), 1, 90),
+                "circuitLv",
+                "circuitLv",
+                new ItemStack(MetaItems.SENSOR_LV.getMetaItem(), 1, 232),
+                new ItemStack(MetaItems.SENSOR_LV.getMetaItem(), 1, 232),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.AAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.LAMINATED_GLASS),
+                "cableGtSingleTin"));
     }
     private static void catalyst() {
         //活性催化粗胚，搅拌机

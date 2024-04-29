@@ -208,7 +208,7 @@ public class MagicChemicalRecipes {
                     .buildAndRegister();
             GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
                     .fluidInputs(Materials.Biomass.getFluid(200))
-                    .notConsumable(new ItemStack(PollutionMetaItems.GLYCEROLSLIME.getMetaItem(), 1, 22))
+                    .notConsumable(new ItemStack(PollutionMetaItems.GLYCEROLSLIME.getMetaItem(), 1, 23))
                     .fluidOutputs(Materials.Glycerol.getFluid(1000))
                     .rate(10)
                     .duration(60)
@@ -216,7 +216,7 @@ public class MagicChemicalRecipes {
                     .buildAndRegister();
             GTQTcoreRecipeMaps.BIOLOGICAL_REACTION_RECIPES.recipeBuilder()
                     .fluidInputs(Materials.Biomass.getFluid(200))
-                    .notConsumable(new ItemStack(PollutionMetaItems.GLUESLIME.getMetaItem(), 1, 23))
+                    .notConsumable(new ItemStack(PollutionMetaItems.GLUESLIME.getMetaItem(), 1, 22))
                     .fluidOutputs(Materials.Glue.getFluid(1000))
                     .rate(10)
                     .duration(60)
@@ -235,7 +235,7 @@ public class MagicChemicalRecipes {
                     .notConsumable(new ItemStack(PollutionMetaItems.TARSLIME.getMetaItem(), 1, 20))
                     .fluidInputs(PollutionMaterials.infused_energy.getFluid(144))
                     .fluidOutputs(Materials.Diesel.getFluid(1000))
-                    .rate(30)
+                    .rate(20)
                     .duration(120)
                     .EUt(120)
                     .buildAndRegister();
