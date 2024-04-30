@@ -469,6 +469,25 @@ public class MetaTileEntityMagicBattery extends MultiblockWithDisplayBase implem
                 4, 0.2, 10, 20,
                 r, g, b, a, EnumFacing.Axis.Z);
 
+        RenderBufferHelper.renderRing(buffer,
+                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 7 - (double) Hight /10+ 0.5,
+                getPos().getY() - context.cameraY() + relativeBack.getYOffset() +0.5,
+                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 7 + 0.5,
+                4, 0.2, 10, 20,
+                r, g, b, a,  X);
+        RenderBufferHelper.renderRing(buffer,
+                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 7 + 0.5,
+                getPos().getY() - context.cameraY() + relativeBack.getYOffset() - (double) Hight /10+0.5,
+                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 7 + 0.5,
+                4, 0.2, 10, 20,
+                r, g, b, a, Y);
+        RenderBufferHelper.renderRing(buffer,
+                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 7 + 0.5,
+                getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 0.5,
+                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 7 - (double) Hight /10+ 0.5,
+                4, 0.2, 10, 20,
+                r, g, b, a, EnumFacing.Axis.Z);
+
 
     }
     @Override
