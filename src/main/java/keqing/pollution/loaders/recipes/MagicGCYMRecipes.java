@@ -38,6 +38,7 @@ import java.nio.charset.StandardCharsets;
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES;
+import static keqing.pollution.api.unification.PollutionMaterials.mansussteel;
 import static keqing.pollution.api.unification.PollutionMaterials.perditioaluminium;
 
 public class MagicGCYMRecipes {
@@ -224,10 +225,37 @@ public class MagicGCYMRecipes {
                 .duration(300)
                 .EUt(120)
                 .buildAndRegister();
+        //加一个空白的配方
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.plate, StainlessSteel, 6)
+                .input(OrePrefix.frameGt, mansussteel, 1)
+                .outputs(PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM))
+                .circuitMeta(6)
+                .duration(300)
+                .EUt(120)
+                .buildAndRegister();
+        //聚灵阵
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "essence_collector"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaTileEntities.ESSENCE_COLLECTOR.getStackForm(),
+                7,
+                new AspectList().add(Aspect.MAGIC, 250).add(Aspect.MECHANISM, 250).add(Aspect.AURA, 250),
+                new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
+                "gemValonite",
+                new ItemStack(BlocksTC.crystalAir),
+                new ItemStack(BlocksTC.crystalFire),
+                new ItemStack(BlocksTC.crystalEarth),
+                new ItemStack(BlocksTC.crystalWater),
+                new ItemStack(BlocksTC.crystalOrder),
+                new ItemStack(BlocksTC.crystalEntropy),
+                "frameGtMansussteel",
+                new ItemStack(MetaItems.FIELD_GENERATOR_HV.getMetaItem(), 1, 204),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_4)));
         //温室
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_greenhouse"), new InfusionRecipe(
                 "INFUSION@2",
-                PollutionMetaTileEntities.MAGIC_GREEN_HOUSE,
+                PollutionMetaTileEntities.MAGIC_GREEN_HOUSE.getStackForm(),
                 5,
                 new AspectList().add(Aspect.PLANT, 250).add(Aspect.MAGIC, 128).add(Aspect.MECHANISM, 128),
                 GTFOTileEntities.GREENHOUSE.getStackForm(),
@@ -563,7 +591,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, PollutionMaterials.infused_order)
                 .input(OrePrefix.dust, PollutionMaterials.infused_entropy)
                 .fluidInputs(Redstone.getFluid(288))
-                .output(OrePrefix.dust, PollutionMaterials.salismundus)
+                .output(OrePrefix.dust, PollutionMaterials.salismundus,6)
                 .duration(600)
                 .EUt(120)
                 .buildAndRegister();
@@ -572,7 +600,15 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, PollutionMaterials.manasteel, 3)
                 .input(OrePrefix.dust, PollutionMaterials.thaumium, 2)
                 .input(OrePrefix.dust, PollutionMaterials.salismundus)
-                .output(OrePrefix.dust, PollutionMaterials.mansussteel)
+                .output(OrePrefix.dust, PollutionMaterials.mansussteel, 6)
+                .duration(600)
+                .EUt(120)
+                .buildAndRegister();
+        RecipeMaps.MIXER_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, PollutionMaterials.manasteel, 3)
+                .input(OrePrefix.dust, PollutionMaterials.thaumium, 2)
+                .input(ItemsTC.salisMundus)
+                .output(OrePrefix.dust, PollutionMaterials.mansussteel, 6)
                 .duration(600)
                 .EUt(120)
                 .buildAndRegister();
@@ -766,7 +802,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 25,
                 new AspectList().add(Aspect.FIRE, 1),
-                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.AAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.AAMINATED_GLASS, 2),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -780,7 +816,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 25,
                 new AspectList().add(Aspect.AIR, 1),
-                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.BAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.BAMINATED_GLASS, 2),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -794,7 +830,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 25,
                 new AspectList().add(Aspect.WATER, 1),
-                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.CAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.CAMINATED_GLASS,2),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -808,7 +844,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 25,
                 new AspectList().add(Aspect.ENTROPY, 1),
-                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.DAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.DAMINATED_GLASS, 2),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -822,7 +858,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 25,
                 new AspectList().add(Aspect.ORDER, 1),
-                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.LAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.LAMINATED_GLASS, 2),
                 "ADA",
                 "BCB",
                 "ADA",
@@ -917,19 +953,6 @@ public class MagicGCYMRecipes {
                 new ItemStack(ItemsTC.visResonator),
                 new ItemStack(ItemsTC.morphicResonator)));
         //管道
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-bronze"), new ShapedArcaneRecipe(
-                new ResourceLocation(""),
-                "FIRSTSTEPS@2",
-                25,
-                new AspectList().add(Aspect.EARTH, 1).add(Aspect.ORDER, 1),
-                PollutionMetaBlocks.TURBINE.getItemVariant(POTurbine.MagicBlockType.BRONZE_PIPE),
-                "BBB",
-                "ACA",
-                "BBB",
-                'A', "plateMansussteel",
-                'B', "plateBronze",
-                'C', MetaBlocks.BOILER_CASING.getItemVariant(BlockBoilerCasing.BoilerCasingType.BRONZE_PIPE)));
-
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "pipe-steel"), new ShapedArcaneRecipe(
                 new ResourceLocation(""),
                 "FIRSTSTEPS@2",
@@ -1045,7 +1068,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 75,
                 new AspectList().add(Aspect.FIRE, 1).add(Aspect.ORDER, 1),
-                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.MAGIC_BATTERY, 32),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.MAGIC_BATTERY, 16),
                 "BAB",
                 "DCD",
                 "BAB",
@@ -1060,7 +1083,7 @@ public class MagicGCYMRecipes {
                 "FIRSTSTEPS@2",
                 50,
                 new AspectList().add(Aspect.FIRE, 1).add(Aspect.ORDER, 1),
-                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_1, 8),
+                PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_1, 4),
                 "AAA",
                 "DCD",
                 "AAA",
@@ -1116,6 +1139,4 @@ public class MagicGCYMRecipes {
                 'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_4),
                 'B', new ItemStack(MetaItems.FIELD_GENERATOR_EV.getMetaItem(), 1, 205)));
     }
-
-
 }

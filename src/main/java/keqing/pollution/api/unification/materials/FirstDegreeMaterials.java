@@ -1,6 +1,8 @@
 package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.ToolProperty;
 import keqing.pollution.api.unification.PollutionMaterials;
 
