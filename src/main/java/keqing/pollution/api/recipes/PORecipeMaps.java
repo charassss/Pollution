@@ -1,8 +1,11 @@
 package keqing.pollution.api.recipes;
 
 import gregtech.api.gui.GuiTextures;
+import gregtech.api.gui.widgets.ProgressWidget;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.BlastRecipeBuilder;
+import gregtech.api.recipes.builders.FuelRecipeBuilder;
+import gregtech.api.recipes.builders.PrimitiveRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 import gregtech.core.sound.GTSoundEvents;
 import gregtech.loaders.recipe.chemistry.ChemistryRecipes;
@@ -19,8 +22,16 @@ public class PORecipeMaps {
             .setSlotOverlay(true, true, true, GuiTextures.FURNACE_OVERLAY_2)
             .setSound(GTSoundEvents.FURNACE);
 
+    public static final RecipeMap<PrimitiveRecipeBuilder> MAGIC_FUSION_REACTOR = new RecipeMap<>("magic_fusion_reactor", 0, 0,
+            1, 2, new PrimitiveRecipeBuilder(), false)
+            .setSound(GTSoundEvents.CHEMICAL_REACTOR);
+
     public static final RecipeMap<SimpleRecipeBuilder> MAGIC_CHEMICAL_REACTOR_RECIPES = new RecipeMap<>("magic_chemical_reactor", 3, 3, 5, 4, new SimpleRecipeBuilder(), false)
             .setSound(GTSoundEvents.CHEMICAL_REACTOR);
+
+    public static final RecipeMap<FuelRecipeBuilder> MAGIC_TURBINE_FUELS = new RecipeMap<>("magic_turbine",0,0,1,1,new FuelRecipeBuilder(),false)
+            .allowEmptyOutput()
+            .setSound(GTSoundEvents.TURBINE);
 
     private PORecipeMaps() {}
 }

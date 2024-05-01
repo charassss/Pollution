@@ -67,6 +67,7 @@ public class CommonProxy {
         registry.register(PollutionMetaBlocks.TURBINE);
         registry.register(PollutionMetaBlocks.BEAM_CORE);
         registry.register(PollutionMetaBlocks.WIRE_COIL);
+        registry.register(PollutionMetaBlocks.FUSION_REACTOR);
         registry.register(PollutionMetaBlocks.GLASS);
     }
 
@@ -85,6 +86,7 @@ public class CommonProxy {
         registry.register(createItemBlock(PollutionMetaBlocks.TURBINE, VariantItemBlock::new));
         registry.register(createItemBlock(PollutionMetaBlocks.BEAM_CORE, VariantItemBlock::new));
         registry.register(createItemBlock(PollutionMetaBlocks.WIRE_COIL, VariantItemBlock::new));
+        registry.register(createItemBlock(PollutionMetaBlocks.FUSION_REACTOR, VariantItemBlock::new));
         registry.register(createItemBlock(PollutionMetaBlocks.GLASS, VariantItemBlock::new));
     }
 

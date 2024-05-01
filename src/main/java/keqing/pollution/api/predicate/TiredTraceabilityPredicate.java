@@ -10,6 +10,7 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import keqing.pollution.api.block.impl.ITired;
 import keqing.pollution.api.block.impl.WrappedIntTired;
 import keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.POFusionReactor;
 import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
@@ -21,6 +22,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 import static keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock.WireCoilType.*;
+import static keqing.pollution.common.block.PollutionMetaBlock.POFusionReactor.FusionBlockType.*;
+import static keqing.pollution.common.block.PollutionMetaBlock.POGlass.MagicBlockType.*;
 import static keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore.MagicBlockType.*;
 import static keqing.pollution.common.block.PollutionMetaBlocks.WIRE_COIL;
 
@@ -31,6 +34,9 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
 
         MAP_COIL_CASING = new Object2ObjectOpenHashMap<>();
         MAP_CP_BEAM = new Object2ObjectOpenHashMap<>();
+        MAP_CP_GLASS = new Object2ObjectOpenHashMap<>();
+        MAP_CP_FRAME = new Object2ObjectOpenHashMap<>();
+        MAP_CP_COMPOSE = new Object2ObjectOpenHashMap<>();
 
         TiredTraceabilityPredicate.MAP_COIL_CASING.put(WIRE_COIL.getState(COIL_LEVEL_1),
                 new WrappedIntTired(COIL_LEVEL_1, 1));
@@ -61,11 +67,43 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
         TiredTraceabilityPredicate.MAP_CP_BEAM.put(PollutionMetaBlocks.BEAM_CORE.getState(FILTER_5),
                 new WrappedIntTired(FILTER_5,5));
 
+        TiredTraceabilityPredicate.MAP_CP_GLASS.put(PollutionMetaBlocks.GLASS.getState(LAMINATED_GLASS),
+                new WrappedIntTired(LAMINATED_GLASS,1));
+        TiredTraceabilityPredicate.MAP_CP_GLASS.put(PollutionMetaBlocks.GLASS.getState(AAMINATED_GLASS),
+                new WrappedIntTired(AAMINATED_GLASS,2));
+        TiredTraceabilityPredicate.MAP_CP_GLASS.put(PollutionMetaBlocks.GLASS.getState(BAMINATED_GLASS),
+                new WrappedIntTired(BAMINATED_GLASS,3));
+        TiredTraceabilityPredicate.MAP_CP_GLASS.put(PollutionMetaBlocks.GLASS.getState(CAMINATED_GLASS),
+                new WrappedIntTired(CAMINATED_GLASS,4));
+        TiredTraceabilityPredicate.MAP_CP_GLASS.put(PollutionMetaBlocks.GLASS.getState(DAMINATED_GLASS),
+                new WrappedIntTired(DAMINATED_GLASS,5));
+
+        TiredTraceabilityPredicate.MAP_CP_COMPOSE.put(PollutionMetaBlocks.FUSION_REACTOR.getState(COMPOSE_I),
+                new WrappedIntTired(COMPOSE_I,1));
+        TiredTraceabilityPredicate.MAP_CP_COMPOSE.put(PollutionMetaBlocks.FUSION_REACTOR.getState(COMPOSE_II),
+                new WrappedIntTired(COMPOSE_II,2));
+        TiredTraceabilityPredicate.MAP_CP_COMPOSE.put(PollutionMetaBlocks.FUSION_REACTOR.getState(COMPOSE_III),
+                new WrappedIntTired(COMPOSE_III,3));
+        TiredTraceabilityPredicate.MAP_CP_COMPOSE.put(PollutionMetaBlocks.FUSION_REACTOR.getState(COMPOSE_IV),
+                new WrappedIntTired(COMPOSE_IV,4));
+
+        TiredTraceabilityPredicate.MAP_CP_FRAME.put(PollutionMetaBlocks.FUSION_REACTOR.getState(FRAME_II),
+                new WrappedIntTired(FRAME_II,1));
+        TiredTraceabilityPredicate.MAP_CP_FRAME.put(PollutionMetaBlocks.FUSION_REACTOR.getState(FRAME_III),
+                new WrappedIntTired(FRAME_III,2));
+        TiredTraceabilityPredicate.MAP_CP_FRAME.put(PollutionMetaBlocks.FUSION_REACTOR.getState(FRAME_IV),
+                new WrappedIntTired(FRAME_IV,3));
+        TiredTraceabilityPredicate.MAP_CP_FRAME.put(PollutionMetaBlocks.FUSION_REACTOR.getState(FRAME_V),
+                new WrappedIntTired(FRAME_V,4));
+
 
     }
 
     public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_COIL_CASING;
     public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_CP_BEAM;
+    public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_CP_GLASS;
+    public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_CP_COMPOSE;
+    public static final Object2ObjectOpenHashMap<IBlockState,ITired> MAP_CP_FRAME;
 
     public static TraceabilityPredicate CP_COIL_CASING = new TiredTraceabilityPredicate(MAP_COIL_CASING,
             Comparator.comparing((s) -> ((WrappedIntTired)MAP_COIL_CASING.get(s)).getIntTier()),"COIL",null);
@@ -73,6 +111,15 @@ public class TiredTraceabilityPredicate extends TraceabilityPredicate {
 
     public static TraceabilityPredicate CP_BEAM_CORE = new TiredTraceabilityPredicate(MAP_CP_BEAM,
             Comparator.comparing((s) -> ((WrappedIntTired)MAP_CP_BEAM.get(s)).getIntTier()),"BEAM",null);
+
+    public static TraceabilityPredicate CP_GLASS = new TiredTraceabilityPredicate(MAP_CP_GLASS,
+            Comparator.comparing((s) -> ((WrappedIntTired)MAP_CP_GLASS.get(s)).getIntTier()),"GLASS",null);
+
+    public static TraceabilityPredicate CP_COMPOSE = new TiredTraceabilityPredicate(MAP_CP_COMPOSE,
+            Comparator.comparing((s) -> ((WrappedIntTired)MAP_CP_COMPOSE.get(s)).getIntTier()),"COMPOSE",null);
+
+    public static TraceabilityPredicate CP_FRAME = new TiredTraceabilityPredicate(MAP_CP_FRAME,
+            Comparator.comparing((s) -> ((WrappedIntTired)MAP_CP_FRAME.get(s)).getIntTier()),"FRAME",null);
 
 
     private final Object2ObjectOpenHashMap<IBlockState, ITired> map;

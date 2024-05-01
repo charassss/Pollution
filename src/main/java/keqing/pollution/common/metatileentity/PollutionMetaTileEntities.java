@@ -1,9 +1,19 @@
 package keqing.pollution.common.metatileentity;
 
 import gregtech.api.GTValues;
+import gregtech.api.metatileentity.SimpleGeneratorMetaTileEntity;
 import gregtech.api.metatileentity.TieredMetaTileEntity;
+import gregtech.api.util.GTUtility;
+import gregtech.client.renderer.texture.Textures;
+import gregtech.common.metatileentities.electric.MetaTileEntitySingleTurbine;
+import gregtech.common.metatileentities.multi.electric.generator.MetaTileEntityLargeTurbine;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
 import keqing.pollution.Pollution;
+import keqing.pollution.api.recipes.PORecipeMaps;
+import keqing.pollution.client.textures.POTextures;
+import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityFluxClear;
 import keqing.pollution.common.metatileentity.multiblock.*;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityMagicBender;
@@ -19,6 +29,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 import static keqing.pollution.client.textures.POTextures.*;
+import static keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock.MagicBlockType.ALLOY_BLAST_CASING;
 
 public class PollutionMetaTileEntities {
     public static ResourceLocation gtqtcoreId(String id) {
@@ -55,10 +66,12 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicDistillery MAGIC_DISTILLERY;
     public static MetaTileEntityMagicAlloyBlastSmelter MAGIC_ALLOY_BLAST;
     public static MetaTileEntityEssenceCollector ESSENCE_COLLECTOR;
+    public static MetaTileEntityMagicFusionReactor MAGIC_FUSION_REACTOR;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];
-
+    public static MetaTileEntityLargeTurbine LARGE_MAGIC_TURBINE;
     public static MetaTileEntitySolarPlate[] SOLAR_PLATE = new MetaTileEntitySolarPlate[18];
+    public static final SimpleGeneratorMetaTileEntity[] MAGIC_TURBINE = new SimpleGeneratorMetaTileEntity[3];
     public static void initialization() {
 
         for (int i = 0; i <= 4; i++) {
@@ -101,6 +114,23 @@ public class PollutionMetaTileEntities {
         MAGIC_EXTRUDER = registerMetaTileEntity(15954, new MetaTileEntityMagicExtruder(gtqtcoreId("magic_extruder")));
         MAGIC_GREEN_HOUSE = registerMetaTileEntity(15955, new MetaTileEntityMagicGreenHouse(gtqtcoreId("magic_green_house")));
         ESSENCE_COLLECTOR = registerMetaTileEntity(15956, new MetaTileEntityEssenceCollector(gtqtcoreId("essence_collector")));
+        MAGIC_FUSION_REACTOR = registerMetaTileEntity(15957, new MetaTileEntityMagicFusionReactor(gtqtcoreId("magic_fusion_reactor")));
+
+        MAGIC_TURBINE[0] = registerMetaTileEntity(15958,
+                new MetaTileEntitySingleTurbine(gtqtcoreId("magic_turbine.lv"), PORecipeMaps.MAGIC_TURBINE_FUELS,
+                        Textures.POWER_SUBSTATION_OVERLAY, 1,GTUtility.genericGeneratorTankSizeFunction));
+        MAGIC_TURBINE[1] = registerMetaTileEntity(15959,
+                new MetaTileEntitySingleTurbine(gtqtcoreId("magic_turbine.mv"), PORecipeMaps.MAGIC_TURBINE_FUELS,
+                        Textures.POWER_SUBSTATION_OVERLAY, 2, GTUtility.genericGeneratorTankSizeFunction));
+        MAGIC_TURBINE[2] = registerMetaTileEntity(15960,
+                new MetaTileEntitySingleTurbine(gtqtcoreId("magic_turbine.hv"), PORecipeMaps.MAGIC_TURBINE_FUELS,
+                        Textures.POWER_SUBSTATION_OVERLAY, 3, GTUtility.genericGeneratorTankSizeFunction));
+
+        LARGE_MAGIC_TURBINE = registerMetaTileEntity(15961, new MetaTileEntityLargeTurbine(gtqtcoreId("large_turbine.magic"),
+                PORecipeMaps.MAGIC_TURBINE_FUELS, 4,
+                PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_HOT),
+                PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX),
+                POTextures.SPELL_PRISM_HOT, true, Textures.LARGE_GAS_TURBINE_OVERLAY));
 
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();

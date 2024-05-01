@@ -1,0 +1,67 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "minecraft:cube_all",
+    "textures": {
+      "all": "gregtech:blocks/rendering_error"
+    }
+  },
+  "variants": {
+    "variant": {
+      "frame_i": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/frame_i"
+        }
+      },
+      "frame_ii": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/frame_ii"
+        }
+      },
+      "frame_iii": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/frame_iii"
+        }
+      },
+      "frame_iv": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/frame_iv"
+        }
+      },
+      "frame_v": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/frame_v"
+        }
+      },
+      "compose_i": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/compose_i"
+        }
+      },
+      "compose_ii": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/compose_ii"
+        }
+      },
+      "compose_iii": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/compose_iii"
+        }
+      },
+      "compose_iv": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/fusion_reactor/compose_iv"
+        }
+      }
+    }
+  }
+}
