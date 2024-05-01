@@ -37,9 +37,11 @@ import java.nio.charset.StandardCharsets;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
+import static gregtech.api.unification.ore.OrePrefix.*;
 import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES;
-import static keqing.pollution.api.unification.PollutionMaterials.mansussteel;
+import static keqing.pollution.api.unification.PollutionMaterials.*;
 import static keqing.pollution.api.unification.PollutionMaterials.perditioaluminium;
+import static keqing.pollution.common.items.PollutionMetaItems.*;
 
 public class MagicGCYMRecipes {
     public static void init() {
@@ -47,6 +49,78 @@ public class MagicGCYMRecipes {
     }
 
     private static void materials(){
+        //加一个直接炼矿的
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_air,  16)
+                .fluidOutputs(infused_air.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_fire,  16)
+                .fluidOutputs(infused_fire.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_water,  16)
+                .fluidOutputs(infused_water.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_earth,  16)
+                .fluidOutputs(infused_earth.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_entropy,  16)
+                .fluidOutputs(infused_entropy.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(dust,infused_order,  16)
+                .fluidOutputs(infused_order.getFluid(32*144))
+                .notConsumable(HOTCORE)
+                .notConsumable(COLDCORE)
+                .notConsumable(INTEGRATECORE)
+                .notConsumable(SEGREGATECORE)
+                .duration(2400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
         //这里是六个基础外壳材料的搅拌机配方
         //风要素-律动钛
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
@@ -324,7 +398,7 @@ public class MagicGCYMRecipes {
                 new AspectList().add(Aspect.ALCHEMY, 250).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
                 MetaTileEntities.LARGE_CHEMICAL_REACTOR.getStackForm(),
                 "gemValonite",
-                new ItemStack(PollutionMetaItems.HOTCORE.getMetaItem(), 1, 3),
+                new ItemStack(HOTCORE.getMetaItem(), 1, 3),
                 new ItemStack(PollutionMetaItems.COLDCORE.getMetaItem(), 1, 4),
                 new ItemStack(PollutionMetaItems.INTEGRATECORE.getMetaItem(), 1, 5),
                 new ItemStack(PollutionMetaItems.SEGREGATECORE.getMetaItem(), 1, 6),
@@ -443,7 +517,7 @@ public class MagicGCYMRecipes {
                 PollutionMetaTileEntities.MAGIC_CUTTER.getStackForm(),
                 5,
                 new AspectList().add(Aspect.SOUL, 125).add(Aspect.ENTROPY, 125).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
-                new ItemStack(PollutionMetaItems.HOTCORE.getMetaItem(), 1, 3),
+                new ItemStack(HOTCORE.getMetaItem(), 1, 3),
                 "gemValonite",
                 "circuitMv",
                 "circuitMv",
@@ -476,7 +550,7 @@ public class MagicGCYMRecipes {
                 PollutionMetaTileEntities.MAGIC_ELECTRIC_BLAST_FURNACE.getStackForm(),
                 5,
                 new AspectList().add(Aspect.FIRE, 250).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 128),
-                new ItemStack(PollutionMetaItems.HOTCORE.getMetaItem(), 1, 3),
+                new ItemStack(HOTCORE.getMetaItem(), 1, 3),
                 "gemValonite",
                 "circuitMv",
                 "circuitMv",
