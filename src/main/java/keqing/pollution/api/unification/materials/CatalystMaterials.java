@@ -2,6 +2,7 @@ package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
 import keqing.pollution.api.unification.PollutionMaterials;
+import net.minecraftforge.client.model.obj.OBJModel;
 
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.material.info.MaterialFlags.*;
@@ -40,6 +41,48 @@ public class CatalystMaterials {
                 .flags(DECOMPOSITION_BY_CENTRIFUGING)
                 .blast(2700)
                 .components(roughdraft, 6 , infused_fire, 1, infused_air, 1, infused_entropy, 1)
+                .build();
+
+        //魔法催化线材料
+        //荷叶粉 硅酸乙酯 LLP@SiO2粗胚 超亲疏水LLP@SiO2 含LLP原油
+        PollutionMaterials.lotus_dust = new Material.Builder(getMaterialsId(), gregtechId("lotus_dust"))
+                .color(0x008B45)
+                .dust()
+                .iconSet(DULL)
+                .build();
+        PollutionMaterials.ethyl_silicate = new Material.Builder(getMaterialsId(), gregtechId("ethyl_silicate"))
+                .color(0x708090)
+                .fluid()
+                .build()
+                .setFormula("(C2H5O)4Si", true);
+        PollutionMaterials.rough_llp = new Material.Builder(getMaterialsId(), gregtechId("rough_llp"))
+                .color(0xB4EEB4)
+                .dust()
+                .iconSet(DULL)
+                .build();
+        PollutionMaterials.llp = new Material.Builder(getMaterialsId(), gregtechId("llp"))
+                .color(0xB4EEB4)
+                .dust()
+                .iconSet(SHINY)
+                .build();
+        PollutionMaterials.oil_with_llp = new Material.Builder(getMaterialsId(), gregtechId("oil_with_llp"))
+                .color(0x698B69)
+                .fluid()
+                .build();
+        //超粘稠焦油 魔力抗爆焦化硝基苯 纯化焦油
+        PollutionMaterials.super_sticky_tar = new Material.Builder(getMaterialsId(), gregtechId("super_sticky_tar"))
+                .color(0x4F4F4F)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
+        PollutionMaterials.magic_nitrobenzene = new Material.Builder(getMaterialsId(), gregtechId("magic_nitrobenzene"))
+                .color(0x8B1A1A)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
+        PollutionMaterials.pure_tar = new Material.Builder(getMaterialsId(), gregtechId("pure_tar"))
+                .color(0x4F4F4F)
+                .fluid()
                 .build();
     }
 }

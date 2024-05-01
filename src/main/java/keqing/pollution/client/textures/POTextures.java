@@ -18,6 +18,11 @@ public class POTextures {
     public static SimpleOverlayRenderer ORDER;
     public static SimpleOverlayRenderer WATER;
 
+    public static SimpleOverlayRenderer FRAME_I;
+    public static SimpleOverlayRenderer FRAME_II;
+    public static SimpleOverlayRenderer FRAME_III;
+    public static SimpleOverlayRenderer FRAME_IV;
+
     public static SimpleOverlayRenderer SPELL_PRISM;
     public static SimpleOverlayRenderer SPELL_PRISM_COLD;
     public static SimpleOverlayRenderer SPELL_PRISM_HOT;
@@ -36,6 +41,10 @@ public class POTextures {
         ORDER = new SimpleOverlayRenderer("machines/solars/orderside");
         WATER = new SimpleOverlayRenderer("machines/solars/waterside");
 
+        FRAME_I = new SimpleOverlayRenderer("fusion_reactor/frame_ii");
+        FRAME_II = new SimpleOverlayRenderer("fusion_reactor/frame_iii");
+        FRAME_III = new SimpleOverlayRenderer("fusion_reactor/frame_iv");
+        FRAME_IV = new SimpleOverlayRenderer("fusion_reactor/frame_v");
 
         SPELL_PRISM = new SimpleOverlayRenderer("magicblock/spell_prism");
         SPELL_PRISM_COLD = new SimpleOverlayRenderer("magicblock/spell_prism_cold");

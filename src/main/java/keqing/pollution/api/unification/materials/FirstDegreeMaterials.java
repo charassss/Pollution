@@ -1,6 +1,8 @@
 package keqing.pollution.api.unification.materials;
 
 import gregtech.api.unification.material.Material;
+import gregtech.api.unification.material.Materials;
+import gregtech.api.unification.material.info.MaterialIconSet;
 import gregtech.api.unification.material.properties.ToolProperty;
 import keqing.pollution.api.unification.PollutionMaterials;
 
@@ -174,5 +176,16 @@ public class FirstDegreeMaterials {
         //在 Elements 类下注册元素
         //在 PollutionElementMaterials 类下注册此元素的单质
         //在 FirstDegreeMaterials 类下注册元素的化合物（components使用单质而不是元素）
+        PollutionMaterials.RichAura = new Material.Builder(getMaterialsId(), gregtechId("rich_aura"))
+                .color(0xCD6600)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
+
+        PollutionMaterials.ErichAura = new Material.Builder(getMaterialsId(), gregtechId("erich_aura"))
+                .color(0xCD0000)
+                .fluid()
+                .iconSet(SHINY)
+                .build();
     }
 }

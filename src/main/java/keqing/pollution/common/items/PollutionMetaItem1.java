@@ -5,6 +5,7 @@ import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import keqing.pollution.common.CommonProxy;
+import net.minecraft.item.EnumRarity;
 
 public class PollutionMetaItem1  extends StandardMetaItem {
 
@@ -25,6 +26,20 @@ public class PollutionMetaItem1  extends StandardMetaItem {
         PollutionMetaItems.INTEGRATECORE=this.addItem(5, "integration_catalyst_core").setMaxStackSize(64).setCreativeTabs(CommonProxy.Pollution_TAB);
         //分离催化核心，用于物质的分解催化
         PollutionMetaItems.SEGREGATECORE=this.addItem(6, "segregation_catalyst_core").setMaxStackSize(64).setCreativeTabs(CommonProxy.Pollution_TAB);
+        //焦化催化核心，用于史莱姆线
+        PollutionMetaItems.COKINGCORE=this.addItem(7, "coking_catalyst_core").setMaxStackSize(64).setCreativeTabs(CommonProxy.Pollution_TAB);
+
+        //史莱姆
+        //焦油史莱姆
+        PollutionMetaItems.TARSLIME=this.addItem(20, "tar_slime").setMaxStackSize(1).setRarity(EnumRarity.RARE).setCreativeTabs(CommonProxy.Pollution_TAB);
+        //糖果史莱姆
+        PollutionMetaItems.SUGARSLIME=this.addItem(21, "sugar_slime").setMaxStackSize(1).setRarity(EnumRarity.RARE).setCreativeTabs(CommonProxy.Pollution_TAB);
+        //粘胶史莱姆
+        PollutionMetaItems.GLUESLIME=this.addItem(22, "glue_slime").setMaxStackSize(1).setRarity(EnumRarity.RARE).setCreativeTabs(CommonProxy.Pollution_TAB);
+        //甘油史莱姆
+        PollutionMetaItems.GLYCEROLSLIME=this.addItem(23, "glycerol_slime").setMaxStackSize(1).setRarity(EnumRarity.RARE).setCreativeTabs(CommonProxy.Pollution_TAB);
+        //橡胶史莱姆
+        PollutionMetaItems.RUBBERSLIME=this.addItem(24, "rubber_slime").setMaxStackSize(1).setRarity(EnumRarity.RARE).setCreativeTabs(CommonProxy.Pollution_TAB);
 
         //魔法系列电路板
         PollutionMetaItems.MAGIC_CIRCUIT_ULV = this.addItem(50, "magic_circuit.ulv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.ULV).setCreativeTabs(CommonProxy.Pollution_TAB);

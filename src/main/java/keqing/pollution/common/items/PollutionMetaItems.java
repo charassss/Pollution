@@ -14,6 +14,13 @@ public class PollutionMetaItems {
     public static MetaItem<?>.MetaValueItem COLDCORE;
     public static MetaItem<?>.MetaValueItem INTEGRATECORE;
     public static MetaItem<?>.MetaValueItem SEGREGATECORE;
+    public static MetaItem<?>.MetaValueItem COKINGCORE;
+    public static MetaItem<?>.MetaValueItem TARSLIME;
+    public static MetaItem<?>.MetaValueItem SUGARSLIME;
+    public static MetaItem<?>.MetaValueItem GLUESLIME;
+    public static MetaItem<?>.MetaValueItem GLYCEROLSLIME;
+    public static MetaItem<?>.MetaValueItem RUBBERSLIME;
+
     public static MetaItem<?>.MetaValueItem MAGIC_CIRCUIT_ULV;
     public static MetaItem<?>.MetaValueItem MAGIC_CIRCUIT_LV;
     public static MetaItem<?>.MetaValueItem MAGIC_CIRCUIT_MV;

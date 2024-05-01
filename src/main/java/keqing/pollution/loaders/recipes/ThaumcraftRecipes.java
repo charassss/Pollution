@@ -3,9 +3,16 @@ package keqing.pollution.loaders.recipes;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
+import gregtech.common.items.MetaItems;
+import keqing.gtqtcore.api.unification.GTQTMaterials;
+import keqing.gtqtcore.common.items.GTQTMetaItems;
 import keqing.pollution.Pollution;
+import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.unification.PollutionMaterials;
+import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
+import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
+import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -29,7 +36,25 @@ public class ThaumcraftRecipes {
     public static void init(){
         catalyst();
         misc();
+        solar();
 
+    }
+    private static void solar(){
+        //太阳能试写
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "air_solar_1"), new InfusionRecipe(
+                "",
+                PollutionMetaTileEntities.SOLAR_PLATE,
+                2,
+                new AspectList().add(Aspect.ENERGY, 16).add(Aspect.AIR, 16),
+                "frameGtMansussteel",
+                new ItemStack(GTQTMetaItems.SOLAR_PLATE_MKI.getMetaItem(), 1, 90),
+                "circuitLv",
+                "circuitLv",
+                new ItemStack(MetaItems.SENSOR_LV.getMetaItem(), 1, 232),
+                new ItemStack(MetaItems.SENSOR_LV.getMetaItem(), 1, 232),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.AAMINATED_GLASS),
+                PollutionMetaBlocks.GLASS.getItemVariant(POGlass.MagicBlockType.LAMINATED_GLASS),
+                "cableGtSingleTin"));
     }
     private static void catalyst() {
         //活性催化粗胚，搅拌机
@@ -136,8 +161,8 @@ public class ThaumcraftRecipes {
                 "dustGunpowder"));
 
         //一个配方糖，在拥有一个空白核心以后就可以方便地制作更多了！
-        //强制HV等级的大型化学反应釜制作！
-        RecipeMaps.LARGE_CHEMICAL_RECIPES.recipeBuilder()
+        //强制魔导催化
+        PORecipeMaps.MAGIC_CHEMICAL_REACTOR_RECIPES.recipeBuilder()
                 .fluidInputs(PollutionMaterials.infused_water.getFluid(9216))
                 .fluidInputs(PollutionMaterials.infused_fire.getFluid(9216))
                 .fluidInputs(PollutionMaterials.infused_order.getFluid(9216))
@@ -236,5 +261,21 @@ public class ThaumcraftRecipes {
                 "AAA",
                 'A', "plateScabyst",
                 'M', new ItemStack(ItemsTC.visResonator)));
+
+        //人工下界星
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "artificial_star"), new InfusionRecipe(
+                "INFUSION@2",
+                new ItemStack(Items.NETHER_STAR),
+                6,
+                new AspectList().add(Aspect.DEATH, 128).add(Aspect.UNDEAD, 128).add(Aspect.MAGIC, 32).add(Aspect.AURA, 16),
+                "gemvalonite",
+                new ItemStack(Blocks.DIAMOND_BLOCK),
+                new ItemStack(Blocks.EMERALD_BLOCK),
+                new ItemStack(Blocks.NETHERRACK),
+                new ItemStack(Blocks.SOUL_SAND),
+                "gemExquisiteAmethyst",
+                "gemExquisiteOpal",
+                new ItemStack(ItemsTC.voidSeed),
+                new ItemStack(BlocksTC.crystalEntropy)));
     }
 }

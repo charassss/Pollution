@@ -15,6 +15,7 @@ public class PollutionMetaBlocks {
     public static POTurbine TURBINE;
     public static POMBeamCore BEAM_CORE;
     public static POCoilBlock WIRE_COIL;
+    public static POFusionReactor FUSION_REACTOR;
     public static POGlass GLASS;
     private PollutionMetaBlocks() {}
     public static void init() {
@@ -30,7 +31,8 @@ public class PollutionMetaBlocks {
 
         WIRE_COIL = new POCoilBlock();
         WIRE_COIL.setRegistryName("wire_coil");
-
+        FUSION_REACTOR = new POFusionReactor();
+        FUSION_REACTOR.setRegistryName("fusion_reactor");
         GLASS = new POGlass();
         GLASS.setRegistryName("glass");
     }
@@ -40,6 +42,7 @@ public class PollutionMetaBlocks {
         registerItemModel(TURBINE);
         registerItemModel(BEAM_CORE);
         registerItemModel(WIRE_COIL);
+        registerItemModel(FUSION_REACTOR);
         registerItemModel(GLASS);
     }
     @SideOnly(Side.CLIENT)

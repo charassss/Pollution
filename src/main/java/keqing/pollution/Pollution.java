@@ -45,13 +45,13 @@ public class Pollution  {
     public void preInit(FMLPreInitializationEvent event)
     {
         PollutionLog.init(event.getModLog());
-        PollutionMetaTileEntities.initialization();
         PollutionMetaBlocks.init();
         PollutionMetaItems.initialization();
         PODimensionType.init();
         PODimensionManager.init();
         proxy.preLoad();
         MinecraftForge.EVENT_BUS.register(new PollutionBlocksInit());
+        PollutionMetaTileEntities.initialization();
     }
 
 }
