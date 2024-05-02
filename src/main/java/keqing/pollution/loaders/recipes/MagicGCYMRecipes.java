@@ -50,6 +50,7 @@ public class MagicGCYMRecipes {
 
     private static void materials(){
         //加一个直接炼矿的
+        /*
         MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
                 .input(dust,infused_air,  16)
                 .fluidOutputs(infused_air.getFluid(32*144))
@@ -121,6 +122,8 @@ public class MagicGCYMRecipes {
                 .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
+                
+         */
         //这里是六个基础外壳材料的搅拌机配方
         //风要素-律动钛
         RecipeMaps.MIXER_RECIPES.recipeBuilder()
