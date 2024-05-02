@@ -376,62 +376,64 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
         EnumFacing.Axis axis = RelativeDirection.UP.getRelativeFacing(getFrontFacing(), getUpwardsFacing(), isFlipped())
                 .getAxis();
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                3, 0.2, 10, 20,
-                r, g, b, a, EnumFacing.Axis.Y);
+        if (this.isWorkingEnabled() && this.isActive()) {
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    3, 0.2, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Y);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 4.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, axis);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, axis);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 8.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 0.1, 10, 20,
-                r, g, b, a, axis);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 8.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 7.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 0.1, 10, 20,
-                r, g, b, a, axis);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 7.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 1.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 0.1, 10, 20,
-                r, g, b, a, axis);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 1.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 0.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 0.1, 10, 20,
-                r, g, b, a, axis);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 0.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
 
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 4.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, EnumFacing.Axis.X);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.X);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset()  + 4.5,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, EnumFacing.Axis.Z);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Z);
+        }
     }
     @Override
     @SideOnly(Side.CLIENT)

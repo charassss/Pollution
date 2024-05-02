@@ -41,6 +41,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -84,7 +85,19 @@ public class MetaTileEntityMagicFusionReactor extends RecipeMapMultiblockControl
         textList.add(new TextComponentTranslation("in: %s out: %s", coil, compose));
         textList.add(new TextComponentTranslation("======================="));
     }
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound data) {
+        super.writeToNBT(data);
+        data.setInteger("aura",this.aura);
+        return data;
+    }
 
+    @Override
+    public void readFromNBT(NBTTagCompound data) {
+        super.readFromNBT(data);
+        this.aura = data.getInteger("aura");
+
+    }
     public int getCompose() {
         if(compose==0)return 0;
         return compose;
@@ -203,8 +216,6 @@ public class MetaTileEntityMagicFusionReactor extends RecipeMapMultiblockControl
     public boolean canBeDistinct() {
         return true;
     }
-
-    int RadomTime=0;
 
     protected static final int NO_COLOR = 0;
     private int fusionRingColor = NO_COLOR;
