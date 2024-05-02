@@ -1,6 +1,8 @@
 package keqing.pollution.common.metatileentity.multiblock;
 
-import gregicality.multiblocks.api.render.GCYMTextures;
+import codechicken.lib.render.CCRenderState;
+import codechicken.lib.render.pipeline.IVertexOperation;
+import codechicken.lib.vec.Matrix4;
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.FluidTankList;
 import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
@@ -14,17 +16,14 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.util.GTTransferUtils;
 import gregtech.api.util.RelativeDirection;
-import gregtech.api.util.interpolate.Eases;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.IRenderSetup;
+import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.shader.postprocessing.BloomEffect;
 import gregtech.client.shader.postprocessing.BloomType;
 import gregtech.client.utils.*;
 import gregtech.common.ConfigHolder;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.unification.PollutionMaterials;
 import keqing.pollution.client.textures.POTextures;
@@ -55,58 +54,53 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements IBloomEffect , IFastRenderMetaTileEntity {
-    int aX = 0;
-    int aY = 0;
-    int aZ = 0;
+public class MetaTileEntityInfusedExchange extends MetaTileEntityBaseWithControl implements IBloomEffect , IFastRenderMetaTileEntity {
     public Aspect al;
     public String name = null;
     public int storage = 0;
     public int number = 0;
-    FluidStack AIR_STACK;
-    FluidStack FIRE_STACK;
-    FluidStack WATER_STACK;
-    FluidStack ERATH_STACK;
-    FluidStack ORDER_STACK;
-    FluidStack ENTROPY_STACK;
+    FluidStack AIR_STACK = PollutionMaterials.infused_air.getFluid(1);
+    FluidStack FIRE_STACK = PollutionMaterials.infused_fire.getFluid(1);
+    FluidStack WATER_STACK = PollutionMaterials.infused_water.getFluid(1);
+    FluidStack ERATH_STACK = PollutionMaterials.infused_earth.getFluid(1);
+    FluidStack ORDER_STACK = PollutionMaterials.infused_order.getFluid(1);
+    FluidStack ENTROPY_STACK = PollutionMaterials.infused_entropy.getFluid(1);
+    boolean work;
     int RadomTime=0;
-    protected IMultipleTankHandler outputFluidInventory;
-    public MetaTileEntityTankTest(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId);
-        this.AIR_STACK = PollutionMaterials.infused_air.getFluid(1);
-        this.FIRE_STACK = PollutionMaterials.infused_fire.getFluid(1);
-        this.WATER_STACK = PollutionMaterials.infused_water.getFluid(1);
-        this.ERATH_STACK = PollutionMaterials.infused_earth.getFluid(1);
-        this.ORDER_STACK = PollutionMaterials.infused_order.getFluid(1);
-        this.ENTROPY_STACK = PollutionMaterials.infused_entropy.getFluid(1);
-    }
-    protected void initializeAbilities() {
-        this.outputFluidInventory = new FluidTankList(this.allowSameFluidFillForOutputs(), this.getAbilities(MultiblockAbility.EXPORT_FLUIDS));
-    }
-    protected boolean allowSameFluidFillForOutputs() {
-        return true;
-    }
-    private void resetTileAbilities() {
-        this.outputFluidInventory = new FluidTankList(true, new IFluidTank[0]);
-    }
 
-    public void invalidateStructure() {
-        super.invalidateStructure();
-        this.resetTileAbilities();
+    public MetaTileEntityInfusedExchange(ResourceLocation metaTileEntityId) {
+        super(metaTileEntityId);
     }
 
     @Override
+    public boolean hasMaintenanceMechanics() {
+        return false;
+    }
+    public boolean hasMufflerMechanics() {
+        return false;
+    }
+    @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity iGregTechTileEntity) {
-        return new MetaTileEntityTankTest(this.metaTileEntityId);
+        return new MetaTileEntityInfusedExchange(this.metaTileEntityId);
     }
-    public boolean fillTanks(FluidStack stack, boolean simulate) {
-        return GTTransferUtils.addFluidsToFluidHandler(this.getOutputFluidInventory(), simulate, Collections.singletonList(stack));
+    public void fillTanks(FluidStack stack) {
+        GTTransferUtils.addFluidsToFluidHandler(this.outputFluidInventory, false, Collections.singletonList(stack));
     }
-    public IMultipleTankHandler getOutputFluidInventory() {
-        return this.outputFluidInventory;
-    }
-    public void updateFormedValid() {
+    boolean backA;
+    public void update() {
         super.update();
+        if(!backA) if(RadomTime<=10)RadomTime++;
+        if(backA) if(RadomTime>=-10)RadomTime--;
+        if(RadomTime==10){
+            backA = true;
+        }
+        if(RadomTime==-10){
+            backA = false;
+        }
+        setFusionRingColor(0xFF000000+RadomTime*1250*50);
+    }
+
+    public void updateFormedValid() {
         if (this.getWorld().getTileEntity(this.getPos().add(0, 2, 0)) instanceof TileJarFillable) {
             TileJarFillable s = (TileJarFillable)this.getWorld().getTileEntity(this.getPos().add(0, 2, 0));
             this.al = s.getEssentiaType(s.getFacing());
@@ -115,48 +109,43 @@ public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements
                 this.name = this.al.getName();
             }
         }
-
         if (this.number == 0) {
             this.number = this.storage;
             this.clearInfused();
             this.name = null;
         }
 
-        this.doFillTank();
-
-        if(RadomTime<10)RadomTime++;
-        else RadomTime=0;
-        setFusionRingColor(0xFF000000+RadomTime*100);
+        if(this.number > 0&&this.outputFluidInventory != null)this.doFillTank();
     }
 
     private void doFillTank() {
-        if (Objects.equals(this.name, "Aer") && this.number > 0) {
-            this.fillTanks(this.AIR_STACK, false);
+        if (Objects.equals(this.name, "Aer")) {
+            this.fillTanks(this.AIR_STACK);
             --this.number;
         }
 
-        if (Objects.equals(this.name, "Terra") && this.number > 0) {
-            this.fillTanks(this.ERATH_STACK, false);
+        if (Objects.equals(this.name, "Terra")) {
+            this.fillTanks(this.ERATH_STACK);
             --this.number;
         }
 
-        if (Objects.equals(this.name, "Aqua") && this.number > 0) {
-            this.fillTanks(this.WATER_STACK, false);
+        if (Objects.equals(this.name, "Aqua")) {
+            this.fillTanks(this.WATER_STACK);
             --this.number;
         }
 
-        if (Objects.equals(this.name, "Ignis") && this.number > 0) {
-            this.fillTanks(this.FIRE_STACK, false);
+        if (Objects.equals(this.name, "Ignis")) {
+            this.fillTanks(this.FIRE_STACK);
             --this.number;
         }
 
-        if (Objects.equals(this.name, "Ordo") && this.number > 0) {
-            this.fillTanks(this.ORDER_STACK, false);
+        if (Objects.equals(this.name, "Ordo")) {
+            this.fillTanks(this.ORDER_STACK);
             --this.number;
         }
 
-        if (Objects.equals(this.name, "Perdition") && this.number > 0) {
-            this.fillTanks(this.ENTROPY_STACK, false);
+        if (Objects.equals(this.name, "Perdition")) {
+            this.fillTanks(this.ENTROPY_STACK);
             --this.number;
         }
 
@@ -170,18 +159,12 @@ public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements
 
     }
 
-    protected void formStructure(PatternMatchContext context) {
-        super.formStructure(context);
-        this.initializeAbilities();
-    }
-
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
         if (this.isStructureFormed()) {
-            textList.add(new TextComponentTranslation("Infused: %s  Amount: %s", new Object[]{this.name, this.storage}));
+            textList.add(new TextComponentTranslation("源质罐内缓存:Infused: %s  Amount: %s", new Object[]{this.name, this.storage}));
+            textList.add(new TextComponentTranslation("多方块内缓存：Infused: %s  Amount: %s", new Object[]{this.name, this.number}));
         }
-
-        textList.add(new TextComponentTranslation("Infused: %s  Amount: %s", new Object[]{this.name, this.number}));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
@@ -206,39 +189,39 @@ public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements
     @Override
     protected  BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX","X###X", "X###X", "X###X", "#####", "#####")
-                .aisle("XXXXX","#XXX#", "#XXX#", "#X#X#", "#X#X#", "#X#X#")
-                .aisle("XXXXX","#XXX#", "#XXX#", "#####", "#####", "#####")
-                .aisle("XXXXX","#XSX#", "#XFX#", "#X#X#", "#X#X#", "#X#X#")
-                .aisle("XXXXX","X###X", "X###X", "X###X", "#####", "#####")
+                .aisle("AA  A  AA", "         ", "         ", "         ", "         ")
+                .aisle("AA  A  AA", " AA   AA ", "         ", "         ", "         ")
+                .aisle("    A    ", " AA A AA ", "  AA AA  ", "         ", "         ")
+                .aisle("         ", "    A    ", "  AAAAA  ", "   A A   ", "         ")
+                .aisle("AAA A AAA", "  AAAAA  ", "   AAA   ", "    S    ", "    F    ")
+                .aisle("         ", "    A    ", "  AAAAA  ", "   A A   ", "         ")
+                .aisle("    A    ", " AA A AA ", "  AA AA  ", "         ", "         ")
+                .aisle("AA  A  AA", " AA   AA ", "         ", "         ", "         ")
+                .aisle("AA  A  AA", "         ", "         ", "         ", "         ")
+
                 .where('S', selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(25).or(autoAbilities()))
-                .where('#', any())
+                .where('A', states(getCasingState())
+                        .or(abilities(MultiblockAbility.EXPORT_FLUIDS).setMaxGlobalLimited(1).setPreviewCount(1)))
+                .where(' ', any())
                 .where('F', abilities(POMultiblockAbility.TANK_HATCH).setMaxGlobalLimited(1).setPreviewCount(1))
                 .build();
     }
-
+    @Override
+    public void renderMetaTileEntity(CCRenderState renderState, Matrix4 translation, IVertexOperation[] pipeline) {
+        super.renderMetaTileEntity(renderState, translation, pipeline);
+        this.getFrontOverlay().renderOrientedState(renderState, translation, pipeline, getFrontFacing(), true, true);
+    }
     private static IBlockState getCasingState() {
-        return PollutionMetaBlocks.MAGIC_BLOCK
-                .getState(POMagicBlock.MagicBlockType.VOID_PRISM);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.VOID_PRISM);
     }
-
-    private static IBlockState getCasingState2() {
-        return MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
-    }
-
-    private static IBlockState getCasingState3() {
-        return MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS);
+    @Override
+    protected OrientedOverlayRenderer getFrontOverlay() {
+        return Textures.HPCA_OVERLAY;
     }
 
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
         return POTextures.VOID_PRISM;
-    }
-
-    @Override
-    protected  OrientedOverlayRenderer getFrontOverlay() {
-        return GCYMTextures.LARGE_BENDER_OVERLAY;
     }
 
     protected static final int NO_COLOR = 0;
@@ -276,8 +259,7 @@ public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements
     @Override
     @SideOnly(Side.CLIENT)
     public void renderBloomEffect(BufferBuilder buffer, EffectRenderContext context) {
-        int color = RenderUtil.interpolateColor(this.getFusionRingColor(), -1, Eases.QUAD_IN.getInterpolation(
-                Math.abs((Math.abs(getOffsetTimer() % 50) + context.partialTicks()) - 25) / 25));
+        int color = this.getFusionRingColor();
         float a = (float) (color >> 24 & 255) / 255.0F;
         float r = (float) (color >> 16 & 255) / 255.0F;
         float g = (float) (color >> 8 & 255) / 255.0F;
@@ -287,35 +269,51 @@ public class MetaTileEntityTankTest extends MultiblockWithDisplayBase implements
         EnumFacing.Axis axis = RelativeDirection.UP.getRelativeFacing(getFrontFacing(), getUpwardsFacing(), isFlipped())
                 .getAxis();
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 1 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset() * 1 + 8,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 1 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, axis);
+        if (isStructureFormed()) {
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    3, 1, 10, 20,
+                    r, g, b, a, axis);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 1 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset() * 1 + 8,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 1 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, EnumFacing.Axis.X);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    3, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.X);
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 1 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset() * 1 + 8,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 1 + 0.5,
-                1, 1, 10, 20,
-                r, g, b, a, EnumFacing.Axis.Z);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    3, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Z);
 
 
-        RenderBufferHelper.renderRing(buffer,
-                getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 1 + 0.5,
-                getPos().getY() - context.cameraY() + relativeBack.getYOffset() * 1 + 8,
-                getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 1 + 0.5,
-                RadomTime, 0.2, 10, 20,
-                r, g, b, a, EnumFacing.Axis.Y);
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    RadomTime, 0.2, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Y);
 
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    RadomTime * 2, 0.2, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Y);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 12,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() + 0.5,
+                    RadomTime * 3, 0.2, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Y);
+
+        }
     }
     @Override
     @SideOnly(Side.CLIENT)

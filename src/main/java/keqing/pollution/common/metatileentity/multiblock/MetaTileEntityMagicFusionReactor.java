@@ -41,6 +41,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
@@ -48,6 +50,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -80,10 +83,8 @@ public class MetaTileEntityMagicFusionReactor extends RecipeMapMultiblockControl
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        textList.add(new TextComponentTranslation("======================="));
-        textList.add(new TextComponentTranslation("%s / %s", aura, frame*25000));
-        textList.add(new TextComponentTranslation("in: %s out: %s", coil, compose));
-        textList.add(new TextComponentTranslation("======================="));
+        textList.add(new TextComponentTranslation("灵气富集存储：%s / %s Aura", aura, frame*25000));
+        textList.add(new TextComponentTranslation("存储速率: %s 转换速率: %s", coil, compose));
     }
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound data) {
@@ -184,6 +185,13 @@ public class MetaTileEntityMagicFusionReactor extends RecipeMapMultiblockControl
                 return POTextures.FRAME_I;
             }
         }
+    }
+    @Override
+    public void addInformation(ItemStack stack, World player, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, player, tooltip, advanced);
+        tooltip.add(I18n.format("源质分解时会提高装置内的灵气富集度，需要使用灵气流质来对富集灵气进行交换"));
+        tooltip.add(I18n.format("多方块在工作时会消耗少量当前区块灵气辅助源质分解，升级线圈以减少消耗"));
+        tooltip.add(I18n.format("分别升级线圈以及核心提高存储和传输灵气速率，升级外部框架提高装置的灵气缓存"));
     }
     @Override
     public void writeInitialSyncData(PacketBuffer buf) {

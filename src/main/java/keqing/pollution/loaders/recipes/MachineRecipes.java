@@ -14,6 +14,7 @@ import static gregtech.api.unification.material.Materials.TungstenSteel;
 import static gregtech.loaders.recipe.CraftingComponent.*;
 import static gregtech.loaders.recipe.CraftingComponent.ROTOR;
 import static gregtech.loaders.recipe.MetaTileEntityLoader.registerMachineRecipe;
+import static keqing.pollution.common.items.PollutionMetaItems.BLANKCORE;
 
 public class MachineRecipes {
     public static void init(){
@@ -58,6 +59,13 @@ public class MachineRecipes {
                 'A', MOTOR,
                 'B', SENSOR,
                 'C', ROTOR);
+
+        registerMachineRecipe(PollutionMetaTileEntities.VIS_HATCH,
+                "ABA", "CHC", "ABA",
+                'H', HULL,
+                'A', CONVEYOR,
+                'B', BLANKCORE,
+                'C', EMITTER);
     }
 
     private static void machine() {

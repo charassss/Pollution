@@ -17,7 +17,7 @@ import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityFluxClear;
 import keqing.pollution.common.metatileentity.multiblock.*;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityMagicBender;
-import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityTankTest;
+import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityInfusedExchange;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityFluxMuffler;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityTankHatch;
 import keqing.pollution.common.metatileentity.multiblockpart.MetaTileEntityVisHatch;
@@ -29,7 +29,6 @@ import net.minecraft.util.ResourceLocation;
 
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 import static keqing.pollution.client.textures.POTextures.*;
-import static keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock.MagicBlockType.ALLOY_BLAST_CASING;
 
 public class PollutionMetaTileEntities {
     public static ResourceLocation gtqtcoreId(String id) {
@@ -41,9 +40,9 @@ public class PollutionMetaTileEntities {
     public static final MetaTileEntityVisClear[] VIS_CLEAR = new MetaTileEntityVisClear[4];
     public static final MetaTileEntityFluxClear[] FLUX_CLEARS = new MetaTileEntityFluxClear[3];
 
-    public static MetaTileEntityTankTest TANK;
+    public static MetaTileEntityInfusedExchange TANK;
 
-    public static MetaTileEntityTankTest TANK_TEST;
+    public static MetaTileEntityInfusedExchange TANK_TEST;
 
     public static MetaTileEntityMagicBender MAGIC_BENDER;
     public static MetaTileEntityMagicCentrifuge MAGIC_CENTRIFUGE;
@@ -91,7 +90,7 @@ public class PollutionMetaTileEntities {
 
         FLUX_CLEARS[1] = registerMetaTileEntity(15933, new MetaTileEntityFluxClear(gtqtcoreId("flux_clear.ev"), GTValues.EV));
         FLUX_CLEARS[2] = registerMetaTileEntity(15934, new MetaTileEntityFluxClear(gtqtcoreId("flux_clear.iv"), GTValues.IV));
-        TANK = registerMetaTileEntity(15935, new MetaTileEntityTankTest(gtqtcoreId("TANK")));
+        TANK = registerMetaTileEntity(15935, new MetaTileEntityInfusedExchange(gtqtcoreId("infused_exchange")));
 
         MAGIC_BENDER = registerMetaTileEntity(15936, new MetaTileEntityMagicBender(gtqtcoreId("magic_bender")));
         MAGIC_ELECTRIC_BLAST_FURNACE = registerMetaTileEntity(15937, new MetaTileEntityMagicElectricBlastFurnace(gtqtcoreId("magic_electric_blast_furnace")));
@@ -130,7 +129,7 @@ public class PollutionMetaTileEntities {
                 PORecipeMaps.MAGIC_TURBINE_FUELS, 4,
                 PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_HOT),
                 PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.STAINLESS_STEEL_GEARBOX),
-                POTextures.SPELL_PRISM_HOT, true, Textures.LARGE_GAS_TURBINE_OVERLAY));
+                POTextures.SPELL_PRISM_HOT, true, Textures.HPCA_OVERLAY));
 
         for (int i = 1; i <= 8; i++) {
             String tierName = GTValues.VN[i].toLowerCase();

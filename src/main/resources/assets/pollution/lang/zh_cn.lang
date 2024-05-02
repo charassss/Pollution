@@ -77,6 +77,11 @@ metaitem.hot_catalyst_core.tooltip=§c熊熊烈焰§r
 metaitem.integration_catalyst_core.tooltip=§6百川东流§r
 metaitem.segregation_catalyst_core.tooltip=§a大风起兮§r
 metaitem.coking_catalyst_core.tooltip=§8§l焦油踽行§r
+#装具
+metaitem.wing_nano.name=魔导纳米飞行魂导器
+metaitem.wing_quantum.name=魔导量子飞行魂导器
+metaitem.nano_goggles.name=魔导纳米揭示护目镜
+metaitem.quantum_goggles.name=魔导量子揭示护目镜
 #方块
 tile.magic_block.void_prism.name=蕴魔虚空棱镜折射外壳
 tile.magic_block.spell_prism.name=蕴魔棱镜折射外壳
@@ -307,7 +312,8 @@ pollution.machine.magic_autoclave.name=魔导强压反应室
 pollution.machine.magic_extruder.name=魔导百变模型厂
 pollution.machine.magic_chemical_reactor.name="空忆级"魔导化学催化控制台
 pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
-pollution.machine.industrial_infusion.name=魔导工业注魔台
+pollution.machine.industrial_infusion.name=魔导自动工业注魔矩阵
+pollution.machine.infused_exchange.name=魔导要素转换矩阵
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗
