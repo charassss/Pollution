@@ -307,6 +307,7 @@ pollution.machine.magic_autoclave.name=魔导强压反应室
 pollution.machine.magic_extruder.name=魔导百变模型厂
 pollution.machine.magic_chemical_reactor.name="空忆级"魔导化学催化控制台
 pollution.machine.magic_green_house.name=魔导植物精华淬炼仪
+pollution.machine.industrial_infusion.name=魔导工业注魔台
 
 pollution.machine.magic_bender.tooltip=生活碾压我，只会让我变得扁平舒适
 pollution.machine.magic_centrifuge.tooltip=旅行者，你知道风元素有几种元素反应吗

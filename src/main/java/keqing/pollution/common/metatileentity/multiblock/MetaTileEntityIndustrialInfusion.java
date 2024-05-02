@@ -135,6 +135,12 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
             setActive(true);
         if(!this.getWorld().isRemote && this.inputInventory!=null && this.inputInventory.getSlots()>0 && this.uuid!=null && this.isWorkingEnabled() && this.isActive())
         {
+            if(this.energyContainer.getEnergyStored()>480 && this.energyContainer.getInputVoltage()>= GTValues.V[GTValues.HV])
+            {
+                this.energyContainer.changeEnergy(480);
+            }
+            else
+                return;
             if(++tick>=20)
             {
                 getAspectFromWorld();
@@ -198,16 +204,14 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
                 this.canOutput=bl;
             }
             //是否可以耗电 可以耗电继续进行进度结算
-            if(this.energyContainer.getEnergyStored()>480 && this.energyContainer.getInputVoltage()>= GTValues.V[GTValues.HV])
-                if(canOutput && timeAmount--<0 && outputItem!=ItemStack.EMPTY)
-                {
-                    this.energyContainer.changeEnergy(480);
-                    canOutput=false;
-                    if(this.outputInventory!=null && this.outputInventory.getSlots()>0)
-                        GTTransferUtils.insertItem(this.outputInventory,outputItem,false);
-                    this.outputItem=ItemStack.EMPTY;
-                    this.timeAmount=0;
-                }
+             if(canOutput && timeAmount--<0 )
+             {
+                 canOutput=false;
+                 if(this.outputInventory!=null && this.outputInventory.getSlots()>0 && outputItem!=ItemStack.EMPTY)
+                     GTTransferUtils.insertItem(this.outputInventory,outputItem,false);
+                 this.outputItem=ItemStack.EMPTY;
+                 this.timeAmount=0;
+             }
         }
 
     }

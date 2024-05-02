@@ -23,6 +23,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 import java.util.List;
@@ -41,10 +42,10 @@ public class MetaTileEntityTankHatch extends MetaTileEntityMultiblockPart implem
         this.aX = this.getPos().getX();
         this.aY = this.getPos().getY();
         this.aZ = this.getPos().getZ();
-        if (this.getWorld().getTileEntity(this.getPos().add(0, 1, 0)) instanceof TileJarFillable) {
-            TileJarFillable s = (TileJarFillable)this.getWorld().getTileEntity(this.getPos().add(0, 1, 0));
-            this.al = s.getEssentiaType(s.getFacing());
-            this.storage = s.getEssentiaAmount(s.getFacing());
+        if (this.getWorld().getTileEntity(this.getPos().add(0, 1, 0)) instanceof IAspectSource) {
+            IAspectSource s = (IAspectSource)this.getWorld().getTileEntity(this.getPos().add(0, 1, 0));
+            this.al = s.getAspects().getAspects()[0];
+            this.storage = s.getAspects().getAmount(this.al);
             if (this.al != null) {
                 this.name = this.al.getName();
             }
