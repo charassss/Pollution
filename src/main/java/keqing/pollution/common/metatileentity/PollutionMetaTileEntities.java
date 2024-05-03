@@ -54,9 +54,6 @@ public class PollutionMetaTileEntities {
     public static MetaTileEntityMagicGreenHouse MAGIC_GREEN_HOUSE;
     public static MetaTileEntityMagicDistillery MAGIC_DISTILLERY;
     public static MetaTileEntityMagicAlloyBlastSmelter MAGIC_ALLOY_BLAST;
-    public static MetaTileEntityMagicChemicalReactor MAGIC_CHEMICAL_REACTOR;
-    public static MetaTileEntityMagicAutoclave MAGIC_AUTOCLAVE;
-    public static MetaTileEntityMagicExtruder MAGIC_EXTRUDER;
     public static MetaTileEntityEssenceCollector ESSENCE_COLLECTOR;
     public static MetaTileEntityVisHatch[] VIS_HATCH = new MetaTileEntityVisHatch[14];
     public static MetaTileEntityTankHatch[] TANK_HATCH = new MetaTileEntityTankHatch[1];

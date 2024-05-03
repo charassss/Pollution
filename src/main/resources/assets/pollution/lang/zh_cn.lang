@@ -304,6 +304,7 @@ pollution.machine.magic_extruder.tooltip=你想要一台高达，还是一个扎
 pollution.machine.magic_chemical_reactor.tooltip=七星七金贤者之石，或化学跳过者青春版
 pollution.machine.magic_brewery.tooltip=适量饮酒也有害健康哦
 pollution.machine.magic_distillery.tooltip=你说得对，但是我们的整合包正在蒸蒸日上！
+pollution.machine.magic_green_house.tooltip=作为魔法使，我们只生产温室里的食人花
 pollution.machine.magic_battery.tooltip=§5纵使神曈黯淡，亦可再造鸿蒙§r
 
 #魔法电池
