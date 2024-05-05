@@ -37,6 +37,8 @@ public class PollutionMetaItems {
     public static MetaItem<?>.MetaValueItem MAGIC_CIRCUIT_OpV;
     public static MetaItem<?>.MetaValueItem MAGIC_CIRCUIT_MAX;
 
+    public static MetaItem<?>.MetaValueItem PACKAGED_AURA_NODE;
+
     public static void initialization()
     {
         PollutionMetaItem1 item1 = new PollutionMetaItem1();

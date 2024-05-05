@@ -19,6 +19,7 @@ import gregtech.api.metatileentity.multiblock.MultiblockWithDisplayBase;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.client.renderer.ICubeRenderer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.EnumFacing;
@@ -33,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import java.util.List;
 
-public class MetaTileEntityBaseWithControl  extends MultiblockWithDisplayBase implements IControllable, IDataInfoProvider, IWorkable {
+public abstract class MetaTileEntityBaseWithControl  extends MultiblockWithDisplayBase implements IControllable, IDataInfoProvider, IWorkable {
     private boolean isActive = false;
     private boolean isWorkingEnabled = true;
     private int process;
