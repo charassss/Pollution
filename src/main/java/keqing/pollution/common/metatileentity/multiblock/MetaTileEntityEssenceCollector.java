@@ -1,5 +1,6 @@
 package keqing.pollution.common.metatileentity.multiblock;
 
+import gregtech.api.metatileentity.IFastRenderMetaTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
@@ -9,10 +10,17 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.unification.material.Material;
 import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.RelativeDirection;
 import gregtech.api.util.TextComponentUtil;
+import gregtech.api.util.interpolate.Eases;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.IRenderSetup;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import gregtech.client.shader.postprocessing.BloomEffect;
+import gregtech.client.shader.postprocessing.BloomType;
+import gregtech.client.utils.*;
+import gregtech.common.ConfigHolder;
 import gregtechfoodoption.machines.farmer.NetherWartFarmerMode;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.block.impl.WrappedIntTired;
@@ -27,12 +35,18 @@ import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
@@ -40,7 +54,10 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.openal.EFXUtil;
+import org.lwjgl.opengl.GL11;
 import scala.xml.dtd.EMPTY;
 import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.api.blocks.BlocksTC;
@@ -54,7 +71,7 @@ import static java.lang.Math.pow;
 import static keqing.pollution.api.predicate.TiredTraceabilityPredicate.CP_COIL_CASING;
 import static net.minecraft.util.math.MathHelper.ceil;
 
-public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithControl {
+public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithControl implements IBloomEffect, IFastRenderMetaTileEntity {
     //基础产速
     private float basicSpeedPerTick = 0.025f;
     //最终产速
@@ -135,7 +152,7 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
     }
 
     private static IBlockState getCasingState5() {
-        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.VOID_PRISM);
+        return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_VOID);
     }
 
     private static IBlockState getCasingState6() {
@@ -176,9 +193,24 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
                 () -> ((WrappedIntTired) coilLevel).getIntTier(),
                 0);
     }
-
+    boolean backA;
+    @Override
+    public void update() {
+        super.update();
+        if(!backA) if(RadomTime<=10)RadomTime++;
+        if(backA) if(RadomTime>=-10)RadomTime--;
+        if(RadomTime==10){
+            backA = true;
+        }
+        if(RadomTime==-10){
+            backA = false;
+        }
+        setFusionRingColor(0xFF000000+RadomTime*1250*50);
+    }
     @Override
     protected void updateFormedValid() {
+
+
         int aX = this.getPos().getX();
         int aY = this.getPos().getY();
         int aZ = this.getPos().getZ();
@@ -294,4 +326,172 @@ public class MetaTileEntityEssenceCollector extends MetaTileEntityBaseWithContro
         else{
             textList.add((new TextComponentTranslation("pollution.machine.essence_collector_iffocused", "关闭")).setStyle((new Style()).setColor(TextFormatting.RED)));
         }
-    }}
+    }
+    int RadomTime=0;
+
+    protected static final int NO_COLOR = 0;
+    private int fusionRingColor = NO_COLOR;
+    private boolean registeredBloomRenderTicket;
+    @Override
+    protected boolean shouldShowVoidingModeButton() {
+        return false;
+    }
+    protected int getFusionRingColor() {
+        return this.fusionRingColor;
+    }
+    protected boolean hasFusionRingColor() {
+        return true;
+    }
+    protected void setFusionRingColor(int fusionRingColor) {
+        if (this.fusionRingColor != fusionRingColor) {
+            this.fusionRingColor = fusionRingColor;
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderMetaTileEntity(double x, double y, double z, float partialTicks) {
+        if (this.hasFusionRingColor() && !this.registeredBloomRenderTicket) {
+            this.registeredBloomRenderTicket = true;
+            BloomEffectUtil.registerBloomRender(FusionBloomSetup.INSTANCE, getBloomType(), this, this);
+        }
+    }
+    private static BloomType getBloomType() {
+        ConfigHolder.FusionBloom fusionBloom = ConfigHolder.client.shader.fusionBloom;
+        return BloomType.fromValue(fusionBloom.useShader ? fusionBloom.bloomStyle : -1);
+    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void renderBloomEffect(BufferBuilder buffer, EffectRenderContext context) {
+        int color = RenderUtil.interpolateColor(this.getFusionRingColor(), -1, Eases.QUAD_IN.getInterpolation(
+                Math.abs((Math.abs(getOffsetTimer() % 50) + context.partialTicks()) - 25) / 25));
+
+
+        float a = (float) (color >> 24 & 255) / 255.0F;
+        float r = (float) (color >> 16 & 255) / 255.0F;
+        float g = (float) (color >> 8 & 255) / 255.0F;
+        float b = (float) (color & 255) / 255.0F;
+        EnumFacing relativeBack = RelativeDirection.BACK.getRelativeFacing(getFrontFacing(), getUpwardsFacing(),
+                isFlipped());
+        EnumFacing.Axis axis = RelativeDirection.UP.getRelativeFacing(getFrontFacing(), getUpwardsFacing(), isFlipped())
+                .getAxis();
+
+        if (this.isWorkingEnabled() && this.isActive()) {
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    3, 0.2, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Y);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, axis);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 8.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 7.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 1.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 0.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 0.1, 10, 20,
+                    r, g, b, a, axis);
+
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.X);
+
+            RenderBufferHelper.renderRing(buffer,
+                    getPos().getX() - context.cameraX() + relativeBack.getXOffset() * 6 + 0.5,
+                    getPos().getY() - context.cameraY() + relativeBack.getYOffset() + 4.5,
+                    getPos().getZ() - context.cameraZ() + relativeBack.getZOffset() * 6 + 0.5,
+                    1, 1, 10, 20,
+                    r, g, b, a, EnumFacing.Axis.Z);
+        }
+    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldRenderBloomEffect( EffectRenderContext context) {
+        return this.hasFusionRingColor();
+    }
+    @Override
+    public AxisAlignedBB getRenderBoundingBox() {
+        EnumFacing relativeRight = RelativeDirection.RIGHT.getRelativeFacing(getFrontFacing(), getUpwardsFacing(),
+                isFlipped());
+        EnumFacing relativeBack = RelativeDirection.BACK.getRelativeFacing(getFrontFacing(), getUpwardsFacing(),
+                isFlipped());
+
+        return new AxisAlignedBB(
+                this.getPos().offset(relativeBack).offset(relativeRight, 6),
+                this.getPos().offset(relativeBack, 13).offset(relativeRight.getOpposite(), 6));
+    }
+
+    @Override
+    public boolean shouldRenderInPass(int pass) {
+        return pass == 0;
+    }
+
+    @Override
+    public boolean isGlobalRenderer() {
+        return true;
+    }
+    @SideOnly(Side.CLIENT)
+    private static final class FusionBloomSetup implements IRenderSetup {
+
+        private static final FusionBloomSetup INSTANCE = new FusionBloomSetup();
+
+        float lastBrightnessX;
+        float lastBrightnessY;
+
+        @Override
+        public void preDraw( BufferBuilder buffer) {
+            BloomEffect.strength = (float) ConfigHolder.client.shader.fusionBloom.strength;
+            BloomEffect.baseBrightness = (float) ConfigHolder.client.shader.fusionBloom.baseBrightness;
+            BloomEffect.highBrightnessThreshold = (float) ConfigHolder.client.shader.fusionBloom.highBrightnessThreshold;
+            BloomEffect.lowBrightnessThreshold = (float) ConfigHolder.client.shader.fusionBloom.lowBrightnessThreshold;
+            BloomEffect.step = 1;
+
+            lastBrightnessX = OpenGlHelper.lastBrightnessX;
+            lastBrightnessY = OpenGlHelper.lastBrightnessY;
+            GlStateManager.color(1, 1, 1, 1);
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+            GlStateManager.disableTexture2D();
+
+            buffer.begin(GL11.GL_QUAD_STRIP, DefaultVertexFormats.POSITION_COLOR);
+        }
+
+        @Override
+        public void postDraw( BufferBuilder buffer) {
+            Tessellator.getInstance().draw();
+
+            GlStateManager.enableTexture2D();
+            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, lastBrightnessX, lastBrightnessY);
+        }
+    }
+}

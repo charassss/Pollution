@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "pollution:items/metaitems/test"
+    "layer0": "pollution:items/metaitems/glycerol_slime"
   }
 }

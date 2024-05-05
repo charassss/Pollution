@@ -339,10 +339,6 @@ public class MagicChemicalRecipes {
                     .duration(200)
                     .EUt(480)
                     .buildAndRegister();
-            RecipeMaps.GAS_TURBINE_FUELS.recipeBuilder()
-                    .fluidInputs(new FluidStack[]{PollutionMaterials.magic_nitrobenzene.getFluid(1)})
-                    .duration(160)
-                    .EUt((int) GTValues.V[1])
-                    .buildAndRegister();
+
     }
 }

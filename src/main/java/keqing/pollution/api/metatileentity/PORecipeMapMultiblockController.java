@@ -32,8 +32,8 @@ import static gregtech.api.unification.material.Materials.Lava;
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_entropy;
 
-public abstract class PORecipeMapMultiblockController extends MultiMapMultiblockController
-        implements IVisMultiblock {
+public abstract class
+PORecipeMapMultiblockController extends MultiMapMultiblockController implements IVisMultiblock {
 
     int visStorage;
     int tier;
