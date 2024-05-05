@@ -36,5 +36,4 @@ public class PORecipeMaps {
             .allowEmptyOutput()
             .setSound(GTSoundEvents.TURBINE);
 
-    private PORecipeMaps() {}
 }

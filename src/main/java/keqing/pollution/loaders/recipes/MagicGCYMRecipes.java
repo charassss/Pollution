@@ -40,6 +40,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES;
+import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_GREENHOUSE_RECIPES;
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 import static keqing.pollution.api.unification.PollutionMaterials.perditioaluminium;
 import static keqing.pollution.common.items.PollutionMetaItems.*;
