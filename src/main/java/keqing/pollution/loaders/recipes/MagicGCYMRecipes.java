@@ -13,6 +13,7 @@ import gregtechfoodoption.GregTechFoodOption;
 import gregtechfoodoption.machines.GTFOTileEntities;
 import keqing.gtqtcore.common.metatileentities.GTQTMetaTileEntities;
 import keqing.pollution.Pollution;
+import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.unification.PollutionMaterials;
 import keqing.pollution.common.block.PollutionMetaBlock.*;
 import keqing.pollution.common.block.PollutionMetaBlocks;
@@ -39,6 +40,7 @@ import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;
 import static gregtech.api.unification.ore.OrePrefix.*;
 import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_ALLOY_BLAST_RECIPES;
+import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_GREENHOUSE_RECIPES;
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 import static keqing.pollution.api.unification.PollutionMaterials.perditioaluminium;
 import static keqing.pollution.common.items.PollutionMetaItems.*;
@@ -122,7 +124,7 @@ public class MagicGCYMRecipes {
                 .blastFurnaceTemp(2700)
                 .EUt(480)
                 .buildAndRegister();
-                
+
          */
         //这里是六个基础外壳材料的搅拌机配方
         //风要素-律动钛
@@ -253,6 +255,32 @@ public class MagicGCYMRecipes {
                 .buildAndRegister();
         //高炉2700°烧六种合金捏
 
+        //魔力钢 神秘锭简化配方
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, infused_air, 1)
+                .input(OrePrefix.dust, infused_fire, 1)
+                .input(OrePrefix.dust, infused_water, 1)
+                .input(OrePrefix.dust, infused_earth, 1)
+                .input(OrePrefix.dust, infused_order, 1)
+                .input(OrePrefix.dust, infused_entropy, 1)
+                .input(OrePrefix.dust, Iron, 4)
+                .output(OrePrefix.dust, manasteel, 4)
+                .circuitMeta(1)
+                .duration(400)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
+                .input(OrePrefix.dust, Iron, 1)
+                .input(OrePrefix.dust, infused_earth, 10)
+                .input(OrePrefix.dust, infused_fire, 5)
+                .input(OrePrefix.dust, infused_air, 5)
+                .circuitMeta(2)
+                .duration(1200)
+                .blastFurnaceTemp(2700)
+                .EUt(480).
+                buildAndRegister();
+
         //这里是六个外壳的制作配方
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, PollutionMaterials.aertitanium, 6)
@@ -343,6 +371,49 @@ public class MagicGCYMRecipes {
                 "circuitHv",
                 PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER),
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_3)));
+        //温室刻晴要的几个配方
+        MAGIC_GREENHOUSE_RECIPES.recipeBuilder()
+                .input(BlocksTC.saplingGreatwood)
+                .fluidInputs(infused_earth.getFluid(144))
+		        .output(BlocksTC.logGreatwood, 8)
+                .output(BlocksTC.saplingGreatwood, 2)
+                .duration(200)
+                .circuitMeta(1)
+                .EUt(120)
+                .buildAndRegister();
+        MAGIC_GREENHOUSE_RECIPES.recipeBuilder()
+                .input(BlocksTC.saplingGreatwood)
+                .input(MetaItems.FERTILIZER.getMetaItem(), 1, 1001)
+                .fluidInputs(infused_earth.getFluid(144))
+                .output(BlocksTC.logGreatwood, 16)
+                .output(BlocksTC.saplingGreatwood, 4)
+                .output(BlocksTC.leafGreatwood, 16)
+                .duration(200)
+                .circuitMeta(2)
+                .EUt(120)
+                .buildAndRegister();
+        MAGIC_GREENHOUSE_RECIPES.recipeBuilder()
+                .input(BlocksTC.saplingSilverwood)
+                .fluidInputs(infused_earth.getFluid(288))
+                .output(BlocksTC.logSilverwood, 4)
+                .output(BlocksTC.saplingSilverwood, 1)
+                .duration(400)
+                .circuitMeta(1)
+                .EUt(480)
+                .buildAndRegister();
+        MAGIC_GREENHOUSE_RECIPES.recipeBuilder()
+                .input(BlocksTC.saplingSilverwood)
+                .input(MetaItems.FERTILIZER.getMetaItem(), 1, 1001)
+                .fluidInputs(infused_earth.getFluid(288))
+                .output(BlocksTC.logSilverwood, 8)
+                .output(BlocksTC.saplingSilverwood, 2)
+                .output(BlocksTC.leafSilverwood, 8)
+                .duration(400)
+                .circuitMeta(2)
+                .EUt(480)
+                .buildAndRegister();
+
+
         //魔导电池配方（试作）
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "magic_battery"), new InfusionRecipe(
                 "INFUSION@2",

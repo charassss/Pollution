@@ -23,13 +23,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtechfoodoption.recipe.GTFORecipeMaps.GREENHOUSE_RECIPES;
+import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_GREENHOUSE_RECIPES;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_instrument;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_water;
 import static net.minecraft.init.Blocks.DIRT;
 
 public class MetaTileEntityMagicGreenHouse extends PORecipeMapMultiblockController{
     public MetaTileEntityMagicGreenHouse(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] {GREENHOUSE_RECIPES});
+        super(metaTileEntityId, new RecipeMap[] {GREENHOUSE_RECIPES, MAGIC_GREENHOUSE_RECIPES});
     }
 
     @Override
