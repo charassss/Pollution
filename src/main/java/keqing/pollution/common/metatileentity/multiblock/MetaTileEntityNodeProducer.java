@@ -6,15 +6,17 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
+import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.util.GTTransferUtils;
+import gregtech.api.util.RelativeDirection;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
+import keqing.pollution.api.block.impl.WrappedIntTired;
 import keqing.pollution.api.unification.PollutionMaterials;
+import keqing.pollution.api.utils.POUtils;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.PollutionMetaBlock.*;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
 import net.minecraft.block.state.IBlockState;
@@ -28,6 +30,7 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
@@ -38,6 +41,7 @@ import java.util.Random;
 
 import static java.lang.Integer.getInteger;
 import static java.lang.Math.*;
+import static keqing.pollution.api.predicate.TiredTraceabilityPredicate.CP_COIL_CASING;
 import static net.minecraft.util.math.MathHelper.abs;
 import static net.minecraft.util.math.MathHelper.ceil;
 
@@ -63,6 +67,17 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 	private int Duration;
 	//每tick源质消耗
 	private int infusedCost;
+	//线圈等级
+	private int coilLevel = 0;
+
+	@Override
+	protected void formStructure(PatternMatchContext context) {
+		super.formStructure(context);
+		Object coilLevel = context.get("COILTiredStats");
+		this.coilLevel = POUtils.getOrDefault(() -> coilLevel instanceof WrappedIntTired,
+				() -> ((WrappedIntTired) coilLevel).getIntTier(),
+				0);
+	}
 
 	public ItemStack getRandomAuraNode(){
 		ItemStack auraNode = new ItemStack(PollutionMetaItems.PACKAGED_AURA_NODE.getMetaItem(), 1, 100);
@@ -70,10 +85,10 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 		double tire_probability = random.nextDouble() * 100; // 生成0到100之间的随机数
 		double type_probability = random.nextDouble() * 100;
 		int air_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
-		int fire_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
+		int fire_probability = min(abs(ceil(random.nextGaussian() * 100 * (0.9 + 0.1 * coilLevel))), 1000);
 		int water_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
 		int earth_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
-		int order_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
+		int order_probability = min(abs(ceil(random.nextGaussian() * 100 * (0.6 + 0.1 * EUtTier))), 1000);
 		int entropy_probability = min(abs(ceil(random.nextGaussian() * 100)), 1000);
 		String nodeTire;
 		if (tire_probability < 60) {
@@ -115,7 +130,7 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 		}
 		EUtTier = ceil(log((double) this.energyContainer.getInputVoltage() / 32) / log(4) + 1);
 		Duration = ceil((float) 30 / (EUtTier - 3));
-		infusedCost = (int) (144 * pow(2, EUtTier - 1));
+		infusedCost = (int) (144 * pow(2, EUtTier - 4));
 		FluidStack INFUSED_ENERGY = PollutionMaterials.infused_energy.getFluid(infusedCost);
 		List<IFluidTank> fluidInputInventory = getAbilities(MultiblockAbility.IMPORT_FLUIDS);
 		//检测是否可以工作，输入仓是不是所需流体
@@ -146,6 +161,7 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 		tooltip.add(I18n.format("pollution.machine.node_producer.tooltip.2", new Object[0]));
 		tooltip.add(I18n.format("pollution.machine.node_producer.tooltip.3", new Object[0]));
 		tooltip.add(I18n.format("pollution.machine.node_producer.tooltip.4", new Object[0]));
+		tooltip.add(I18n.format("pollution.machine.node_producer.tooltip.5", new Object[0]));
 	}
 
 	@Override
@@ -157,36 +173,77 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 
 	@Override
 	protected BlockPattern createStructurePattern() {
-		return FactoryBlockPattern.start()
-				.aisle("XXXXX", "XXGGG", "XXXXX")
-				.aisle("XXXXX", "XACCG", "XXXXX")
-				.aisle("XIXXX", "XSGGG", "XOXXX")
+		return FactoryBlockPattern.start(RelativeDirection.FRONT, RelativeDirection.UP, RelativeDirection.RIGHT)
+				.aisle("                    ", "                    ", "                    ", "                    ", "                    ", "                    ", "                    ", "      A     A       ", "      B     B       ", "      B     B       ", "      B     B       ", "      A     A       ", "                    ", "                    ", "                    ", "                    ")
+				.aisle("    CCCCCCCCCCC     ", "    BBBBBBBBBBB     ", "    BBBBBBBBBBB     ", "    CCCCCCCCCCC     ", "                    ", "      B     B       ", "      D     E       ", "     AAA   AAA      ", "     B B   B B      ", "     B B   B B      ", "     B B   B B      ", "     AAA   AAA      ", "      A     A       ", "      D     E       ", "                    ", "                    ")
+				.aisle("   CFFFFFFFFFFFCGFCF", "   CGGGGGGGGGGGC  B ", "   C           C  B ", "   C           C  B ", "   C  B     B  C  B ", "   C           C  B ", "   C           C  B ", "   C  A     A  C GAG", "      B     B     A ", "      B     B       ", "      B     B       ", "      A     A       ", "                    ", "                    ", "                    ", "                    ")
+				.aisle("  CFAAAAAAAAAAACGCCC", "   AGAAAAAAAAAGA BHB", "   A           A BHB", "   A  B     B  A BHB", "   A           A BHB", "   A           A BHB", "   A           A BHB", "  GA           AGAAA", "                 AAA", "                  A ", "                  H ", "                    ", "                    ", "                    ", "                    ", "                    ")
+				.aisle(" CFAAAAAAAAAAAACGFCF", "  GFGAIFFIFFIAGA  B ", "  GF  B     B  B  B ", "  GF           B  B ", "  GA           B  B ", "  GA           B  B ", "  GA           A  B ", " GAFA         AFAGAG", "   B           B  A ", "   B           B    ", "   B           B    ", "   B           B    ", "   B           B    ", "   A           A    ", "                    ", "                    ")
+				.aisle("XFAAAAAAAAAAAAACG F ", "  BGGAFIEIEIFAGA    ", "  F            B    ", "  F            B    ", "  A            B    ", "  A            B    ", "  A            A    ", " AFHFA       AFHFAG ", "  B B         B B   ", "  B B         B B   ", "  B B         B B   ", "  B B         B B   ", "  B B         B B   ", "  AFA         AAA   ", "   A           A    ", "   H           H    ")
+				.aisle("XFAAAAAAAAAAAAACGFCF", " FBGGAFEIIIEFAGA  B ", " BB      A     B  B ", "  H            B  B ", "  A            B  B ", "  H            B  B ", "  B            A  B ", " BAFA         AFAGAG", "   B           B  A ", "   B           B    ", "   B           B    ", "   B           B    ", "   B           B    ", "   A           A    ", "                    ", "                    ")
+				.aisle("XFAAAAAAAAAAAAACGCCC", " SBGGAIIIIIIIAGA BHB", " FB     AOA    B BHB", "  A     B B    B BHB", "  H    B   B   B BHB", "  A   B     B  B BHB", "  B  B       B A BHB", " BBAB         BAGAAA", "                 AAA", "                  A ", "                  H ", "                    ", "                    ", "                    ", "                    ", "                    ")
+				.aisle("XFAAAAAAAAAAAAACGFCF", " FBGGAFEIIIEFAGA  B ", " BB      A     B  B ", "  H            B  B ", "  A            B  B ", "  H            B  B ", "  B            A  B ", " BAFA         AFAGAG", "   B           B  A ", "   B           B    ", "   B           B    ", "   B           B    ", "   B           B    ", "   A           A    ", "                    ", "                    ")
+				.aisle("XFAAAAAAAAAAAAACG F ", "  BGGAFIEIEIFAGA    ", "  F            B    ", "  F            B    ", "  A            B    ", "  A            B    ", "  A            A    ", " AFHFA       AFHFAG ", "  B B         B B   ", "  B B         B B   ", "  B B         B B   ", "  B B         B B   ", "  B B         B     ", "  AFA         AAA   ", "   A           A    ", "   H           H    ")
+				.aisle(" CFAAAAAAAAAAAACGFCF", "  GFGAIFFIFFIAGA  B ", "  GF  B     B  B  B ", "  GF           B  B ", "  GA           B  B ", "  GA           B  B ", "  GA           A  B ", " GAFA         AFAGAG", "   B           B  A ", "   B           B    ", "   B           B    ", "   B           B    ", "   B           B    ", "   A           A    ", "                    ", "                    ")
+				.aisle("  CFAAAAAAAAAAACGCCC", "   AGAAAAAAAAAGA BHB", "   A           A BHB", "   A  B     B  A BHB", "   A           A BHB", "   A           A BHB", "   A           A BHB", "  GA           AGAAA", "                 AAA", "                  A ", "                  H ", "                    ", "                    ", "                    ", "                    ", "                    ")
+				.aisle("   CFFFFFFFFFFFCGFCF", "   CGGGGGGGGGGGC  B ", "   C           C  B ", "   C           C  B ", "   C  B     B  C  B ", "   C           C  B ", "   C           C  B ", "   C  A     A  C GAG", "      B     B     A ", "      B     B       ", "      B     B       ", "      A     A       ", "                    ", "                    ", "                    ", "                    ")
+				.aisle("    CCCCCCCCCCC     ", "    BBBBBBBBBBB     ", "    BBBBBBBBBBB     ", "    CCCCCCCCCCC     ", "                    ", "      B     B       ", "      K     L       ", "     AAA   AAA      ", "     B B   B B      ", "     B B   B B      ", "     B B   B B      ", "     AAA   AAA      ", "      A     A       ", "      K     L       ", "                    ", "                    ")
+				.aisle("                    ", "                    ", "                    ", "                    ", "                    ", "                    ", "                    ", "      A     A       ", "      B     B       ", "      B     B       ", "      B     B       ", "      A     A       ", "                    ", "                    ", "                    ", "                    ")
 				.where('S', selfPredicate())
-				.where('X', states(getCasingState()).setMinGlobalLimited(25)
+				.where(' ', any())
+				.where('A', states(getCasingState()))
+				.where('X', states(getCasingState())
 						.or(abilities(MultiblockAbility.MAINTENANCE_HATCH).setExactLimit(1).setPreviewCount(1))
-						.or(abilities(MultiblockAbility.INPUT_ENERGY).setMaxGlobalLimited(2).setPreviewCount(1)))
-				.where('C', states(getCasingState2()))
-				.where('G', states(getCasingState3()))
-				.where('I', abilities(MultiblockAbility.IMPORT_FLUIDS).setExactLimit(1).setPreviewCount(1))
+						.or(abilities(MultiblockAbility.INPUT_ENERGY).setExactLimit(1).setPreviewCount(1))
+						.or(abilities(MultiblockAbility.IMPORT_FLUIDS).setExactLimit(1).setPreviewCount(1)))
 				.where('O', abilities(MultiblockAbility.EXPORT_ITEMS).setExactLimit(1).setPreviewCount(1))
-				.where('A', air())
+				.where('B', states(getCasingState2()))
+				.where('C', states(getCasingState3()))
+				.where('D', states(getCasingState4()))
+				.where('E', states(getCasingState5()))
+				.where('F', states(getCasingState6()))
+				.where('G', states(getCasingState7()))
+				.where('H', states(getCasingState8()))
+				.where('I', CP_COIL_CASING)
+				.where('K', states(getCasingState9()))
+				.where('L', states(getCasingState10()))
 				.build();
 	}
 
 		private static IBlockState getCasingState() {
-			return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM_WATER);
+			return PollutionMetaBlocks.FUSION_REACTOR.getState(POFusionReactor.FusionBlockType.FRAME_II);
 		}
 		private static IBlockState getCasingState2(){
+			return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.LAMINATED_GLASS);
+		}
+		private static IBlockState getCasingState3() {
+			return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.VOID_PRISM);
+		}
+		private static IBlockState getCasingState4() {
+			return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_0);
+		}
+		private static IBlockState getCasingState5() {
+			return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_1);
+		}
+		private static IBlockState getCasingState6() {
+			return PollutionMetaBlocks.MAGIC_BLOCK.getState(POMagicBlock.MagicBlockType.SPELL_PRISM);
+		}
+		private static IBlockState getCasingState7() {
+			return PollutionMetaBlocks.TURBINE.getState(POTurbine.MagicBlockType.TUNGSTENSTEEL_GEARBOX);
+		}
+		private static IBlockState getCasingState8() {
+			return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_4);
+		}
+		private static IBlockState getCasingState9() {
 			return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_2);
 		}
-
-		private static IBlockState getCasingState3() {
-			return PollutionMetaBlocks.GLASS.getState(POGlass.MagicBlockType.CAMINATED_GLASS);
+		private static IBlockState getCasingState10() {
+			return PollutionMetaBlocks.BEAM_CORE.getState(POMBeamCore.MagicBlockType.BEAM_CORE_3);
 		}
 
 		@Override
 		public ICubeRenderer getBaseTexture(IMultiblockPart iMultiblockPart) {
-			return POTextures.SPELL_PRISM_WATER;
+			return POTextures.FRAME_I;
 		}
 
 		@Override

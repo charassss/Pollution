@@ -254,7 +254,61 @@ public class MagicGCYMRecipes {
                 .EUt(480)
                 .buildAndRegister();
         //高炉2700°烧六种合金捏
-
+        //高速保护液配方
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, aertitanium, 1)
+                .fluidInputs(infused_air.getFluid(144))
+                .output(ingotHot, aertitanium, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, ignissteel, 1)
+                .fluidInputs(infused_fire.getFluid(144))
+                .output(ingotHot, ignissteel, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, aquasilver, 1)
+                .fluidInputs(infused_water.getFluid(144))
+                .output(ingotHot, aquasilver, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, terracopper, 1)
+                .fluidInputs(infused_earth.getFluid(144))
+                .output(ingotHot, terracopper, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, ordolead, 1)
+                .fluidInputs(infused_order.getFluid(144))
+                .output(ingotHot, ordolead, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
+        RecipeMaps.BLAST_RECIPES.recipeBuilder()
+                .input(dust, perditioaluminium, 1)
+                .fluidInputs(infused_entropy.getFluid(144))
+                .output(ingotHot, perditioaluminium, 1)
+                .circuitMeta(11)
+                .duration(600)
+                .blastFurnaceTemp(2700)
+                .EUt(480)
+                .buildAndRegister();
         //魔力钢 神秘锭简化配方
         MAGIC_ALLOY_BLAST_RECIPES.recipeBuilder()
                 .input(OrePrefix.dust, infused_air, 1)
@@ -264,7 +318,7 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, infused_order, 1)
                 .input(OrePrefix.dust, infused_entropy, 1)
                 .input(OrePrefix.dust, Iron, 4)
-                .output(OrePrefix.dust, manasteel, 4)
+                .fluidOutputs(manasteel.getFluid(576))
                 .circuitMeta(1)
                 .duration(400)
                 .blastFurnaceTemp(2700)
@@ -275,11 +329,12 @@ public class MagicGCYMRecipes {
                 .input(OrePrefix.dust, infused_earth, 10)
                 .input(OrePrefix.dust, infused_fire, 5)
                 .input(OrePrefix.dust, infused_air, 5)
+                .fluidOutputs(thaumium.getFluid(3024))
                 .circuitMeta(2)
                 .duration(1200)
                 .blastFurnaceTemp(2700)
-                .EUt(480).
-                buildAndRegister();
+                .EUt(480)
+                .buildAndRegister();
 
         //这里是六个外壳的制作配方
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
@@ -324,7 +379,7 @@ public class MagicGCYMRecipes {
                 .buildAndRegister();
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
                 .input(OrePrefix.plate, perditioaluminium, 6)
-                .input(OrePrefix.frameGt, perditioaluminium, 1)
+                .input(OrePrefix.frameGt, mansussteel, 1)
                 .outputs(PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.VOID_PRISM))
                 .circuitMeta(6)
                 .duration(300)
@@ -332,9 +387,18 @@ public class MagicGCYMRecipes {
                 .buildAndRegister();
         //加一个空白的配方
         RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
-                .input(OrePrefix.plate, StainlessSteel, 6)
+                .input(OrePrefix.plate, ordolead, 6)
                 .input(OrePrefix.frameGt, mansussteel, 1)
                 .outputs(PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM))
+                .circuitMeta(6)
+                .duration(300)
+                .EUt(120)
+                .buildAndRegister();
+        //另一个虚空的配方
+        RecipeMaps.ASSEMBLER_RECIPES.recipeBuilder()
+                .input(OrePrefix.plate, perditioaluminium, 6)
+                .input(OrePrefix.frameGt, perditioaluminium, 1)
+                .outputs(PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_VOID))
                 .circuitMeta(6)
                 .duration(300)
                 .EUt(120)
@@ -766,7 +830,7 @@ public class MagicGCYMRecipes {
                 "INFUSION@2",
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_0),
                 6,
-                new AspectList().add(Aspect.MECHANISM, 64).add(Aspect.MAGIC, 32).add(Aspect.METAL, 64),
+                new AspectList().add(Aspect.MECHANISM, 16).add(Aspect.MAGIC, 8).add(Aspect.METAL, 16),
                 "blockSteelMagnetic",
                 "plateMansussteel",
                 "plateMansussteel",
@@ -782,7 +846,7 @@ public class MagicGCYMRecipes {
                 "INFUSION@2",
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_1),
                 6,
-                new AspectList().add(Aspect.MECHANISM, 64).add(Aspect.MAGIC, 32).add(Aspect.ENTROPY, 64),
+                new AspectList().add(Aspect.MECHANISM, 16).add(Aspect.MAGIC, 8).add(Aspect.ENTROPY, 16),
                 new ItemStack(Blocks.TNT),
                 "plateMansussteel",
                 "plateMansussteel",
@@ -798,7 +862,7 @@ public class MagicGCYMRecipes {
                 "INFUSION@2",
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_2),
                 6,
-                new AspectList().add(Aspect.MECHANISM, 64).add(Aspect.MAGIC, 32).add(Aspect.SENSES, 64),
+                new AspectList().add(Aspect.MECHANISM, 16).add(Aspect.MAGIC, 8).add(Aspect.SENSES, 16),
                 new ItemStack(Blocks.SOUL_SAND),
                 "plateMansussteel",
                 "plateMansussteel",
@@ -814,7 +878,7 @@ public class MagicGCYMRecipes {
                 "INFUSION@2",
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_3),
                 6,
-                new AspectList().add(Aspect.MECHANISM, 64).add(Aspect.MAGIC, 32).add(Aspect.WATER, 64),
+                new AspectList().add(Aspect.MECHANISM, 16).add(Aspect.MAGIC, 8).add(Aspect.WATER, 16),
                 new ItemStack(BlocksTC.crystalWater),
                 "plateMansussteel",
                 "plateMansussteel",
@@ -830,7 +894,7 @@ public class MagicGCYMRecipes {
                 "INFUSION@2",
                 PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.BEAM_CORE_4),
                 6,
-                new AspectList().add(Aspect.MECHANISM, 64).add(Aspect.MAGIC, 32).add(Aspect.ENERGY, 64),
+                new AspectList().add(Aspect.MECHANISM, 16).add(Aspect.MAGIC, 8).add(Aspect.ENERGY, 16),
                 new ItemStack(BlocksTC.visBattery),
                 "plateMansussteel",
                 "plateMansussteel",
@@ -1286,5 +1350,128 @@ public class MagicGCYMRecipes {
                 "AAA",
                 'A',  PollutionMetaBlocks.BEAM_CORE.getItemVariant(POMBeamCore.MagicBlockType.FILTER_4),
                 'B', new ItemStack(MetaItems.FIELD_GENERATOR_EV.getMetaItem(), 1, 205)));
+
+        //约束器配方
+        //粗制
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(Thaumcraft.MODID, "reactor-frame-i"), new ShapedArcaneRecipe(
+                new ResourceLocation(""),
+                "FIRSTSTEPS@2",
+                25,
+                new AspectList().add(Aspect.ENTROPY, 1).add(Aspect.ORDER, 1),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_I, 2),
+                "AAA",
+                "CBD",
+                "AAA",
+                'A', "plateMansussteel",
+                'B', "frameGtMansussteel",
+                'C', PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.VOID_PRISM),
+                'D', PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM)));
+        //后面几种
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-frame-ii"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_II),
+                2,
+                new AspectList().add(Aspect.ORDER, 8).add(Aspect.PROTECT, 8),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_I),
+                "gemScabyst",
+                "circuitLv",
+                "dustThorium",
+                new ItemStack(ItemsTC.visResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-frame-iii"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_III),
+                4,
+                new AspectList().add(Aspect.ORDER, 16).add(Aspect.PROTECT, 16),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_II),
+                "gemScabyst",
+                "circuitMv",
+                "dustThorium",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-frame-iv"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_IV),
+                6,
+                new AspectList().add(Aspect.ORDER, 32).add(Aspect.PROTECT, 32),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_III),
+                "gemScabyst",
+                "gemValonite",
+                "circuitHv",
+                "dustUranium",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-frame-v"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_V),
+                8,
+                new AspectList().add(Aspect.ORDER, 64).add(Aspect.PROTECT, 64),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_IV),
+                "gemScabyst",
+                "gemValonite",
+                "circuitEv",
+                "dustUranium",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator),
+                new ItemStack(BlocksTC.visBattery)));
+        //蕴魔炼炉扩散要素凝聚外壳
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "alloy_blast_casing"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.ALLOY_BLAST_CASING),
+                4,
+                new AspectList().add(Aspect.FIRE, 16).add(Aspect.METAL, 64),
+                PollutionMetaBlocks.MAGIC_BLOCK.getItemVariant(POMagicBlock.MagicBlockType.SPELL_PRISM_HOT),
+                "plateOctine",
+                "plateOctine",
+                "plateMansussteel",
+                "plateMansussteel",
+                new ItemStack(PollutionMetaItems.HOTCORE.getMetaItem(), 1, 3),
+                new ItemStack(SEGREGATECORE.getMetaItem(), 1, 6)));
+        //裂变核心
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-compose-i"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_I),
+                2,
+                new AspectList().add(Aspect.ENTROPY, 8).add(Aspect.ENERGY, 8).add(Aspect.VOID, 8),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.FRAME_I),
+                "gemOpal",
+                new ItemStack(BlocksTC.crystalEntropy),
+                "circuitLv",
+                new ItemStack(ItemsTC.visResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-compose-ii"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_II),
+                4,
+                new AspectList().add(Aspect.ENTROPY, 16).add(Aspect.ENERGY, 16).add(Aspect.VOID, 16),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_I),
+                "gemOpal",
+                new ItemStack(BlocksTC.crystalEntropy),
+                "circuitMv",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-compose-iii"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_III),
+                6,
+                new AspectList().add(Aspect.ENTROPY, 32).add(Aspect.ENERGY, 32).add(Aspect.VOID, 32),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_II),
+                "gemOpal",
+                "gemAmethyst",
+                new ItemStack(BlocksTC.crystalEntropy),
+                "circuitHv",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator)));
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation(Pollution.MODID, "reactor-compose-iv"), new InfusionRecipe(
+                "INFUSION@2",
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_IV),
+                8,
+                new AspectList().add(Aspect.ENTROPY, 64).add(Aspect.ENERGY, 64).add(Aspect.VOID, 64),
+                PollutionMetaBlocks.FUSION_REACTOR.getItemVariant(POFusionReactor.FusionBlockType.COMPOSE_III),
+                "gemOpal",
+                "gemAmethyst",
+                new ItemStack(BlocksTC.visBattery),
+                new ItemStack(BlocksTC.crystalEntropy),
+                "circuitEv",
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.morphicResonator)));
     }
 }

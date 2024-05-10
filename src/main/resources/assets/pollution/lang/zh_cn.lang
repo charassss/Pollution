@@ -396,6 +396,7 @@ pollution.machine.node_producer.tooltip.1=§5你当敬奉盗灵者Timicasto，�
 pollution.machine.node_producer.tooltip.2=通入能量源质，创生封装灵气节点！
 pollution.machine.node_producer.tooltip.3=基础工作电压EV，单次基础创生时长30s，每超频一次都会大幅增加能量源质消耗
 pollution.machine.node_producer.tooltip.4=中途源质断供会立刻终止创生，浪费之前所有创生进度
+pollution.machine.node_producer.tooltip.5=升级线圈和电压能小幅提高生成高ignis、ordo要素值节点的概率
 pollution.machine.node_producer_duration=每节点创生时长：%s
 pollution.machine.node_producer_infusedcost=每t消耗流体源质：%s
 
