@@ -5,7 +5,16 @@ import gregtech.api.items.metaitem.StandardMetaItem;
 import gregtech.api.unification.material.MarkerMaterials;
 import gregtech.api.unification.ore.OrePrefix;
 import keqing.pollution.common.CommonProxy;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.EnumRarity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import scala.reflect.internal.Trees;
+
+import java.util.List;
+import java.util.Objects;
 
 public class PollutionMetaItem1  extends StandardMetaItem {
 
@@ -13,6 +22,30 @@ public class PollutionMetaItem1  extends StandardMetaItem {
         this.setRegistryName("pollution_meta_item_1");
         setCreativeTab(GregTechAPI.TAB_GREGTECH);
     }
+
+    @Override
+    public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag tooltipFlag) {
+        super.addInformation(stack, worldIn, tooltip, tooltipFlag);
+        if (stack.getTagCompound() != null && stack.getMetadata() == 100) { // 检查物品是否有NBT数据，以及物品是不是灵气节点
+            tooltip.add(TextFormatting.GRAY + "节点信息:"); // 添加一个标题
+            NBTTagCompound compound = stack.getTagCompound();
+            if (compound != null) {
+                compound.getKeySet().forEach(key -> { // 遍历NBT数据的键
+                    if (Objects.equals(key, "NodeTire")) {
+                        String value = compound.getString(key); // 获取键对应的值的字符串表示
+                        tooltip.add(TextFormatting.GRAY + key + ": " + value);
+                    } else if (Objects.equals(key, "NodeType")) {
+                        String value = compound.getString(key); // 获取键对应的值的字符串表示
+                        tooltip.add(TextFormatting.GRAY + key + ": " + value);
+                    } else {
+                        int value = compound.getInteger(key);
+                        tooltip.add(TextFormatting.GRAY + key + ": " + value);
+                    }
+                });
+            }
+        }
+    }
+
     public void registerSubItems() {
         PollutionMetaItems.TEST=this.addItem(1, "test").setMaxStackSize(64).setCreativeTabs(CommonProxy.Pollution_TAB);
 
@@ -58,10 +91,8 @@ public class PollutionMetaItem1  extends StandardMetaItem {
         PollutionMetaItems.MAGIC_CIRCUIT_OpV = this.addItem(63, "magic_circuit.opv").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.OpV).setCreativeTabs(CommonProxy.Pollution_TAB);
         PollutionMetaItems.MAGIC_CIRCUIT_MAX = this.addItem(64, "magic_circuit.max").setUnificationData(OrePrefix.circuit, MarkerMaterials.Tier.MAX).setCreativeTabs(CommonProxy.Pollution_TAB);
 
-
-
-
-
+        //封装灵气节点
+        PollutionMetaItems.PACKAGED_AURA_NODE = this.addItem(100, "packaged_aura_node").setMaxStackSize(1).setRarity(EnumRarity.EPIC).setCreativeTabs(CommonProxy.Pollution_TAB);
 
     }
 

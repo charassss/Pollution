@@ -188,6 +188,9 @@ metaitem.sugar_slime.tooltip=吃不完的糖
 metaitem.glycerol_slime.tooltip=用不完的开塞露
 metaitem.glue_slime.tooltip=打不完的胶
 metaitem.rubber_slime.tooltip=擦不完的橡皮
+
+metaitem.packaged_aura_node.name=封装灵气节点
+
 #机器
 pollution.machine.vis.lv.name=基础灵气发电机（§7LV§r）
 pollution.machine.vis.mv.name=进阶灵气发电机（§bMV§r）
@@ -385,6 +388,17 @@ pollution.machine.essence_collector_coillevel=线圈等级：%s
 pollution.machine.essence_collector_euttier=电压等级：%s
 pollution.machine.essence_collector_finalspeedpertick=最终每t产能：%s
 pollution.machine.essence_collector_iffocused=聚焦模式：%s
+
+#节点发生仪
+pollution.machine.node_producer.name=参宿魔力节点创生室
+
+pollution.machine.node_producer.tooltip.1=§5你当敬奉盗灵者Timicasto，祂将天外节点带诸凡间§r
+pollution.machine.node_producer.tooltip.2=通入能量源质，创生封装灵气节点！
+pollution.machine.node_producer.tooltip.3=基础工作电压EV，单次基础创生时长30s，每超频一次都会大幅增加能量源质消耗
+pollution.machine.node_producer.tooltip.4=中途源质断供会立刻终止创生，浪费之前所有创生进度
+pollution.machine.node_producer.tooltip.5=升级线圈和电压能小幅提高生成高ignis、ordo要素值节点的概率
+pollution.machine.node_producer_duration=每节点创生时长：%s
+pollution.machine.node_producer_infusedcost=每t消耗流体源质：%s
 
 #魔法裂变
 pollution.machine.magic_fusion_reactor.name=爆能要素裂解源质魔法魂导矩阵

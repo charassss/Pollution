@@ -88,6 +88,7 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
     public MetaTileEntityIndustrialInfusion(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId);
     }
+
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity iGregTechTileEntity) {
         return new MetaTileEntityIndustrialInfusion(this.metaTileEntityId);
