@@ -10,7 +10,6 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
@@ -23,7 +22,7 @@ import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.utils.POUtils;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -36,7 +35,6 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-import static keqing.pollution.api.predicate.TiredTraceabilityPredicate.CP_BEAM_CORE;
 import static keqing.pollution.api.predicate.TiredTraceabilityPredicate.CP_COIL_CASING;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_fire;
 

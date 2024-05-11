@@ -5,13 +5,9 @@ import gregtech.api.pattern.BlockWorldState;
 import gregtech.api.pattern.PatternStringError;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.util.BlockInfo;
-import gregtech.common.blocks.*;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import keqing.pollution.api.block.impl.ITired;
 import keqing.pollution.api.block.impl.WrappedIntTired;
-import keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POFusionReactor;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 
@@ -21,10 +17,10 @@ import java.util.LinkedList;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-import static keqing.pollution.common.block.PollutionMetaBlock.POCoilBlock.WireCoilType.*;
-import static keqing.pollution.common.block.PollutionMetaBlock.POFusionReactor.FusionBlockType.*;
-import static keqing.pollution.common.block.PollutionMetaBlock.POGlass.MagicBlockType.*;
-import static keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore.MagicBlockType.*;
+import static keqing.pollution.common.block.metablocks.POCoilBlock.WireCoilType.*;
+import static keqing.pollution.common.block.metablocks.POFusionReactor.FusionBlockType.*;
+import static keqing.pollution.common.block.metablocks.POGlass.MagicBlockType.*;
+import static keqing.pollution.common.block.metablocks.POMBeamCore.MagicBlockType.*;
 import static keqing.pollution.common.block.PollutionMetaBlocks.WIRE_COIL;
 
 public class TiredTraceabilityPredicate extends TraceabilityPredicate {

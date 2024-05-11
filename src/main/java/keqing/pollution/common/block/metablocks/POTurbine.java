@@ -1,4 +1,4 @@
-package keqing.pollution.common.block.PollutionMetaBlock;
+package keqing.pollution.common.block.metablocks;
 
 import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
@@ -13,15 +13,15 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-public class POMBeamCore extends VariantBlock<POMBeamCore.MagicBlockType> {
-    public POMBeamCore() {
+public class POTurbine extends VariantBlock<POTurbine.MagicBlockType> {
+    public POTurbine() {
         super(Material.IRON);
-        this.setTranslationKey("beam_core");
+        this.setTranslationKey("turbine");
         this.setHardness(5.0F);
         this.setResistance(10.0F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("wrench", 4);
-        this.setDefaultState(this.getState(MagicBlockType.BEAM_CORE_0));
+        this.setDefaultState(this.getState(MagicBlockType.BRONZE_GEARBOX));
     }
 
     public boolean canCreatureSpawn(@Nonnull IBlockState state,
@@ -33,17 +33,18 @@ public class POMBeamCore extends VariantBlock<POMBeamCore.MagicBlockType> {
 
     public enum MagicBlockType implements IStringSerializable {
 
-        BEAM_CORE_0("beam_core_0"),
-        BEAM_CORE_1("beam_core_1"),
-        BEAM_CORE_2("beam_core_2"),
-        BEAM_CORE_3("beam_core_3"),
-        BEAM_CORE_4("beam_core_4"),
+        BRONZE_GEARBOX("bronze_gearbox"),
+        STEEL_GEARBOX("steel_gearbox"),
+        STAINLESS_STEEL_GEARBOX("stainless_steel_gearbox"),
+        TITANIUM_GEARBOX("titanium_gearbox"),
+        TUNGSTENSTEEL_GEARBOX("tungstensteel_gearbox"),
 
-        FILTER_1("filter_1"),
-        FILTER_2("filter_2"),
-        FILTER_3("filter_3"),
-        FILTER_4("filter_4"),
-        FILTER_5("filter_5");
+        BRONZE_PIPE("bronze_pipe"),
+        STEEL_PIPE("steel_pipe"),
+        TITANIUM_PIPE("titanium_pipe"),
+        TUNGSTENSTEEL_PIPE("tungstensteel_pipe"),
+        POLYTETRAFLUOROETHYLENE_PIPE("polytetrafluoroethylene_pipe");
+
 
 
         private final String name;

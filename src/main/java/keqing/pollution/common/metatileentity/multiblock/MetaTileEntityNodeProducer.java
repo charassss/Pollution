@@ -16,12 +16,11 @@ import keqing.pollution.api.block.impl.WrappedIntTired;
 import keqing.pollution.api.unification.PollutionMaterials;
 import keqing.pollution.api.utils.POUtils;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.*;
+import keqing.pollution.common.block.metablocks.*;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -30,13 +29,11 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidTank;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 import static java.lang.Integer.getInteger;
@@ -52,6 +49,11 @@ public class MetaTileEntityNodeProducer extends MetaTileEntityBaseWithControl{
 
 	public MetaTileEntity createMetaTileEntity(IGregTechTileEntity iGregTechTileEntity) {
 		return new MetaTileEntityNodeProducer(this.metaTileEntityId);
+	}
+
+	@Override
+	public List<ITextComponent> getDataInfo() {
+		return Collections.emptyList();
 	}
 
 	//随机数

@@ -11,8 +11,8 @@ import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMulti
 import keqing.pollution.Pollution;
 import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.metatileentity.multiblock.MetaTileEntityFluxClear;
 import keqing.pollution.common.metatileentity.multiblock.*;

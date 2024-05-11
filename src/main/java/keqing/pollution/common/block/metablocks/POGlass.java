@@ -1,7 +1,6 @@
-package keqing.pollution.common.block.PollutionMetaBlock;
+package keqing.pollution.common.block.metablocks;
 
 import gregtech.api.block.VariantActiveBlock;
-import gregtech.api.block.VariantBlock;
 import gregtech.api.items.toolitem.ToolClasses;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

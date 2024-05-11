@@ -1,4 +1,4 @@
-package keqing.pollution.common.block.PollutionMetaBlock;
+package keqing.pollution.common.block.metablocks;
 
 import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;

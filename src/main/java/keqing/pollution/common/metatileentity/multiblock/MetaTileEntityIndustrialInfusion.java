@@ -13,7 +13,6 @@ import gregtech.api.pattern.PatternMatchContext;
 import gregtech.api.util.GTTransferUtils;
 import gregtech.api.util.RelativeDirection;
 import gregtech.api.util.TextComponentUtil;
-import gregtech.api.util.interpolate.Eases;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.IRenderSetup;
 import gregtech.client.renderer.texture.Textures;
@@ -22,15 +21,12 @@ import gregtech.client.shader.postprocessing.BloomEffect;
 import gregtech.client.shader.postprocessing.BloomType;
 import gregtech.client.utils.*;
 import gregtech.common.ConfigHolder;
-import keqing.gtqtcore.api.GTQTValue;
 import keqing.pollution.api.block.impl.WrappedIntTired;
-import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.utils.POUtils;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POMBeamCore;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -41,7 +37,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
@@ -55,7 +50,6 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -66,8 +60,8 @@ import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -94,6 +88,12 @@ public class MetaTileEntityIndustrialInfusion extends MetaTileEntityBaseWithCont
         return new MetaTileEntityIndustrialInfusion(this.metaTileEntityId);
 
     }
+
+    @Override
+    public List<ITextComponent> getDataInfo() {
+        return Collections.emptyList();
+    }
+
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()

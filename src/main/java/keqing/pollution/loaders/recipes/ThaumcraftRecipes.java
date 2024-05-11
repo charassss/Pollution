@@ -4,12 +4,11 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.common.items.MetaItems;
-import keqing.gtqtcore.api.unification.GTQTMaterials;
 import keqing.gtqtcore.common.items.GTQTMetaItems;
 import keqing.pollution.Pollution;
 import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.unification.PollutionMaterials;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
+import keqing.pollution.common.block.metablocks.POGlass;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import keqing.pollution.common.items.PollutionMetaItems;
 import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
@@ -26,8 +25,6 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import gregtech.api.unification.ore.OrePrefix;
-
-import java.nio.charset.StandardCharsets;
 
 import static gregtech.api.unification.material.Materials.*;
 

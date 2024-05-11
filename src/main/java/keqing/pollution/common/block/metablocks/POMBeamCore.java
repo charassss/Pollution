@@ -1,6 +1,5 @@
-package keqing.pollution.common.block.PollutionMetaBlock;
+package keqing.pollution.common.block.metablocks;
 
-import gregtech.api.block.VariantBlock;
 import gregtech.api.block.VariantBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -12,16 +11,17 @@ import net.minecraft.world.IBlockAccess;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+
 @ParametersAreNonnullByDefault
-public class POFusionReactor extends VariantBlock<POFusionReactor.FusionBlockType> {
-    public POFusionReactor() {
+public class POMBeamCore extends VariantBlock<POMBeamCore.MagicBlockType> {
+    public POMBeamCore() {
         super(Material.IRON);
-        this.setTranslationKey("fusion_reactor");
+        this.setTranslationKey("beam_core");
         this.setHardness(5.0F);
         this.setResistance(10.0F);
         this.setSoundType(SoundType.METAL);
         this.setHarvestLevel("wrench", 4);
-        this.setDefaultState(this.getState(FusionBlockType.FRAME_I));
+        this.setDefaultState(this.getState(MagicBlockType.BEAM_CORE_0));
     }
 
     public boolean canCreatureSpawn(@Nonnull IBlockState state,
@@ -31,23 +31,24 @@ public class POFusionReactor extends VariantBlock<POFusionReactor.FusionBlockTyp
         return false;
     }
 
-    public enum FusionBlockType implements IStringSerializable {
+    public enum MagicBlockType implements IStringSerializable {
 
-        FRAME_I("frame_i"),
-        FRAME_II("frame_ii"),
-        FRAME_III("frame_iii"),
-        FRAME_IV("frame_iv"),
-        FRAME_V("frame_v"),
+        BEAM_CORE_0("beam_core_0"),
+        BEAM_CORE_1("beam_core_1"),
+        BEAM_CORE_2("beam_core_2"),
+        BEAM_CORE_3("beam_core_3"),
+        BEAM_CORE_4("beam_core_4"),
 
-        COMPOSE_I("compose_i"),
-        COMPOSE_II("compose_ii"),
-        COMPOSE_III("compose_iii"),
-        COMPOSE_IV("compose_iv");
+        FILTER_1("filter_1"),
+        FILTER_2("filter_2"),
+        FILTER_3("filter_3"),
+        FILTER_4("filter_4"),
+        FILTER_5("filter_5");
 
 
         private final String name;
 
-        FusionBlockType(String name) {
+        MagicBlockType(String name) {
             this.name = name;
         }
 

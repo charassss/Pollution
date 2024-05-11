@@ -1,27 +1,18 @@
 package keqing.pollution.loaders.recipes;
 
-import gregtech.api.GregTechAPI;
-import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.recipes.RecipeMaps;
-import gregtech.api.unification.OreDictUnifier;
-import gregtech.api.unification.material.Materials;
 import gregtech.common.blocks.*;
 import gregtech.common.items.MetaItems;
 import gregtech.common.metatileentities.MetaTileEntities;
-import gregtechfoodoption.GregTechFoodOption;
 import gregtechfoodoption.machines.GTFOTileEntities;
 import keqing.gtqtcore.common.metatileentities.GTQTMetaTileEntities;
 import keqing.pollution.Pollution;
-import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.api.unification.PollutionMaterials;
-import keqing.pollution.common.block.PollutionMetaBlock.*;
+import keqing.pollution.common.block.metablocks.*;
 import keqing.pollution.common.block.PollutionMetaBlocks;
-import keqing.pollution.common.items.PollutionMetaItem1;
 import keqing.pollution.common.items.PollutionMetaItems;
 import keqing.pollution.common.metatileentity.PollutionMetaTileEntities;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.Thaumcraft;
@@ -33,8 +24,6 @@ import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import gregtech.api.unification.ore.OrePrefix;
-
-import java.nio.charset.StandardCharsets;
 
 import static gregtech.api.GTValues.*;
 import static gregtech.api.unification.material.Materials.*;

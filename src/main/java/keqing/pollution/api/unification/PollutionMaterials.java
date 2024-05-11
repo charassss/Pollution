@@ -70,6 +70,5 @@ public class PollutionMaterials {
         FirstDegreeMaterials.register();
         CatalystMaterials.register();
         CompoundAspectMaterials.register();
-
     }
 }
