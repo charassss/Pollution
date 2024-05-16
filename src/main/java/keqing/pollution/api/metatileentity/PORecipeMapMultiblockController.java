@@ -171,10 +171,8 @@ PORecipeMapMultiblockController extends MultiMapMultiblockController implements 
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed())
-        textList.add(new TextComponentTranslation("区块灵气: %s / %s 灵气等级: %s",visStorage,visStorageMax,tier));
-        if(material!=null)
-        textList.add(new TextComponentTranslation("要素需求 : %s 工作状态: %s",material.getLocalizedName(),isCheckVis(material,false)));
+        if (isStructureFormed()) textList.add(new TextComponentTranslation("区块灵气: %s | %s 灵气等级: %s",visStorage,visStorageMax,tier));
+        if(material!=null) textList.add(new TextComponentTranslation("要素需求 : %s | 工作状态: %s",material.getLocalizedName(),isCheckVis(material,false)));
     }
 
     @Override
@@ -216,7 +214,7 @@ PORecipeMapMultiblockController extends MultiMapMultiblockController implements 
         protected void modifyOverclockPost(int[] resultOverclock,  IRecipePropertyStorage storage) {
             super.modifyOverclockPost(resultOverclock, storage);
 
-            resultOverclock[0] *= (int) (1.0f - getn() * 0.001); // each coil above cupronickel (coilTier = 0) uses 10% less
+            resultOverclock[0] *= (int) (1.0f - getn() * 0.00005); // each coil above cupronickel (coilTier = 0) uses 10% less
             // energy
             resultOverclock[0] = Math.max(1, resultOverclock[0]);
         }
