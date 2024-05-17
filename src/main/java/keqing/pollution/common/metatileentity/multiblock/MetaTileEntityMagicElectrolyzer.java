@@ -10,44 +10,20 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
 
-import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
-import gregicality.multiblocks.api.render.GCYMTextures;
-import gregicality.multiblocks.common.block.GCYMMetaBlocks;
-import gregicality.multiblocks.common.block.blocks.BlockLargeMultiblockCasing;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import gregtech.api.metatileentity.MetaTileEntity;
-import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
-import gregtech.api.metatileentity.multiblock.IMultiblockPart;
-import gregtech.api.pattern.BlockPattern;
-import gregtech.api.pattern.FactoryBlockPattern;
-import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
-import gregtech.client.renderer.ICubeRenderer;
-import gregtech.client.renderer.texture.Textures;
-import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
 
-import keqing.pollution.api.metatileentity.POMultiblockAbility;
-import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POMBeamCore;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
 
-import static keqing.pollution.api.unification.PollutionMaterials.infused_air;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_order;
 
 public class MetaTileEntityMagicElectrolyzer extends PORecipeMapMultiblockController{

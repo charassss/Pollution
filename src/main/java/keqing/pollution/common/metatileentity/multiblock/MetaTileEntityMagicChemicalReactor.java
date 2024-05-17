@@ -18,14 +18,13 @@ import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.api.recipes.PORecipeMaps;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POGlass;
+import keqing.pollution.common.block.metablocks.POMBeamCore;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
-import static keqing.pollution.api.unification.PollutionMaterials.infused_air;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_alchemy;
 
 public class MetaTileEntityMagicChemicalReactor extends PORecipeMapMultiblockController {

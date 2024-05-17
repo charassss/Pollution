@@ -26,6 +26,7 @@ public class PollutionMaterials {
     public static Material infused_exchange;
     public static Material infused_magic;
     public static Material infused_alchemy;
+    public static Material infused_cold;
     //mana酱
     public static Material mana;
     //材料
@@ -50,6 +51,17 @@ public class PollutionMaterials {
     //催化剂
     public static Material roughdraft;
     public static Material substrate;
+    //魔法催化线路材料
+    public static Material lotus_dust;
+    public static Material ethyl_silicate;
+    public static Material rough_llp;
+    public static Material llp;
+    public static Material oil_with_llp;
+    public static Material super_sticky_tar;
+    public static Material magic_nitrobenzene;
+    public static Material pure_tar;
+    public static Material RichAura;
+    public static Material ErichAura;
 
     public PollutionMaterials() {}
 
@@ -58,6 +70,5 @@ public class PollutionMaterials {
         FirstDegreeMaterials.register();
         CatalystMaterials.register();
         CompoundAspectMaterials.register();
-
     }
 }

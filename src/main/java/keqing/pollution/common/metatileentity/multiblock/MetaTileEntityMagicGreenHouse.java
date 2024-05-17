@@ -6,7 +6,6 @@ import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMap;
-import gregtech.api.recipes.RecipeMaps;
 import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
@@ -14,22 +13,21 @@ import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMBeamCore;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POGlass;
+import keqing.pollution.common.block.metablocks.POMBeamCore;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static gregtechfoodoption.recipe.GTFORecipeMaps.GREENHOUSE_RECIPES;
-import static keqing.pollution.api.unification.PollutionMaterials.infused_instrument;
+import static keqing.pollution.api.recipes.PORecipeMaps.MAGIC_GREENHOUSE_RECIPES;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_water;
-import static net.minecraft.init.Blocks.DIRT;
 
 public class MetaTileEntityMagicGreenHouse extends PORecipeMapMultiblockController{
     public MetaTileEntityMagicGreenHouse(ResourceLocation metaTileEntityId) {
-        super(metaTileEntityId, new RecipeMap[] {GREENHOUSE_RECIPES});
+        super(metaTileEntityId, new RecipeMap[] {GREENHOUSE_RECIPES, MAGIC_GREENHOUSE_RECIPES});
     }
 
     @Override

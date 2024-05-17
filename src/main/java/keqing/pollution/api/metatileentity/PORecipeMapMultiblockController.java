@@ -2,18 +2,13 @@ package keqing.pollution.api.metatileentity;
 
 import gregtech.api.capability.IMultipleTankHandler;
 import gregtech.api.capability.impl.MultiblockRecipeLogic;
-import gregtech.api.metatileentity.ITieredMetaTileEntity;
 import gregtech.api.metatileentity.multiblock.MultiMapMultiblockController;
-import gregtech.api.metatileentity.multiblock.MultiblockDisplayText;
 import gregtech.api.metatileentity.multiblock.RecipeMapMultiblockController;
 import gregtech.api.pattern.PatternMatchContext;
-import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.recipeproperties.IRecipePropertyStorage;
 import gregtech.api.unification.material.Material;
-import gregtech.api.util.GTUtility;
 import keqing.pollution.api.capability.IVisMultiblock;
-import keqing.pollution.api.utils.PollutionLog;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,14 +21,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import thaumcraft.api.aura.AuraHelper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static gregtech.api.unification.material.Materials.Lava;
 import static keqing.pollution.api.unification.PollutionMaterials.*;
 import static keqing.pollution.api.unification.PollutionMaterials.infused_entropy;
 
-public abstract class PORecipeMapMultiblockController extends MultiMapMultiblockController
-        implements IVisMultiblock {
+public abstract class
+PORecipeMapMultiblockController extends MultiMapMultiblockController implements IVisMultiblock {
 
     int visStorage;
     int tier;
@@ -52,26 +49,48 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     //下边就不要动了喵
     //定义储罐
 
+    private static Map<Material, FluidStack> STACK_MAP = new HashMap<>();
+
 
     //在此处添加你需要的要素 格式FluidStack xxx_STACK = infused_axx.getFluid(1);
-    FluidStack AIR_STACK = infused_air.getFluid(1);
-    FluidStack FIRE_STACK = infused_fire.getFluid(1);
-    FluidStack WATER_STACK = infused_water.getFluid(1);
-    FluidStack EARTH_STACK = infused_earth.getFluid(1);
-    FluidStack ORDER_STACK = infused_order.getFluid(1);
-    FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
+    static final FluidStack AIR_STACK = infused_air.getFluid(1);
+    static final FluidStack FIRE_STACK = infused_fire.getFluid(1);
+    static final FluidStack WATER_STACK = infused_water.getFluid(1);
+    static final FluidStack EARTH_STACK = infused_earth.getFluid(1);
+    static final FluidStack ORDER_STACK = infused_order.getFluid(1);
+    static final FluidStack ENTROPY_STACK = infused_entropy.getFluid(1);
     //复合的
-    FluidStack CRYSTAL_STACK = infused_crystal.getFluid(1);
-    FluidStack WEAPON_STACK = infused_weapon.getFluid(1);
-    FluidStack INSTRUMENT_STACK = infused_instrument.getFluid(1);
-    FluidStack EXCHANGE_STACK = infused_exchange.getFluid(1);
-    FluidStack METAL_STACK = infused_metal.getFluid(1);
-    FluidStack ALCHEMY_STACK = infused_alchemy.getFluid(1);
-    FluidStack LIFE_STACK = infused_life.getFluid(1);
-    FluidStack DEATH_STACK = infused_death.getFluid(1);
-    FluidStack SOUL_STACK = infused_soul.getFluid(1);
-    FluidStack ENERGY_STACK = infused_energy.getFluid(1);
-    FluidStack MAGIC_STACK = infused_magic.getFluid(1);
+    static final FluidStack CRYSTAL_STACK = infused_crystal.getFluid(1);
+    static final FluidStack WEAPON_STACK = infused_weapon.getFluid(1);
+    static final FluidStack INSTRUMENT_STACK = infused_instrument.getFluid(1);
+    static final FluidStack EXCHANGE_STACK = infused_exchange.getFluid(1);
+    static final FluidStack METAL_STACK = infused_metal.getFluid(1);
+    static final FluidStack ALCHEMY_STACK = infused_alchemy.getFluid(1);
+    static final FluidStack LIFE_STACK = infused_life.getFluid(1);
+    static final FluidStack DEATH_STACK = infused_death.getFluid(1);
+    static final FluidStack SOUL_STACK = infused_soul.getFluid(1);
+    static final FluidStack ENERGY_STACK = infused_energy.getFluid(1);
+    static final FluidStack MAGIC_STACK = infused_magic.getFluid(1);
+
+    static {
+        STACK_MAP.put(infused_air, AIR_STACK);
+        STACK_MAP.put(infused_fire, FIRE_STACK);
+        STACK_MAP.put(infused_water, WATER_STACK);
+        STACK_MAP.put(infused_earth, EARTH_STACK);
+        STACK_MAP.put(infused_order, ORDER_STACK);
+        STACK_MAP.put(infused_entropy, ENTROPY_STACK);
+        STACK_MAP.put(infused_crystal, CRYSTAL_STACK);
+        STACK_MAP.put(infused_weapon, WEAPON_STACK);
+        STACK_MAP.put(infused_instrument, INSTRUMENT_STACK);
+        STACK_MAP.put(infused_exchange, EXCHANGE_STACK);
+        STACK_MAP.put(infused_life, LIFE_STACK);
+        STACK_MAP.put(infused_death, DEATH_STACK);
+        STACK_MAP.put(infused_soul, SOUL_STACK);
+        STACK_MAP.put(infused_energy, ENERGY_STACK);
+        STACK_MAP.put(infused_magic, MAGIC_STACK);
+        STACK_MAP.put(infused_alchemy, ALCHEMY_STACK);
+        STACK_MAP.put(infused_metal, METAL_STACK);
+    }
 
     //检查有没有+消耗  由consume控制
 
@@ -81,75 +100,14 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     //            }}
     public boolean isCheckVis(Material material,Boolean consume) {
         IMultipleTankHandler inputTank = getInputFluidInventory();
-        if(material==null)return true;
-        if (material == infused_air){
-            if (AIR_STACK.isFluidStackIdentical(inputTank.drain(AIR_STACK, consume))) {
-                return true;
-            }}
-        if(material == infused_fire){
-            if (FIRE_STACK.isFluidStackIdentical(inputTank.drain(FIRE_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_water){
-            if (WATER_STACK.isFluidStackIdentical(inputTank.drain(WATER_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_earth){
-            if (EARTH_STACK.isFluidStackIdentical(inputTank.drain(EARTH_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_order){
-            if (ORDER_STACK.isFluidStackIdentical(inputTank.drain(ORDER_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_entropy){
-            if (ENTROPY_STACK.isFluidStackIdentical(inputTank.drain(ENTROPY_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_crystal){
-            if (CRYSTAL_STACK.isFluidStackIdentical(inputTank.drain(CRYSTAL_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_weapon){
-            if (WEAPON_STACK.isFluidStackIdentical(inputTank.drain(WEAPON_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_instrument){
-            if (INSTRUMENT_STACK.isFluidStackIdentical(inputTank.drain(INSTRUMENT_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_exchange){
-            if (EXCHANGE_STACK.isFluidStackIdentical(inputTank.drain(EXCHANGE_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_life){
-            if (LIFE_STACK.isFluidStackIdentical(inputTank.drain(LIFE_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_death){
-            if (DEATH_STACK.isFluidStackIdentical(inputTank.drain(DEATH_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_soul){
-            if (SOUL_STACK.isFluidStackIdentical(inputTank.drain(SOUL_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_energy){
-            if (ENERGY_STACK.isFluidStackIdentical(inputTank.drain(ENERGY_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_magic){
-            if (MAGIC_STACK.isFluidStackIdentical(inputTank.drain(MAGIC_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_alchemy){
-            if (ALCHEMY_STACK.isFluidStackIdentical(inputTank.drain(ALCHEMY_STACK, consume))) {
-                return true;
-            }}
-        if (material == infused_metal){
-            if (METAL_STACK.isFluidStackIdentical(inputTank.drain(METAL_STACK, consume))) {
-                return true;
-            }}
+
+        if (material == null) return true;
+
+        FluidStack stack = STACK_MAP.get(material);
+        if (stack.isFluidStackIdentical(inputTank.drain(stack, consume))) {
+            return true;
+        }
+
         return false;
     }
 
@@ -213,10 +171,8 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
     @Override
     protected void addDisplayText(List<ITextComponent> textList) {
         super.addDisplayText(textList);
-        if (isStructureFormed())
-        textList.add(new TextComponentTranslation("区块灵气: %s / %s 灵气等级: %s",visStorage,visStorageMax,tier));
-        if(material!=null)
-        textList.add(new TextComponentTranslation("要素需求 : %s 工作状态: %s",material.getLocalizedName(),isCheckVis(material,false)));
+        if (isStructureFormed()) textList.add(new TextComponentTranslation("区块灵气: %s | %s 灵气等级: %s",visStorage,visStorageMax,tier));
+        if(material!=null) textList.add(new TextComponentTranslation("要素需求 : %s | 工作状态: %s",material.getLocalizedName(),isCheckVis(material,false)));
     }
 
     @Override
@@ -258,7 +214,7 @@ public abstract class PORecipeMapMultiblockController extends MultiMapMultiblock
         protected void modifyOverclockPost(int[] resultOverclock,  IRecipePropertyStorage storage) {
             super.modifyOverclockPost(resultOverclock, storage);
 
-            resultOverclock[0] *= 1.0f - getn() * 0.001; // each coil above cupronickel (coilTier = 0) uses 10% less
+            resultOverclock[0] *= (int) (1.0f - getn() * 0.00005); // each coil above cupronickel (coilTier = 0) uses 10% less
             // energy
             resultOverclock[0] = Math.max(1, resultOverclock[0]);
         }

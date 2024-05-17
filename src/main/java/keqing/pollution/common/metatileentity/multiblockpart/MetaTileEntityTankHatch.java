@@ -23,6 +23,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.IAspectSource;
 import thaumcraft.common.tiles.essentia.TileJarFillable;
 
 import java.util.List;

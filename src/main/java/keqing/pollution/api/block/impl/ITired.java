@@ -4,11 +4,11 @@ import net.minecraft.util.IStringSerializable;
 
 public interface ITired extends IStringSerializable {
 
-    default Object getInfo(){
+    default Object getInfo() {
         return null;
     }
 
-    default Object getTire(){
+    default Object getTire() {
         return this.getName();
     }
 }

@@ -11,14 +11,12 @@ import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
 
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;

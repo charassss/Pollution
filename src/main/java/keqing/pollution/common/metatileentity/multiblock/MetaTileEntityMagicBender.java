@@ -12,23 +12,18 @@ import gregtech.api.unification.material.Material;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
 
-import gregicality.multiblocks.api.render.GCYMTextures;
 import keqing.pollution.api.metatileentity.POMultiblockAbility;
 import keqing.pollution.api.metatileentity.PORecipeMapMultiblockController;
 import keqing.pollution.client.textures.POTextures;
-import keqing.pollution.common.block.PollutionMetaBlock.POGlass;
-import keqing.pollution.common.block.PollutionMetaBlock.POMagicBlock;
-import keqing.pollution.common.block.PollutionMetaBlock.POTurbine;
+import keqing.pollution.common.block.metablocks.POGlass;
+import keqing.pollution.common.block.metablocks.POMagicBlock;
+import keqing.pollution.common.block.metablocks.POTurbine;
 import keqing.pollution.common.block.PollutionMetaBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 
 import static keqing.pollution.api.unification.PollutionMaterials.infused_metal;
-import static keqing.pollution.api.unification.PollutionMaterials.infused_order;
 
 public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
 
@@ -74,7 +69,7 @@ public class MetaTileEntityMagicBender extends PORecipeMapMultiblockController {
         return FactoryBlockPattern.start()
                 .aisle("XXXXXXX", "XXXXXXX", "XXXXXXX")
                 .aisle("XXXXXXX", "XXXGGGX", "XXXXXXX")
-                .aisle("IFXXXXX", "XSXCCCX", "XXXXXXX")
+                .aisle("XIXXXXX", "XSXCCCX", "XFXXXXX")
                 .where('S', selfPredicate())
                 .where('X', states(getCasingState()).setMinGlobalLimited(40).or(autoAbilities()))
                 .where('G', states(getCasingState2()))
