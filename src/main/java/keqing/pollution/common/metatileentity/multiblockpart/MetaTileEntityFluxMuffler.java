@@ -1,5 +1,6 @@
 package keqing.pollution.common.metatileentity.multiblockpart;
 
+import bruce.projectreflection.api.IPollutionModifier;
 import codechicken.lib.render.CCRenderState;
 import codechicken.lib.render.pipeline.IVertexOperation;
 import codechicken.lib.vec.Matrix4;
@@ -17,6 +18,7 @@ import gregtech.client.particle.VanillaParticleEffects;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.utils.TooltipHelper;
 import gregtech.common.metatileentities.multi.multiblockpart.MetaTileEntityMultiblockPart;
+import keqing.pollution.POConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,6 +26,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aura.AuraHelper;
@@ -65,8 +68,16 @@ public class MetaTileEntityFluxMuffler extends MetaTileEntityMultiblockPart impl
         for (ItemStack stack : recoveryItems) {
             stacksize += stack.getCount();
         }
-        float pollution = (float) ((float) stacksize * pollutionMultiplier*0.02);
-        AuraHelper.polluteAura(getWorld(), getPos(), (pollution), true);
+        float pollution = ((float) stacksize * pollutionMultiplier);
+        MultiblockControllerBase controller = getController();
+        if (Loader.isModLoaded("projectreflection")&& controller instanceof IPollutionModifier) {
+            pollution *= ((IPollutionModifier) controller).getPollutionModifier();
+        }
+        else
+        {
+            pollution*=POConfig.mufflerPollutionMultiplier;
+        }
+        AuraHelper.polluteAura(getWorld(), getPos(), pollution, POConfig.mufflerPollutionShowEffects);
     }
 
 
